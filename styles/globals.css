@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --main_color: #c7a27d;
@@ -497,7 +497,7 @@ body:has(> * .video-react-fullscreen) {
 .header.is-sticky .lang_btn,
 .header.is-sticky .currencyBtn,
 .header.spHeader .lang_btn,
-.header.spHeader .currencyBtn  {
+.header.spHeader .currencyBtn {
   color: var(--black_color);
 }
 
@@ -1808,6 +1808,10 @@ video:-moz-full-screen {
   direction: ltr;
   margin: 0;
   margin-left: 10px;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* .video-container {
