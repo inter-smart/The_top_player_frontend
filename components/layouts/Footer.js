@@ -128,23 +128,24 @@ const Footer = () => {
                 {t("footer.feature")}
               </h3>
               <div className={styles.Links}>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}`}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}`} style={{textDecoration:"none"}}>
                   {t("menu.home")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#about`}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#about`} style={{textDecoration:"none"}}>
                   {t("menu.about")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`} style={{textDecoration:"none"}}>
                   {t("menu.our_news")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#programs`}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#programs`} style={{textDecoration:"none"}}>
                   {t("menu.our_programs")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#faq`}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#faq`} style={{textDecoration:"none"}}>
                   {t("menu.faq")}
                 </Link>
                 <Link
                   href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`}
+                  style={{textDecoration:"none"}}
                 >
                   {t("auth.login")}
                 </Link>

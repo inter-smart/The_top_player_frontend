@@ -98,9 +98,9 @@ const FristVideos = ({
                 Lang === "ar" ? "Ar_cramp" : "En_cramp"
               }`}
             >
-              <Link href={`/${Lang}`}>{t("menu.home")}</Link>
+              <Link href={`/${Lang}`} style={{textDecoration:"none"}}>{t("menu.home")}</Link>
               <span>{" > "}</span>
-              <Link href={`/${Lang}/user/programs/details/${courseId}`}>
+              <Link href={`/${Lang}/user/programs/details/${courseId}`} style={{textDecoration:"none"}}>
                 {/* {type} */}
                 {parseInt(courseId) === 1 &&
                   t("programs_details.fitness.title")}

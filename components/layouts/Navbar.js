@@ -154,6 +154,7 @@ const Navbar = ({ overHeight, state }) => {
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}`}
                 className={`${router.asPath === router.query.Lang ? styles.active : styles.link}`}
+                style={{ textDecoration: "none" }}
               >
                 {t("menu.home")}
               </Link>
@@ -161,6 +162,7 @@ const Navbar = ({ overHeight, state }) => {
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}#about`}
                 className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#about`) ? styles.active : styles.link}
+                style={{ textDecoration: "none" }}
               >
                 {t("menu.about")}
               </Link>
@@ -168,6 +170,7 @@ const Navbar = ({ overHeight, state }) => {
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}#news`}
                 className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#news`) ? styles.active : styles.link}
+                style={{ textDecoration: "none" }}
               >
                 {t("menu.our_news")}
                 &nbsp;
@@ -194,6 +197,7 @@ const Navbar = ({ overHeight, state }) => {
               <Link
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}#programs`}
+                style={{ textDecoration: "none" }}
                 className={
                   router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#programs`) ? styles.active : styles.link
                 }
@@ -204,6 +208,7 @@ const Navbar = ({ overHeight, state }) => {
               <Link
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}#faq`}
+                style={{ textDecoration: "none" }}
                 className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#faq`) ? styles.active : styles.link}
               >
                 {t("menu.faq")}
@@ -211,6 +216,7 @@ const Navbar = ({ overHeight, state }) => {
               <Link
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}#contact`}
+                style={{ textDecoration: "none" }}
                 className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#contact`) ? styles.active : styles.link}
               >
                 {t("menu.contact")}
@@ -220,6 +226,7 @@ const Navbar = ({ overHeight, state }) => {
                 <Link
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/payment-program`}
                   onClick={() => setVisible(false)}
+                  style={{ textDecoration: "none" }}
                   className={
                     router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/payment-program`)
                       ? styles.active
@@ -233,6 +240,7 @@ const Navbar = ({ overHeight, state }) => {
                 <Link
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/profile`}
                   onClick={() => setVisible(false)}
+                  style={{ textDecoration: "none" }}
                   className={
                     router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/profile`) ? styles.active : styles.link
                   }
@@ -244,6 +252,7 @@ const Navbar = ({ overHeight, state }) => {
                 <Link
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/update-password`}
                   onClick={() => setVisible(false)}
+                  style={{ textDecoration: "none" }}
                   className={
                     router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/update-password`)
                       ? styles.active
@@ -257,6 +266,7 @@ const Navbar = ({ overHeight, state }) => {
                 <Link
                   onClick={() => setVisible(false)}
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/programs`}
+                  style={{ textDecoration: "none" }}
                   className={
                     router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/programs`) ? styles.active : styles.link
                   }
@@ -323,6 +333,7 @@ const Navbar = ({ overHeight, state }) => {
                   dispatch(ClearToken());
                   dispatch(ClearSecret());
                 }}
+                style={{ textDecoration: "none" }}
               >
                 <CiLogout
                   style={{
@@ -428,7 +439,7 @@ const Navbar = ({ overHeight, state }) => {
                         tamaraId && sessionStorage.removeItem("tamaraId");
                       }}
                       className={`${styles.navBtn} hoveranim`}
-                      style={{textDecoration: "none"}}
+                      style={{ textDecoration: "none" }}
                     >
                       {router.pathname.includes("/admin/login") ? (
                         <span>{t("menu.signup")}</span>
@@ -495,6 +506,7 @@ const Navbar = ({ overHeight, state }) => {
                               courseId && sessionStorage.removeItem("courseId");
                               tamaraId && sessionStorage.removeItem("tamaraId");
                             }}
+                            style={{ textDecoration: "none" }}
                           >
                             {t("menu.login")}
                           </Link>
@@ -508,13 +520,18 @@ const Navbar = ({ overHeight, state }) => {
                               courseId && sessionStorage.removeItem("courseId");
                               tamaraId && sessionStorage.removeItem("tamaraId");
                             }}
+                            style={{ textDecoration: "none" }}
                           >
                             {t("menu.signup")}
                           </Link>
                         )}
 
                         {Cookies.get("UT") && (
-                          <Link href={`/${router?.query?.Lang?.toLowerCase()}/user/programs`} onClick={() => setToggle(false)}>
+                          <Link
+                            href={`/${router?.query?.Lang?.toLowerCase()}/user/programs`}
+                            onClick={() => setToggle(false)}
+                            style={{ textDecoration: "none" }}
+                          >
                             {t("menu.my_programs")}
                           </Link>
                         )}
@@ -523,13 +540,18 @@ const Navbar = ({ overHeight, state }) => {
                           <Link
                             href={`/${router?.query?.Lang?.toLowerCase()}/user/payment-program`}
                             onClick={() => setToggle(false)}
+                            style={{ textDecoration: "none" }}
                           >
                             {t("menu.payments")}
                           </Link>
                         )}
                         {Cookies.get("UT") && <hr />}
                         {Cookies.get("UT") && (
-                          <Link href={`/${router?.query?.Lang?.toLowerCase()}/user/profile`} onClick={() => setToggle(false)}>
+                          <Link
+                            href={`/${router?.query?.Lang?.toLowerCase()}/user/profile`}
+                            onClick={() => setToggle(false)}
+                            style={{ textDecoration: "none" }}
+                          >
                             {t("menu.edit_profile")}
                           </Link>
                         )}
@@ -538,6 +560,7 @@ const Navbar = ({ overHeight, state }) => {
                           <Link
                             href={`/${router?.query?.Lang?.toLowerCase()}/user/update-password`}
                             onClick={() => setToggle(false)}
+                            style={{ textDecoration: "none" }}
                           >
                             {t("menu.update_pass")}
                           </Link>
@@ -554,6 +577,7 @@ const Navbar = ({ overHeight, state }) => {
                               dispatch(ClearToken());
                               dispatch(ClearSecret());
                             }}
+                            style={{ textDecoration: "none" }}
                           >
                             {t("menu.logout")}
                           </Link>

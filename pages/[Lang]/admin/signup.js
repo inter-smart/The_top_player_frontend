@@ -263,7 +263,7 @@ const Signup = ({ Lang }) => {
                 >
                   <span>{t("auth.condition")} &nbsp;</span>
 
-                  <Link href={`/${Lang}/terms`} target="_blank">
+                  <Link href={`/${Lang}/terms`} target="_blank" style={{textDecoration:"none"}}>
                     {t("auth.terms")}
                   </Link>
                 </label>
@@ -287,7 +287,7 @@ const Signup = ({ Lang }) => {
               >
                 {" "}
                 {t("auth.have_account")}{" "}
-                <Link href={`/${Lang}/admin/login`}>{t("auth.login")}</Link>
+                <Link href={`/${Lang}/admin/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
               </p>
             </div>
           </form>

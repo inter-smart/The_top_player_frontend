@@ -275,7 +275,7 @@ const Login = ({ Lang }) => {
                 }}
               >
                 {t("auth.forget")}{" "}
-                <Link href={`/${Lang}/admin/forget`}>{t("auth.change")}</Link>
+                <Link href={`/${Lang}/admin/forget`} style={{textDecoration:"none"}}>{t("auth.change")}</Link>
               </p>
             </div>
             <div className={styles.have_account}>
@@ -286,7 +286,7 @@ const Login = ({ Lang }) => {
                 }}
               >
                 {t("auth.donthave")}
-                <Link href={`/${Lang}/admin/signup`}>{t("auth.signup")}</Link>
+                <Link href={`/${Lang}/admin/signup`} style={{textDecoration:"none"}}>{t("auth.signup")}</Link>
               </p>
             </div>
           </form>

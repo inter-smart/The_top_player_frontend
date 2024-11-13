@@ -36,6 +36,7 @@ const News = ({ styles, Lang }) => {
                 href={`/${Lang}/news/all_news`}
                 className="vAllBtn"
                 aria-label="view all button"
+                style={{textDecoration:"none"}}
               >
                 <span>{t("news.viewall")}</span>
                 <span

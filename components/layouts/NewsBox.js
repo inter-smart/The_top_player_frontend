@@ -45,6 +45,7 @@ const NewsBox = ({ imageUrl, Lang, news }) => {
           href={"#news"}
           className={`${styles.vAllBtn} vAllBtn`}
           aria-label="view all button"
+          style={{textDecoration:"none"}}
         >
           <span>{t("news.readmore")}</span>
           <span className="icon">
@@ -86,6 +87,7 @@ const NewsBox = ({ imageUrl, Lang, news }) => {
           href={"#news"}
           className={`${styles.vAllBtn} vAllBtn`}
           aria-label="view all button"
+          style={{textDecoration:"none"}}
         >
           <span>READ MORE</span>
           <span

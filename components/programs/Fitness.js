@@ -58,6 +58,7 @@ const FitnessProgram = ({ Lang }) => {
                   href={"#!"}
                   className={"baseBtn hoveranim"}
                   aria-label="view all button"
+                  style={{textDecoration:"none"}}
                 >
                   <span>Join Now</span>
                   <span className={"icon"}>
