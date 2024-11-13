@@ -1826,3 +1826,8 @@ a {
 .ToogelFull {
   display: none !important;
 }
+
+.customLink {
+  text-decoration: none;
+  color: #f5ffffcc !important;
+}
