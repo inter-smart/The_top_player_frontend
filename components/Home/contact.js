@@ -28,9 +28,7 @@ const Contact = ({ styles, Lang }) => {
       let errors = {};
       if (!data.email) {
         errors.email = t("contact.req_email");
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)
-      ) {
+      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
         errors.email = t("contact.invalid_email");
       }
       if (!data.name) {
@@ -70,15 +68,10 @@ const Contact = ({ styles, Lang }) => {
       summary: t("contact.success"),
     });
   };
-  const isFormFieldInvalid = (name) =>
-    !!(formik.touched[name] && formik.errors[name]);
+  const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
 
   const getFormErrorMessage = (name) => {
-    return isFormFieldInvalid(name) ? (
-      <small className="p-error">{formik.errors[name]}</small>
-    ) : (
-      ""
-    );
+    return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : "";
   };
   return (
     <>
@@ -105,13 +98,7 @@ const Contact = ({ styles, Lang }) => {
                       <FiPhoneCall />
                     </div>
                     <h4>{t("contact.WhatsApp")}</h4>
-                    <p
-                      className={`${
-                        Lang === "ar" ? "Ar_contact_num" : ""
-                      } En_num2`}
-                    >
-                      +971-50-122-5632
-                    </p>
+                    <p className={`${Lang === "ar" ? "Ar_contact_num" : ""} En_num2`}>+971-50-122-5632</p>
                   </div>
                 </div>
                 <div className="col-6">
@@ -131,10 +118,9 @@ const Contact = ({ styles, Lang }) => {
                     <h4>{t("contact.social")}</h4>
                     <div className={styles.iconsSec}>
                       <a
+                        style={{ textDecoration: "none" }}
                         aria-label="oufacebook"
-                        href={
-                          "https://www.tiktok.com/@thetop.player?_t=8i0wA2PQnHc&_r=1"
-                        }
+                        href={"https://www.tiktok.com/@thetop.player?_t=8i0wA2PQnHc&_r=1"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.span_div}
@@ -143,18 +129,18 @@ const Contact = ({ styles, Lang }) => {
                       </a>
 
                       <a
+                        style={{ textDecoration: "none" }}
                         aria-label="our instagram"
-                        href={
-                          "https://www.instagram.com/thetop.player/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
-                        }
+                        href={"https://www.instagram.com/thetop.player/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.span_div}
                       >
-                        <AiFillInstagram />
+                        <A style={{ textDecoration: "none" }} iFillInstagram />
                       </a>
 
                       <a
+                        style={{ textDecoration: "none" }}
                         aria-label="our whatsapp "
                         href={
                           "https://api.whatsapp.com/send/?phone=971501225632&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%2C+%D8%B9%D9%86%D8%AF%D9%8A+%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1+%D8%A8%D8%AE%D8%B5%D9%88%D8%B5&type=phone_number&app_absent=0"
@@ -171,10 +157,7 @@ const Contact = ({ styles, Lang }) => {
               </div>
             </div>
             <div className="col-md-5">
-              <form
-                onSubmit={formik.handleSubmit}
-                className={`${styles.formWrap} grid gap-2 contact`}
-              >
+              <form onSubmit={formik.handleSubmit} className={`${styles.formWrap} grid gap-2 contact`}>
                 <div className={`${styles.formRow} row`}>
                   <div className="col-12">
                     <div className="inputFormik">
@@ -228,11 +211,7 @@ const Contact = ({ styles, Lang }) => {
                     </div>
                   </div>
                   <div className="col-12">
-                    <button
-                      name="login"
-                      type="submit"
-                      className="submit-button hoveranim"
-                    >
+                    <button name="login" type="submit" className="submit-button hoveranim">
                       <span> {t("contact.send")}</span>
                     </button>
                   </div>

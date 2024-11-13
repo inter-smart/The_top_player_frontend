@@ -35,9 +35,7 @@ const Footer = () => {
       let errors = {};
       if (!data.email) {
         errors.email = " Email is required";
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)
-      ) {
+      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
         errors.email = "Invalid email";
       }
       return errors;
@@ -78,20 +76,13 @@ const Footer = () => {
   };
 
   return (
-    <LangWrap
-      Lang={
-        router?.query?.Lang?.toLowerCase()
-          ? router?.query?.Lang?.toLowerCase()
-          : "en"
-      }
-    >
+    <LangWrap Lang={router?.query?.Lang?.toLowerCase() ? router?.query?.Lang?.toLowerCase() : "en"}>
       <Toast ref={toast} />
       <div className={styles.footer}>
         <div
           className="container"
           style={{
-            direction:
-              router?.query?.Lang?.toLowerCase() === "ar" ? "rtl" : "ltr",
+            direction: router?.query?.Lang?.toLowerCase() === "ar" ? "rtl" : "ltr",
           }}
         >
           <div className="row justify-content-between ">
@@ -109,44 +100,29 @@ const Footer = () => {
                 />
               </div>
               {footer?.map((item) => (
-                <p key={item.id}>
-                  {router?.query?.Lang?.toLowerCase() === "ar"
-                    ? item?.footer_ar
-                    : item?.footer_en}
-                </p>
+                <p key={item.id}>{router?.query?.Lang?.toLowerCase() === "ar" ? item?.footer_ar : item?.footer_en}</p>
               ))}
               {/* <p>{t("footer.about")}</p> */}
             </div>
             <div className={`col-6 col-md-2 ${styles.column}`}>
-              <h3
-                className={
-                  router?.query?.Lang?.toLowerCase() === "ar"
-                    ? "mob_right"
-                    : "mob_left"
-                }
-              >
-                {t("footer.feature")}
-              </h3>
+              <h3 className={router?.query?.Lang?.toLowerCase() === "ar" ? "mob_right" : "mob_left"}>{t("footer.feature")}</h3>
               <div className={styles.Links}>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}`} style={{textDecoration:"none"}}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}`} style={{ textDecoration: "none" }}>
                   {t("menu.home")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#about`} style={{textDecoration:"none"}}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#about`} style={{ textDecoration: "none" }}>
                   {t("menu.about")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`} style={{textDecoration:"none"}}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`} style={{ textDecoration: "none" }}>
                   {t("menu.our_news")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#programs`} style={{textDecoration:"none"}}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#programs`} style={{ textDecoration: "none" }}>
                   {t("menu.our_programs")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#faq`} style={{textDecoration:"none"}}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#faq`} style={{ textDecoration: "none" }}>
                   {t("menu.faq")}
                 </Link>
-                <Link
-                  href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`}
-                  style={{textDecoration:"none"}}
-                >
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`} style={{ textDecoration: "none" }}>
                   {t("auth.login")}
                 </Link>
               </div>
@@ -154,16 +130,14 @@ const Footer = () => {
             <div className={`col-6 col-md-2 ${styles.column}`}>
               <h3
                 style={{
-                  textAlign:
-                    router?.query?.Lang?.toLowerCase() === "ar"
-                      ? "right"
-                      : "left",
+                  textAlign: router?.query?.Lang?.toLowerCase() === "ar" ? "right" : "left",
                 }}
               >
                 {t("footer.contact")}
               </h3>
               <div className={styles.Links}>
                 <a
+                  style={{ textDecoration: "none" }}
                   aria-label="our whatsapp "
                   href={
                     "https://api.whatsapp.com/send/?phone=971501225632&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%2C+%D8%B9%D9%86%D8%AF%D9%8A+%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1+%D8%A8%D8%AE%D8%B5%D9%88%D8%B5&type=phone_number&app_absent=0"
@@ -176,23 +150,21 @@ const Footer = () => {
                   {/* <BsWhatsapp /> */}
                 </a>
                 <a
+                  style={{ textDecoration: "none" }}
                   aria-label="our instagram"
-                  href={
-                    "https://www.instagram.com/thetop.player/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
-                  }
+                  href={"https://www.instagram.com/thetop.player/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.span_div}
                 >
                   {t("footer.instagram")}
 
-                  {/* <AiFillInstagram /> */}
+                  {/* <A style={{textDecoration:"none"}}}}iFillInstagram /> */}
                 </a>
                 <a
+                  style={{ textDecoration: "none" }}
                   aria-label="Tiktok"
-                  href={
-                    "https://www.tiktok.com/@thetop.player?_t=8i0wA2PQnHc&_r=1"
-                  }
+                  href={"https://www.tiktok.com/@thetop.player?_t=8i0wA2PQnHc&_r=1"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.span_div}
@@ -206,14 +178,8 @@ const Footer = () => {
               <form onSubmit={formik.handleSubmit} className={styles.form}>
                 <input
                   style={{
-                    marginRight:
-                      router?.query?.Lang?.toLowerCase() === "ar"
-                        ? "0"
-                        : "10px",
-                    marginLeft:
-                      router?.query?.Lang?.toLowerCase() === "ar"
-                        ? "10px"
-                        : "0",
+                    marginRight: router?.query?.Lang?.toLowerCase() === "ar" ? "0" : "10px",
+                    marginLeft: router?.query?.Lang?.toLowerCase() === "ar" ? "10px" : "0",
                   }}
                   placeholder={t("footer.enter_email")}
                   // value={email}
@@ -231,11 +197,7 @@ const Footer = () => {
               <h3>{t("footer.payment")}</h3>
               <div className={styles.Payments}>
                 <span style={{ objectFit: "contain", padding: "3px" }}>
-                  <img
-                    width={"100%"}
-                    src={"/images/tamara_logo.png"}
-                    alt="Tamra Icon"
-                  />
+                  <img width={"100%"} src={"/images/tamara_logo.png"} alt="Tamra Icon" />
                 </span>
                 <span>
                   <FaStripe />
