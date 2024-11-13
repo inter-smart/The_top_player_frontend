@@ -143,7 +143,7 @@ const Footer = () => {
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.span_div}
+                  className={`${styles.span_div} customLink`}
                 >
                   {t("footer.whatsapp")}
                   {/* <BsWhatsapp /> */}
@@ -153,7 +153,7 @@ const Footer = () => {
                   href={"https://www.instagram.com/thetop.player/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.span_div}
+                  className={`${styles.span_div} customLink`}
                 >
                   {t("footer.instagram")}
 
@@ -164,7 +164,7 @@ const Footer = () => {
                   href={"https://www.tiktok.com/@thetop.player?_t=8i0wA2PQnHc&_r=1"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.span_div}
+                  className={`${styles.span_div} customLink`}
                 >
                   {t("footer.tiktok")}
                 </a>
