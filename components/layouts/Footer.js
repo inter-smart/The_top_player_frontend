@@ -107,22 +107,22 @@ const Footer = () => {
             <div className={`col-6 col-md-2 ${styles.column}`}>
               <h3 className={router?.query?.Lang?.toLowerCase() === "ar" ? "mob_right" : "mob_left"}>{t("footer.feature")}</h3>
               <div className={styles.Links}>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}`} style={{ textDecoration: "none" }}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}`} style={{ textDecoration: "none", color: "f5ffffcc" }}>
                   {t("menu.home")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#about`} style={{ textDecoration: "none" }}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#about`} style={{ textDecoration: "none", color: "f5ffffcc" }}>
                   {t("menu.about")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`} style={{ textDecoration: "none" }}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`} style={{ textDecoration: "none", color: "f5ffffcc" }}>
                   {t("menu.our_news")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#programs`} style={{ textDecoration: "none" }}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#programs`} style={{ textDecoration: "none", color: "f5ffffcc" }}>
                   {t("menu.our_programs")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#faq`} style={{ textDecoration: "none" }}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}#faq`} style={{ textDecoration: "none", color: "f5ffffcc" }}>
                   {t("menu.faq")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`} style={{ textDecoration: "none" }}>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`} style={{ textDecoration: "none", color: "f5ffffcc" }}>
                   {t("auth.login")}
                 </Link>
               </div>
@@ -137,7 +137,7 @@ const Footer = () => {
               </h3>
               <div className={styles.Links}>
                 <a
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none", color: "f5ffffcc" }}
                   aria-label="our whatsapp "
                   href={
                     "https://api.whatsapp.com/send/?phone=971501225632&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%2C+%D8%B9%D9%86%D8%AF%D9%8A+%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1+%D8%A8%D8%AE%D8%B5%D9%88%D8%B5&type=phone_number&app_absent=0"
@@ -150,7 +150,7 @@ const Footer = () => {
                   {/* <BsWhatsapp /> */}
                 </a>
                 <a
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none", color: "f5ffffcc" }}
                   aria-label="our instagram"
                   href={"https://www.instagram.com/thetop.player/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"}
                   target="_blank"
@@ -162,7 +162,7 @@ const Footer = () => {
                   {/* <A style={{textDecoration:"none"}}}}iFillInstagram /> */}
                 </a>
                 <a
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none", color: "f5ffffcc" }}
                   aria-label="Tiktok"
                   href={"https://www.tiktok.com/@thetop.player?_t=8i0wA2PQnHc&_r=1"}
                   target="_blank"
