@@ -276,7 +276,7 @@ const Navbar = ({ overHeight, state }) => {
                     tamaraId && sessionStorage.removeItem("tamaraId");
                     setVisible(false);
                   }}
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none !important" }}
                 >
                   <IoPersonCircleOutline
                     style={{
@@ -428,6 +428,7 @@ const Navbar = ({ overHeight, state }) => {
                         tamaraId && sessionStorage.removeItem("tamaraId");
                       }}
                       className={`${styles.navBtn} hoveranim`}
+                      style={{textDecoration: "none"}}
                     >
                       {router.pathname.includes("/admin/login") ? (
                         <span>{t("menu.signup")}</span>
