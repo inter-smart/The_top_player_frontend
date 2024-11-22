@@ -12,15 +12,9 @@ import isExpired from "@/helpers/checkExpired";
 const Program = ({ styles, Lang }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { subscribedCourseArr, CoursecArr } = useSelector(
-    (state) => state.CourcesSlice
-  );
-
-  const { currentcurrency, currencyloading } = useSelector(
-    (state) => state.CurrencySlice
-  );
-
-  console.log(currentcurrency);
+  const { subscribedCourseArr, CoursecArr } = useSelector((state) => state.CourcesSlice);
+  const { currentcurrency, currencyloading } = useSelector((state) => state.CurrencySlice);
+  const { user_info } = useSelector((state) => state.AuthSlice);
 
   useEffect(() => {
     dispatch(allCourses());
@@ -54,13 +48,16 @@ const Program = ({ styles, Lang }) => {
   // const Football = subscribedCourseArr?.find((ele) => ele.courseId === 3);
 
   const handleRedirect = (item, course) => {
+    const isHaveSubCourses = course?.sub_courses.length > 1;
+    console.log("isHaveSubCourses", isHaveSubCourses);
+
     if (course?.isFull) {
       return;
     }
     if (item?.isCamp) {
-      router.push(`/${Lang}/user/camps/details/${course?.id}`);
+      router.push(`/${Lang}/user/${course?.course_type}/details/${course?.id}`);
     } else {
-      router.push(`/${Lang}/user/programs/details/${course?.id}`);
+      router.push(`/${Lang}/user/programs/details/${course?.id}/${isHaveSubCourses && user_info ? `sub/${course?.sub_courses[0]?.id}` : ""}`);
     }
   };
 
@@ -83,39 +80,18 @@ const Program = ({ styles, Lang }) => {
                     flexDirection: "row",
                   }}
                 >
-                  <button
-                    className={styles.prev}
-                    id={`${item?.categoryName?.replace(/\s/g, "")}_prev`}
-                  >
-                    <Image
-                      src={"/images/icon-rgtArrow.svg"}
-                      alt="rgtArrow"
-                      layout="fill"
-                      objectFit="contain"
-                      loading="lazy"
-                    />
+                  <button className={styles.prev} id={`${item?.categoryName?.replace(/\s/g, "")}_prev`}>
+                    <Image src={"/images/icon-rgtArrow.svg"} alt="rgtArrow" layout="fill" objectFit="contain" loading="lazy" />
                   </button>
-                  <button
-                    className={styles.next}
-                    id={`${item?.categoryName?.replace(/\s/g, "")}_next`}
-                  >
-                    <Image
-                      src={"/images/icon-rgtArrow.svg"}
-                      alt="rgtArrow"
-                      layout="fill"
-                      objectFit="contain"
-                      loading="lazy"
-                    />
+                  <button className={styles.next} id={`${item?.categoryName?.replace(/\s/g, "")}_next`}>
+                    <Image src={"/images/icon-rgtArrow.svg"} alt="rgtArrow" layout="fill" objectFit="contain" loading="lazy" />
                   </button>
                 </div>
               </div>
             </div>
-            <div
-              className={`${styles.program} ${
-                Lang === "ar" ? styles.ar_slide : styles.en_slide
-              } ${Lang === "ar" ? "Arabic_web_program" : ""}`}
-            >
+            <div className={`${styles.program} ${Lang === "ar" ? styles.ar_slide : styles.en_slide} ${Lang === "ar" ? "Arabic_web_program" : ""}`}>
               <Swiper
+                style={{ overflow: "visible" }}
                 dir={Lang === "ar" ? "rtl" : "ltr"}
                 key={"courseSwiper"}
                 loop={false}
@@ -154,7 +130,10 @@ const Program = ({ styles, Lang }) => {
                 }}
               >
                 {item?.courses?.map((course) => (
-                  <SwiperSlide key={course?.id}>
+                  <SwiperSlide key={course?.id} className={styles.swiperSlide}>
+                    <div className={styles.tamara_icon}>
+                      <img src="/images/tamara_ribbon.png" alt="fitness" loading="lazy" />
+                    </div>
                     <div
                       style={{
                         direction: Lang === "ar" ? "rtl" : "ltr",
@@ -167,8 +146,7 @@ const Program = ({ styles, Lang }) => {
                       {course?.offerPercentage && (
                         <div className={styles.filnal_price}>
                           <p>
-                            {course?.offerPercentage}%
-                            <span>{t("programs.off")}</span>
+                            {course?.offerPercentage}%<span>{t("programs.off")}</span>
                           </p>
                         </div>
                       )}
@@ -182,19 +160,12 @@ const Program = ({ styles, Lang }) => {
                         />
                       </div>
                       <div className={styles.info_card}>
-                        <h4>
-                          {Lang === "ar" ? course?.name_arabic : course?.name}
-                        </h4>
+                        <h4>{Lang === "ar" ? course?.name_arabic : course?.name}</h4>
                         {course?.descriptionHTML && (
                           <ul
-                            className={`${
-                              Lang === "ar" ? styles.rightText : styles.leftText
-                            }`}
+                            className={`${Lang === "ar" ? styles.rightText : styles.leftText}`}
                             dangerouslySetInnerHTML={{
-                              __html:
-                                Lang === "ar"
-                                  ? course?.descriptionHTMLAr
-                                  : course?.descriptionHTML,
+                              __html: Lang === "ar" ? course?.descriptionHTMLAr : course?.descriptionHTML,
                             }}
                           ></ul>
                         )}
@@ -202,54 +173,28 @@ const Program = ({ styles, Lang }) => {
                         {currencyloading ? (
                           <p>Loading</p>
                         ) : (
-                          <div
-                            className={`${styles.price_offer} ${styles.leftPrice} dir-lft`}
-                          >
+                          <div className={`${styles.price_offer} ${styles.leftPrice} dir-lft`}>
                             {/* <div className={`${styles.price_offer} ${
                             Lang === "ar" ? styles.rightPrice : styles.leftPrice
                           } dir-lft`}
                         > */}
                             <h5>
-                              <span className={styles.currency}>
-                                {currentcurrency?.currency_code}
-                              </span>
-                              {Math.ceil(
-                                (
-                                  course?.offerAmount *
-                                  currentcurrency?.currency_rate
-                                ).toFixed(2)
-                              )}
+                              <span className={styles.currency}>{currentcurrency?.currency_code}</span>
+                              {Math.ceil((course?.offerAmount * currentcurrency?.currency_rate).toFixed(2))}
                             </h5>
                             {course?.offerPercentage && (
                               <h6>
-                                <span className={styles.currency}>
-                                  {currentcurrency?.currency_code}
-                                </span>
-                                <del>
-                                  {Math.ceil(
-                                    (
-                                      course?.amount *
-                                      currentcurrency?.currency_rate
-                                    ).toFixed(2)
-                                  )}{" "}
-                                </del>
+                                <span className={styles.currency}>{currentcurrency?.currency_code}</span>
+                                <del>{Math.ceil((course?.amount * currentcurrency?.currency_rate).toFixed(2))} </del>
                               </h6>
                             )}
                           </div>
                         )}
 
-                        {course?.isFull && (
-                          <img
-                            src={"/images/soldout.png"}
-                            alt="fitness"
-                            loading="lazy"
-                          />
-                        )}
+                        {course?.isFull && <img src={"/images/soldout.png"} alt="fitness" loading="lazy" />}
 
                         <button>
-                          {subscribedCourseArr?.some(
-                            (obj) => obj.courseId == course?.id
-                          )
+                          {subscribedCourseArr?.some((obj) => obj.courseId == course?.id)
                             ? t("programs.yalla")
                             : course?.isFull
                             ? t("camp_full")

@@ -24,22 +24,22 @@ const Change = ({ Lang }) => {
   const router = useRouter();
   const [courseId, setCourseid] = useState(null);
   const [tamaraId, setTamaraid] = useState(null);
+  const [isFree, setIsFree] = useState(null);
   const [deviceId, setDeviceId] = useState("");
 
   useEffect(() => {
     const id = sessionStorage.getItem("courseId");
     const tamId = sessionStorage.getItem("tamaraId");
+    const isFree = sessionStorage.getItem("isFree");
     setCourseid(id);
     setTamaraid(tamId);
+    setIsFree(isFree);
   }, []);
 
   useEffect(() => {
     // Generate device fingerprint using fingerprintjs2
     Fingerprint2.get({}, function (components) {
-      const fingerprint = Fingerprint2.x64hash128(
-        components.map((pair) => pair.value).join(),
-        31
-      );
+      const fingerprint = Fingerprint2.x64hash128(components.map((pair) => pair.value).join(), 31);
       setDeviceId(fingerprint);
     });
   }, []);
@@ -82,11 +82,21 @@ const Change = ({ Lang }) => {
             formik.resetForm();
             setDisabed(false);
             if (courseId) {
+              if (isFree) {
+                router.push(`/${Lang}/user/programs/details/${courseId}`);
+              } else {
+                router.push(`/${Lang}/user/payment/${courseId}`);
+              }
               sessionStorage.removeItem("courseId");
-              router.push(`/${Lang}/user/payment/${courseId}`);
+              sessionStorage.removeItem("isFree");
             } else if (tamaraId) {
+              if (isFree) {
+                router.push(`/${Lang}/user/camps/details/${tamaraId}`);
+              } else {
+                router.push(`/${Lang}/user/payment/tamara/${tamaraId}`);
+              }
               sessionStorage.removeItem("tamaraId");
-              router.push(`/${Lang}/user/payment/tamara/${tamaraId}`);
+              sessionStorage.removeItem("isFree");
             } else {
               router.push(`/${Lang}`);
             }
@@ -129,15 +139,10 @@ const Change = ({ Lang }) => {
       // detail: formik.values.value,
     });
   };
-  const isFormFieldInvalid = (name) =>
-    !!(formik.touched[name] && formik.errors[name]);
+  const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
 
   const getFormErrorMessage = (name) => {
-    return isFormFieldInvalid(name) ? (
-      <small className="p-error">{formik.errors[name]}</small>
-    ) : (
-      ""
-    );
+    return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : "";
   };
 
   const handleResendOtp = (e) => {
@@ -146,7 +151,6 @@ const Change = ({ Lang }) => {
       email: router.query.email,
       symbol: Lang,
     };
-    console.log("triggered");
     dispatch(VerifyEmail(result))
       .unwrap()
       .then((res) => {
@@ -173,12 +177,7 @@ const Change = ({ Lang }) => {
         }}
       >
         <div className={styles.dElmt_1}>
-          <Image
-            src={"/images/dElmt-countBg-1.svg"}
-            layout="fill"
-            alt="bg"
-            objectFit="contain"
-          />
+          <Image src={"/images/dElmt-countBg-1.svg"} layout="fill" alt="bg" objectFit="contain" />
         </div>
         <div className={styles.Login_card}>
           <h1>{t("auth.change_pass")}</h1>
@@ -221,12 +220,7 @@ const Change = ({ Lang }) => {
                 {getFormErrorMessage("code")}
               </div>
             </div>
-            <button
-              name="login"
-              type="submit"
-              disabled={disabel}
-              className={`submit-button ${disabel == true && "LoadingButton"}`}
-            >
+            <button name="login" type="submit" disabled={disabel} className={`submit-button ${disabel == true && "LoadingButton"}`}>
               {t("auth.send")}
             </button>
 

@@ -1,6 +1,5 @@
 const LangWrap = ({ children, Lang }) => {
 
-  console.log(Lang);
 
   return (
     <div

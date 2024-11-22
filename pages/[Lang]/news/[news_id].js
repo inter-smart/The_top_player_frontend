@@ -27,7 +27,9 @@ const NewsDetail = ({ banner }) => {
   const { news } = useSelector((state) => state.NewsSlice.singleNews);
   const allnews = useSelector((state) => state.NewsSlice.allNews.news);
 
-  const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 770px)" });
+
+  
 
   useEffect(() => {
     if (news_id) {
@@ -75,26 +77,41 @@ const NewsDetail = ({ banner }) => {
                         padding: 0,
                       }}
                     >
-                      {news?.mobile?.map((item) => (
-                        <SwiperSlide key={item?.id}>
-                          <div className={styles.news_img_wrap}>
-                            <Image
-                              // src={`${process.env.customKey}/${isMobile ? "newsMobileImages" : "newsImages"}/${
-                              //   item?.imageUrl
-                              // }`}
-                              src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
-                              alt="news"
-                              width={1200}
-                              height={320}
-                              style={{
-                                objectFit: "cover",
-                              }}
-                              layout="intrinsic"
-                              loading="lazy"
-                            />
-                          </div>
-                        </SwiperSlide>
-                      ))}
+                      {isMobile
+                        ? news?.mobile?.map((item) => (
+                            <SwiperSlide key={item?.id}>
+                              <div className={styles.news_img_wrap}>
+                                <Image
+                                  src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
+                                  alt="news"
+                                  width={1200}
+                                  height={320}
+                                  // style={{
+                                  //   objectFit: "cover",
+                                  // }}
+                                  layout="intrinsic"
+                                  loading="lazy"
+                                />
+                              </div>
+                            </SwiperSlide>
+                          ))
+                        : news?.images?.map((item) => (
+                            <SwiperSlide key={item?.id}>
+                              <div className={styles.news_img_wrap}>
+                                <Image
+                                  src={`${process.env.customKey}/newsImages/${item?.imageUrl}`}
+                                  alt="news"
+                                  width={1200}
+                                  height={320}
+                                  style={{
+                                    objectFit: "cover",
+                                  }}
+                                  layout="intrinsic"
+                                  loading="lazy"
+                                />
+                              </div>
+                            </SwiperSlide>
+                          ))}
                     </Swiper>
                   </div>
                 </div>
@@ -176,6 +193,8 @@ export async function getServerSideProps({ req, params }) {
     });
 
     const data = response.data.data;
+
+    
 
     return {
       props: {

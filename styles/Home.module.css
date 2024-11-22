@@ -263,7 +263,7 @@
   height: auto;
   padding: 60px 0 20px;
   position: relative;
-  z-index: 0;
+  z-index: 10;
 }
 
 @media (max-width: 991.98px) {
@@ -428,6 +428,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.swiperSlide{
+  position: relative; 
+}
+
+.tamara_icon {
+  width: 30%;
+  height: 10%;
+  position: absolute;
+  z-index: 1000;
+  top: 2%;
+  right: -1.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tamara_icon img {
+  width: 100%;
+  height: 100%;
 }
 
 .filnal_price p {

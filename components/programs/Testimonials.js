@@ -25,7 +25,6 @@ const Testimonials = ({ Lang, programId }) => {
     (state) => state.TestimonialSlice.testimonialById
   );
 
-  console.log(testimonials);
 
   useEffect(() => {
     dispatch(getTestimonialById(programId));

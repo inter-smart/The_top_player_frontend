@@ -82,7 +82,7 @@ const Contact = ({ styles, Lang }) => {
   };
   return (
     <>
-      <Toast ref={toast} />
+      <Toast ref={toast}  />
       <div className={styles.contact_section}>
         <div className={"container"} id="contact">
           <div className="row">

@@ -132,7 +132,6 @@ const Personlized = ({ Lang }) => {
                   </div>
                   <h5>{t("programs_details.weeks.title3")}</h5>
                   <p>{t("programs_details.weeks.description3")}</p>
-                  {console.log(t("programs_details.weeks.title3"))}
                 </div>
               </div>
             </div>

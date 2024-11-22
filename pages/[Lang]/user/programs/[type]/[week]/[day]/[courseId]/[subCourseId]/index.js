@@ -19,25 +19,11 @@ import Link from "next/link";
 import LangWrap from "@/components/layouts/LangWarp";
 import { useDispatch, useSelector } from "react-redux";
 import { videos_in_days } from "@/store/CourcesSlice";
-// const VideoCard = dynamic(() => import("@/components/layouts/VideoCard"), {
-//   loading: () => <></>,
-//   ssr: false,
-// });
 const VideoShow = dynamic(() => import("@/components/layouts/VideoShow"), {
   loading: () => <></>,
   ssr: false,
 });
-const FristVideos = ({
-  week_id,
-  type,
-  day_id,
-  courseId,
-  subCourseId,
-  Lang,
-  error,
-  error_status,
-  error_Text,
-}) => {
+const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error, error_status, error_Text }) => {
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -46,7 +32,13 @@ const FristVideos = ({
       Cookies.remove("UT");
       router.push(`/${Lang}`);
     } else if (error) {
-      router.push(`/${Lang}/error-handel/${error_Text}`);
+      router.push({
+        pathname: `/${Lang}/error-handel/${error_Text}`,
+        query: {
+          type: "programs",
+          courseId,
+        },
+      });
     }
   }, [error, Lang, router, error_status, error_Text]);
   const dispatch = useDispatch();
@@ -55,7 +47,9 @@ const FristVideos = ({
       courseId: courseId,
       subCourseId: subCourseId,
       day: day_id,
+      week: week_id,
     };
+    console.log("data =====>", data);
     dispatch(videos_in_days(data));
   }, [dispatch, day_id, courseId, subCourseId]);
   const { videos } = useSelector((state) => state.CourcesSlice);
@@ -84,37 +78,22 @@ const FristVideos = ({
         className="container-xxl"
         style={{
           direction: Lang === "ar" ? "rtl" : "ltr",
-          marginTop:"70px"
+          marginTop: "70px",
         }}
       >
-        <div
-          className={`${styles.videos} ${
-            Lang === "ar" ? "ar_Video" : "en_Video"
-          }`}
-        >
+        <div className={`${styles.videos} ${Lang === "ar" ? "ar_Video" : "en_Video"}`}>
           <div className={styles.Main_header}>
-            <div
-              className={`breadCramp ${
-                Lang === "ar" ? "Ar_cramp" : "En_cramp"
-              }`}
-            >
+            <div className={`breadCramp ${Lang === "ar" ? "Ar_cramp" : "En_cramp"}`}>
               <Link href={`/${Lang}`}>{t("menu.home")}</Link>
               <span>{" > "}</span>
               <Link href={`/${Lang}/user/programs/details/${courseId}`}>
                 {/* {type} */}
-                {parseInt(courseId) === 1 &&
-                  t("programs_details.fitness.title")}
-                {parseInt(courseId) === 2 &&
-                  t("programs_details.fitness_fottboll.title")}
-                {parseInt(courseId) === 3 &&
-                  t("programs_details.football.title")}
+                {parseInt(courseId) === 1 && t("programs_details.fitness.title")}
+                {parseInt(courseId) === 2 && t("programs_details.fitness_fottboll.title")}
+                {parseInt(courseId) === 3 && t("programs_details.football.title")}
               </Link>
             </div>
-            {videos && (
-              <h2 className="title video_name">
-                {videoURl ? videoURl.name : videos[0]?.name}
-              </h2>
-            )}
+            {videos && <h2 className="title video_name">{videoURl ? videoURl?.name : videos[0]?.name}</h2>}
 
             <div className={styles.week}>
               <div className={styles.day_finish}>
@@ -126,49 +105,26 @@ const FristVideos = ({
                 <h3>
                   {/* &nbsp; {t("vidoe.day")}{" "} */}
                   {/* {day_time === 0 ? 5 : day_time} */}
-                  {parseInt(subCourseId) === 4 ||
-                  parseInt(subCourseId) === 3 ? (
+                  {parseInt(subCourseId) === 4 || parseInt(subCourseId) === 3 ? (
                     <>
                       <span className="En_num  mx-1">
-                        {day_time === 1 &&
-                          parseInt(subCourseId) === 4 &&
-                          `${t("vidoe.line1")}`}
-                        {day_time === 2 &&
-                          parseInt(subCourseId) === 4 &&
-                          `${t("vidoe.line2")}`}
-                        {day_time === 3 &&
-                          parseInt(subCourseId) === 4 &&
-                          `${t("vidoe.line3")}`}
-                        {day_time === 4 &&
-                          parseInt(subCourseId) === 4 &&
-                          `${t("vidoe.line4")}`}
-                        {day_time === 0 &&
-                          parseInt(subCourseId) === 4 &&
-                          `${t("vidoe.line5")}`}
+                        {day_time === 1 && parseInt(subCourseId) === 4 && `${t("vidoe.line1")}`}
+                        {day_time === 2 && parseInt(subCourseId) === 4 && `${t("vidoe.line2")}`}
+                        {day_time === 3 && parseInt(subCourseId) === 4 && `${t("vidoe.line3")}`}
+                        {day_time === 4 && parseInt(subCourseId) === 4 && `${t("vidoe.line4")}`}
+                        {day_time === 0 && parseInt(subCourseId) === 4 && `${t("vidoe.line5")}`}
                       </span>
                       <span className="En_num  mx-1">
-                        {day_time === 1 &&
-                          parseInt(subCourseId) === 3 &&
-                          `${t("vidoe.line1")}`}
-                        {day_time === 2 &&
-                          parseInt(subCourseId) === 3 &&
-                          `${t("vidoe.line2")}`}
-                        {day_time === 3 &&
-                          parseInt(subCourseId) === 3 &&
-                          `${t("vidoe.line3")}`}
-                        {day_time === 4 &&
-                          parseInt(subCourseId) === 3 &&
-                          `${t("vidoe.line4")}`}
-                        {day_time === 0 &&
-                          parseInt(subCourseId) === 3 &&
-                          `${t("vidoe.line5")}`}
+                        {day_time === 1 && parseInt(subCourseId) === 3 && `${t("vidoe.line1")}`}
+                        {day_time === 2 && parseInt(subCourseId) === 3 && `${t("vidoe.line2")}`}
+                        {day_time === 3 && parseInt(subCourseId) === 3 && `${t("vidoe.line3")}`}
+                        {day_time === 4 && parseInt(subCourseId) === 3 && `${t("vidoe.line4")}`}
+                        {day_time === 0 && parseInt(subCourseId) === 3 && `${t("vidoe.line5")}`}
                       </span>
                     </>
                   ) : (
                     <>
-                      &nbsp; {t("vidoe.day")} <span className="En_num2">
-                      {day_time === 0 ? 5 : day_time}
-                      </span>
+                      &nbsp; {t("vidoe.day")} <span className="En_num2">{day_time === 0 ? 5 : day_time}</span>
                     </>
                   )}
                 </h3>
@@ -183,9 +139,9 @@ const FristVideos = ({
               <div className="col-lg-8 col_video_mobile">
                 <div className={styles.Main_Video}>
                   <VideoShow
-                    key={videos[0].id}
+                    key={videos[0]?.id}
                     video_key={1}
-                    video_id={videos[0].id}
+                    video_id={videos[0]?.id}
                     courseId={courseId}
                     list={videos?.length}
                     type={type}
@@ -193,11 +149,11 @@ const FristVideos = ({
                     day_id={day_id}
                     subCourseId={subCourseId}
                     Lang={Lang}
-                    video_name={videos[0].name}
-                    video_image={videos[0].videoURL}
+                    video_name={videos[0]?.name}
+                    video_image={videos[0]?.videoURL}
                     day_time={day_time}
-                    // next_name={videos[1].name}
-                    // next_id={videos[1].id}
+                    // next_name={videos[1]?.name}
+                    // next_id={videos[1]?.id}
                   />
                 </div>
               </div>
@@ -207,9 +163,9 @@ const FristVideos = ({
               <div className="col-lg-8 col_video_mobile">
                 <div className={styles.Main_Video}>
                   <VideoShow
-                    key={videoURl.id}
+                    key={videoURl?.id}
                     video_key={video_key}
-                    video_id={videoURl.id}
+                    video_id={videoURl?.id}
                     courseId={courseId}
                     list={videos?.length}
                     type={type}
@@ -217,12 +173,12 @@ const FristVideos = ({
                     day_id={day_id}
                     subCourseId={subCourseId}
                     Lang={Lang}
-                    video_name={videoURl.name}
+                    video_name={videoURl?.name}
                     video_image={videoURl.videoURL}
                     day_time={day_time}
-             
-                    // next_name={videos[1].name}
-                    // next_id={videos[1].id}
+
+                    // next_name={videos[1]?.name}
+                    // next_id={videos[1]?.id}
                   />
                 </div>
               </div>
@@ -233,15 +189,15 @@ const FristVideos = ({
                 {videos &&
                   videos.map((ele, idx) => {
                     return (
-                      <div key={ele.id} className="col-12">
+                      <div key={ele?.id} className="col-12">
                         <VideoCard
                           setVideoKey={(e) => setVideoKey(e)}
                           setVideoUrl={(e) => setVideoUrl(e)}
                           videoURl={videoURl}
                           key={idx}
                           type={type}
-                          id={ele.id}
-                          name={ele.name}
+                          id={ele?.id}
+                          name={ele?.name}
                           active={ele.watched}
                           courseId={courseId}
                           week_id={week_id}
@@ -266,20 +222,20 @@ const FristVideos = ({
 export default FristVideos;
 
 export async function getServerSideProps({ req, params }) {
+  console.log("params", params);
+  const { Lang, type, week, day, courseId, subCourseId } = params;
+
   try {
     const result = await axios
-      .get(
-        `${process.env.customKey}/videos/${params.courseId}/${params.subCourseId}/${params.day}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Access-Token": req.cookies.UT,
-            // params: data,
-          },
-        }
-      )
+      .get(`${process.env.customKey}/videos/${courseId}/${subCourseId}/${day}/${week}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Access-Token": req.cookies.UT,
+        },
+      })
       .then((res) => res.data);
+      console.log("videos_in_days", result);
     return {
       props: {
         videos: result,
@@ -294,6 +250,8 @@ export async function getServerSideProps({ req, params }) {
       },
     };
   } catch (err) {
+    console.log("errrr", err.response.data);
+
     return {
       props: {
         videos: null,
@@ -304,12 +262,9 @@ export async function getServerSideProps({ req, params }) {
         courseId: params.courseId,
         Lang: params.Lang.toLowerCase(),
         error: true,
-        error_status: err?.response?.status,
-        error_Text:
-          err?.response?.data?.message === undefined
-            ? null
-            : err?.response?.data?.message,
+        error_Text: err.response.data.message,
       },
     };
   }
 }
+

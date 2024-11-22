@@ -42,11 +42,11 @@ const VideoShow = ({
   video_image,
   day_time,
 }) => {
-  // console.log(
-  //   `2 => Lang : ${Lang} - type: ${type} - week : ${week_id} -  day : ${day_id} - courseId: ${courseId} - subCourseId : ${subCourseId} - videId : ${video_id}`
-  // );
-  // console.log(`3 => video_key : ${video_key + 1} - list: ${list} `);
-  // console.log(`3 => cuurent_video : ${video_key} - list: ${next_id} `);
+  console.log(
+    `2 => Lang : ${Lang} - type: ${type} - week : ${week_id} -  day : ${day_id} - courseId: ${courseId} - subCourseId : ${subCourseId} - videId : ${video_id}`
+  );
+  console.log(`3 => video_key : ${video_key + 1} - list: ${list} `);
+  console.log(`3 => cuurent_video : ${video_key} - list: ${next_id} `);
   const dispatch = useDispatch();
   const handle = useFullScreenHandle();
   // const router = useRouter();
@@ -91,11 +91,9 @@ const VideoShow = ({
       document.msFullscreenElement
     ) {
       document.body.style.overflow = "hidden";
-      console.log("Player is in full-screen mode 1");
       // Add your logic here for when the player enters full-screen mode
     } else {
       document.body.style.overflow = "unset";
-      console.log("Player is not in full-screen mode 1");
       // Add your logic here for when the player exits full-screen mode
     }
   }
@@ -112,10 +110,8 @@ const VideoShow = ({
 
   if (isFullScreen()) {
     document.body.style.overflow = "hidden";
-    console.log("Player is in full-screen mode 2");
   } else {
     document.body.style.overflow = "unset";
-    console.log("Player is not in full-screen mode 2");
   }
 
   // useEffect(() => {
@@ -221,6 +217,7 @@ const VideoShow = ({
               courseId: courseId,
               subCourseId: subCourseId,
               day: day_id,
+              week: week_id,
             };
             dispatch(videos_in_days(all));
           });
@@ -236,6 +233,7 @@ const VideoShow = ({
             courseId: courseId,
             subCourseId: subCourseId,
             day: day_id,
+            week: week_id,
           };
           dispatch(videos_in_days(all));
         });

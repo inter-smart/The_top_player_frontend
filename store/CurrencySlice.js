@@ -4,7 +4,6 @@ import axios from "axios";
 const detectUserCountryCode = async () => {
   try {
     const response = await axios.get("https://ipapi.co/json/");
-    console.log("RESPONSE FROM LOCATION API", response.data.country_code);
     return response.data.country_code; // Default to 'US' if country code is not available
   } catch (error) {
     console.error("Error fetching the country code:", error);
@@ -75,8 +74,7 @@ const CurrencySlice = createSlice({
       })
       .addCase(initializeCurrencyCode.fulfilled, (state, action) => {
         let currentLocation = action.payload;
-        // let currentLocation = "KW";
-        console.log("CURRENT LOCATION:", currentLocation);
+        // let currentLocation = "AE";
         let allCountries = state.currencies;
 
         const matchingCountry = allCountries.find(
@@ -90,7 +88,6 @@ const CurrencySlice = createSlice({
           );
         }
         state.currencyloading = false;
-        console.log("CURRENT CURRENCY", state.currentcurrency);
       })
 
       .addCase(initializeCurrencyCode.rejected, (state, action) => {

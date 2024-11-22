@@ -1006,6 +1006,7 @@ body:has(> * .video-react-fullscreen) {
 
 .swiper {
   padding-bottom: 40px;
+  /* overflow: visible; */
 }
 
 @media (max-width: 991.98px) {

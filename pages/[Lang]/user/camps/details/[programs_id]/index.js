@@ -39,20 +39,12 @@ const Personlized = dynamic(() => import("@/components/programs/Personlized"), {
   loading: () => <></>,
   ssr: false,
 });
-const Fitness = ({ programs_id, Lang, CoursecArr, error, error_status, error_Text, CourseByIdArray }) => {
+const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const expired = CoursecArr ? isExpired(CoursecArr?.endDate) : false;
 
-  // useEffect(() => {
-  //   if (error_status === 401) {
-  //     Cookies.remove("UT");
-  //     router.push(`/${Lang}`);
-  //   } else if (error) {
-  //     router.push(`/${Lang}/error-handel/${error_Text}`);
-  //   }
-  // }, [error, Lang, router, error_status, error_Text]);
   const daysFinished = CoursecArr?.subCourses[0]?.finished_days?.length;
   const weeksFinished = CoursecArr?.subCourses[0]?.finished_weeks?.length * 2;
   const AllDays_finished = daysFinished + weeksFinished;
@@ -623,13 +615,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, error, error_status, error_Tex
       {/* <Testimonials Lang={Lang} programId={programs_id} /> */}
 
       {(!CoursecArr || expired || (CoursecArr && !expired)) && (
-        <EnrollProgram
-          Lang={Lang}
-          programId={programs_id}
-          CoursecArr={CoursecArr}
-          expired={expired}
-          CourseByIdArray={CourseByIdArray}
-        />
+        <EnrollProgram Lang={Lang} programId={programs_id} CoursecArr={CoursecArr} expired={expired} CourseByIdArray={CourseByIdArray} />
       )}
     </LangWrap>
   );
@@ -638,39 +624,36 @@ const Fitness = ({ programs_id, Lang, CoursecArr, error, error_status, error_Tex
 export default Fitness;
 
 export async function getServerSideProps({ req, params }) {
-  try {
-    const result2 = await axios
-      .get(`${process.env.customKey}/courseById/${parseInt(params.programs_id)}`, {
+  // Centralized function to fetch data
+  const getData = async (url) => {
+    try {
+      const response = await axios.get(url, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
           "X-Access-Token": req.cookies.UT,
         },
-      })
-      .then((res) => res.data.course)
-      .catch((err) => {
-        console.log(err);
-        return null;
       });
-    const result = await axios
-      .get(`${process.env.customKey}/course/${parseInt(params.programs_id)}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "X-Access-Token": req.cookies.UT,
-        },
-      })
-      .then((res) => res?.data)
-      .catch((err) => {
-        console.log(err);
-        return null;
-      });
+      return response?.data;
+    } catch (err) {
+      console.log(err?.response?.data?.message);
+      return null;
+    }
+  };
 
-    // .catch(err => )
+  const programId = parseInt(params.programs_id);
+
+  try {
+    // Fetch both endpoints concurrently
+    const [result, result2] = await Promise.all([
+      getData(`${process.env.customKey}/course/${programId}`),
+      getData(`${process.env.customKey}/courseById/${programId}`),
+    ]);
+
     return {
       props: {
         CoursecArr: result,
-        CourseByIdArray: result2,
+        CourseByIdArray: result2?.course || null,
         programs_id: params.programs_id,
         Lang: params.Lang.toLowerCase(),
         error: false,
@@ -678,6 +661,7 @@ export async function getServerSideProps({ req, params }) {
       },
     };
   } catch (err) {
+    console.error("Error fetching data:", err);
     return {
       props: {
         CoursecArr: null,
@@ -685,8 +669,8 @@ export async function getServerSideProps({ req, params }) {
         programs_id: params.programs_id,
         Lang: params.Lang.toLowerCase(),
         error: true,
-        error_status: err?.response?.status,
-        error_Text: err?.response?.data?.message === undefined ? null : err?.response?.data?.message,
+        error_status: err?.response?.status || 500,
+        error_Text: err?.response?.data?.message || "Unknown error occurred",
       },
     };
   }

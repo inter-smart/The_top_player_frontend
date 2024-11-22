@@ -3,12 +3,16 @@ import { useTranslation } from "react-i18next";
 import styles from "@/styles/Program.module.scss";
 import { useRouter } from "next/router";
 
-const Personlized = ({ Lang, videoUrl }) => {
+const Personlized = ({ Lang, videoUrl, CoursecArr, expired }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const currentPath = router.pathname;
   const wordToCheck = "camps";
   const regex = new RegExp(`\\b${wordToCheck}\\b`);
+
+  const typeSpecific = currentPath.split("/").includes("nutrition") || currentPath.split("/").includes("match");
+
+  console.log("typeSpecific", typeSpecific);
 
   return (
     <div className={styles.personlized_section}>
@@ -23,22 +27,25 @@ const Personlized = ({ Lang, videoUrl }) => {
                 <div className={styles.wkBox}>
                   <div className={styles.tleWrap}>
                     <div className={styles.icon}>
-                      <Image
-                        src={"/images/icon-wk-1.svg"}
-                        alt="news"
-                        width={40}
-                        height={40}
-                        layout="responsive"
-                        objectFit="contain"
-                        loading="lazy"
-                      />
+                      <Image src={"/images/icon-wk-1.svg"} alt="news" width={40} height={40} layout="responsive" objectFit="contain" loading="lazy" />
                     </div>
-                    <div className={styles.tle}>
-                      <h4>
-                        {t("programs_details.weeks.week1")}
-                        <span>1</span>
-                      </h4>
-                    </div>
+                    {typeSpecific ? (
+                      !CoursecArr && (
+                        <div className={styles.tle}>
+                          <h4>
+                            {t("programs_details.weeks.week1")}
+                            <span>1</span>
+                          </h4>
+                        </div>
+                      )
+                    ) : (
+                      <div className={styles.tle}>
+                        <h4>
+                          {t("programs_details.weeks.week1")}
+                          <span>1</span>
+                        </h4>
+                      </div>
+                    )}
                     <div className={styles.line}>
                       <span></span>
                     </div>
@@ -66,22 +73,25 @@ const Personlized = ({ Lang, videoUrl }) => {
                 <div className={styles.wkBox}>
                   <div className={styles.tleWrap}>
                     <div className={styles.icon}>
-                      <Image
-                        src={"/images/icon-wk-2.svg"}
-                        alt="news"
-                        width={40}
-                        height={40}
-                        layout="responsive"
-                        objectFit="contain"
-                        loading="lazy"
-                      />
+                      <Image src={"/images/icon-wk-2.svg"} alt="news" width={40} height={40} layout="responsive" objectFit="contain" loading="lazy" />
                     </div>
-                    <div className={styles.tle}>
-                      <h4>
-                        {t("programs_details.weeks.week2")}
-                        <span>2</span>
-                      </h4>
-                    </div>
+                    {typeSpecific ? (
+                      !CoursecArr && (
+                        <div className={styles.tle}>
+                          <h4>
+                            {t("programs_details.weeks.week1")}
+                            <span>2</span>
+                          </h4>
+                        </div>
+                      )
+                    ) : (
+                      <div className={styles.tle}>
+                        <h4>
+                          {t("programs_details.weeks.week1")}
+                          <span>2</span>
+                        </h4>
+                      </div>
+                    )}
                     <div className={styles.line}>
                       <span></span>
                     </div>
@@ -110,15 +120,7 @@ const Personlized = ({ Lang, videoUrl }) => {
                   <div className={styles.wkBox}>
                     <div className={styles.tleWrap}>
                       <div className={styles.icon}>
-                        <Image
-                          src={"/images/icon-wk-4.svg"}
-                          alt="news"
-                          width={40}
-                          height={40}
-                          layout="responsive"
-                          objectFit="cover"
-                          loading="lazy"
-                        />
+                        <Image src={"/images/icon-wk-4.svg"} alt="news" width={40} height={40} layout="responsive" objectFit="cover" loading="lazy" />
                       </div>
                       <div className={styles.tle}>
                         <h4>
@@ -164,12 +166,23 @@ const Personlized = ({ Lang, videoUrl }) => {
                           loading="lazy"
                         />
                       </div>
-                      <div className={styles.tle}>
-                        <h4>
-                          {t("programs_details.weeks.week3")}
-                          <span>3</span>
-                        </h4>
-                      </div>
+                      {typeSpecific ? (
+                        !CoursecArr && (
+                          <div className={styles.tle}>
+                            <h4>
+                              {t("programs_details.weeks.week1")}
+                              <span>3</span>
+                            </h4>
+                          </div>
+                        )
+                      ) : (
+                        <div className={styles.tle}>
+                          <h4>
+                            {t("programs_details.weeks.week1")}
+                            <span>3</span>
+                          </h4>
+                        </div>
+                      )}
                       <div className={styles.line}>
                         <span></span>
                       </div>
@@ -200,22 +213,25 @@ const Personlized = ({ Lang, videoUrl }) => {
                   <div className={styles.wkBox}>
                     <div className={styles.tleWrap}>
                       <div className={styles.icon}>
-                        <Image
-                          src={"/images/icon-wk-4.svg"}
-                          alt="news"
-                          width={40}
-                          height={40}
-                          layout="responsive"
-                          objectFit="cover"
-                          loading="lazy"
-                        />
+                        <Image src={"/images/icon-wk-4.svg"} alt="news" width={40} height={40} layout="responsive" objectFit="cover" loading="lazy" />
                       </div>
-                      <div className={styles.tle}>
-                        <h4>
-                          {t("programs_details.weeks.week4")}
-                          <span>4</span>
-                        </h4>
-                      </div>
+                      {typeSpecific ? (
+                        !CoursecArr && (
+                          <div className={styles.tle}>
+                            <h4>
+                              {t("programs_details.weeks.week1")}
+                              <span>4</span>
+                            </h4>
+                          </div>
+                        )
+                      ) : (
+                        <div className={styles.tle}>
+                          <h4>
+                            {t("programs_details.weeks.week1")}
+                            <span>4</span>
+                          </h4>
+                        </div>
+                      )}
                       <div className={styles.line}>
                         <span></span>
                       </div>
@@ -245,7 +261,7 @@ const Personlized = ({ Lang, videoUrl }) => {
           <div className={styles.rgtSd}>
             <div className={styles.imgWrap}>
               <video muted autoPlay loop playsInline preload="metadata" aria-label="video player">
-                <source src={`https://backend.thetopplayer.com/courseImages/${videoUrl}`} type="video/mp4" />
+                <source src={`${process.env.customKey}/courseImages/${videoUrl}`} type="video/mp4" />
               </video>
             </div>
           </div>

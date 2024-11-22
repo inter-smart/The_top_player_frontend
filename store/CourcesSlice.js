@@ -65,10 +65,11 @@ export const getsubscribedCourse = createAsyncThunk("Cources/getsubscribedCourse
         },
       })
       .then((res) => {
-        return res.data});
+        return res.data;
+      });
     return result;
   } catch (err) {
-    return rejectWithValue(err);
+    return rejectWithValue(err?.response?.data?.message);
   }
 });
 export const checkToken = createAsyncThunk("Cources/checkToken", async (data, thunkAPI) => {
@@ -93,7 +94,7 @@ export const videos_in_days = createAsyncThunk("Cources/videos_in_days", async (
   const { rejectWithValue } = thunkAPI;
   try {
     const result = await axios
-      .get(`${process.env.customKey}/videos/${data.courseId}/${data.subCourseId}/${data.day}`, {
+      .get(`${process.env.customKey}/videos/${data.courseId}/${data.subCourseId}/${data.day}/${data.week}`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -102,6 +103,8 @@ export const videos_in_days = createAsyncThunk("Cources/videos_in_days", async (
         },
       })
       .then((res) => res.data);
+      console.log("videos_in_days", result);
+      
     return result;
   } catch (err) {
     return rejectWithValue(err);
@@ -250,7 +253,8 @@ const CourcesSlice = createSlice({
         state.subscribedCourseArr = action.payload;
       })
       .addCase(getsubscribedCourse.rejected, (state, action) => {
-        console.log(action);
+        state.isCourcesLoading = false;
+        state.subscribedCourseArr = null;
       })
       .addCase(videos_in_days.pending, (state, action) => {
         state.allVideoLoading = true;
@@ -284,6 +288,7 @@ const CourcesSlice = createSlice({
         state.CourseById = action.payload;
       })
       .addCase(courseById.rejected, (state, action) => {
+        state.isCourcesLoading = false;
         state.CourseById = null;
       });
   },

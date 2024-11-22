@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import "@/components/Data/i18n";
 import store from "@/store/store";
 import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 import "video-react/dist/video-react.css"; // import css
 
@@ -88,7 +89,7 @@ function App({ Component, pageProps, canonical, Path }) {
 
   return (
     <>
-      <Script
+      {/* <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.googleAnalytics}`}
       />
@@ -102,7 +103,10 @@ function App({ Component, pageProps, canonical, Path }) {
                     page_path: window.location.pathname,
                     });
                 `}
-      </Script>
+      </Script> */}
+
+      <GoogleTagManager gtmId={process.env.googleAnalytics} />
+
       <Head>
         <title>The Top Player</title>
         {/* <link
@@ -176,23 +180,9 @@ function App({ Component, pageProps, canonical, Path }) {
         />
         <link rel="manifest" href="/manifest.json" /> */}
 
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/manifest.json" />
 
         <meta name="msapplication-TileColor" content="#ffffff" />

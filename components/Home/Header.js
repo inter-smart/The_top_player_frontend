@@ -2,31 +2,34 @@ import { getHeaderBanner } from "@/store/HeaderSlice";
 import Aos from "aos";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 
-const Header = ({ styles, Lang, state }) => {
+const Header = ({ styles, Lang }) => {
   const dispatch = useDispatch();
-  // const { state } = useSelector((state) => ({
-  //   state: state?.HeaderSlice?.banners[0],
-  // }));
+  const [videoLoaded, setVideoLoaded] = useState(false); // Track video loading status
+  const { t } = useTranslation();
 
   useEffect(() => {
     Aos.init({ duration: 900 });
-  });
-  // useEffect(() => {
-  //   dispatch(getHeaderBanner());
-  // }, []);
-  const { t } = useTranslation();
+  }, []);
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+  };
+
+  const handleVideoError = () => {
+    console.error("Error loading video");
+  };
 
   return (
     <div className={styles.banner_section} id="banner">
       <div className={styles.banner_info}>
-        <h1>{Lang === "ar" ? state?.head_ar : state?.head}</h1>
+        {/* <h1>{Lang === "ar" ? state?.head_ar : state?.head}</h1>
         <h2>{Lang === "ar" ? state?.subhead_ar : state?.subhead}</h2>
-        <p>{Lang === "ar" ? state?.title_text_Ar : state?.title_text}</p>
+        <p>{Lang === "ar" ? state?.title_text_Ar : state?.title_text}</p> */}
         <div className={styles.btn_wrap}>
           <Link href={`/${Lang}#programs`} className="baseBtn hoveranim" aria-label={t("yalla")}>
             <span>{t("yalla")}</span>
@@ -54,15 +57,25 @@ const Header = ({ styles, Lang, state }) => {
         </div>
       </div>
       <div className={styles.image_header}>
-        {/* <Image src={"/images/header.png"} alt="Header" layout="fill" objectFit="cover"/> */}
-        <video muted autoPlay loop playsInline preload="metadata" aria-label="Video player">
-          {state && (
-            <source
-              // src="https://backend.thetopplayer.com/videos/header.mp4"
-              src={`${process.env.customKey}/banner_videos/${state.videoUrl}`}
-              type="video/mp4"
-            />
-          )}
+        {/* Show image while video is loading */}
+        {!videoLoaded && <Image src={"/images/banner-program.jpg"} alt="Header" layout="fill" objectFit="cover" />}
+
+        <video
+          muted
+          autoPlay
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Video player"
+          onLoadedData={handleVideoLoad}
+          onError={handleVideoError}
+          style={{ display: videoLoaded ? "block" : "none" }} // Hide video initially
+        >
+          <source
+            src="https://backend.thetopplayer.com/videos/header.mp4"
+            // src={`${process.env.customKey}/banner_videos/${state.videoUrl}`}
+            type="video/mp4"
+          />
         </video>
       </div>
     </div>

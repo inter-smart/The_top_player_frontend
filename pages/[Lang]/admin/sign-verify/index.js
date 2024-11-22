@@ -22,6 +22,7 @@ const SignVerify = ({ Lang }) => {
 
   const [courseId, setCourseid] = useState(null);
   const [tamaraId, setTamaraid] = useState(null);
+  const [isFree, setIsFree] = useState(null);
 
   // const router = useRouter()
   const { t } = useTranslation();
@@ -30,8 +31,10 @@ const SignVerify = ({ Lang }) => {
   useEffect(() => {
     const id = sessionStorage.getItem("courseId");
     const tamId = sessionStorage.getItem("tamaraId");
+    const isFree = sessionStorage.getItem("isFree");
     setCourseid(id);
     setTamaraid(tamId);
+    setIsFree(isFree);
   }, []);
   // console.log(router);
   // const [device_id, setDevice_id] = useState("");
@@ -77,11 +80,23 @@ const SignVerify = ({ Lang }) => {
             setDisabed(false);
             console.log("Here");
             if (courseId) {
+              if (isFree) {
+                router.push(`/${Lang}/user/programs/details/${courseId}`);
+              } else {
+                router.push(`/${Lang}/user/payment/${courseId}`);
+              }
               sessionStorage.removeItem("courseId");
-              return router.push(`/${Lang}/user/payment/${courseId}`);
+              sessionStorage.removeItem("isFree");
+              return;
             } else if (tamaraId) {
+              if (isFree) {
+                router.push(`/${Lang}/user/camps/details/${tamaraId}`);
+              } else {
+                router.push(`/${Lang}/user/payment/tamara/${tamaraId}`);
+              }
               sessionStorage.removeItem("tamaraId");
-              return router.push(`/${Lang}/user/payment/tamara/${tamaraId}`);
+              sessionStorage.removeItem("isFree");
+              return;
             } else {
               router.push(`/${Lang}`);
             }
@@ -113,15 +128,10 @@ const SignVerify = ({ Lang }) => {
       // detail: formik.values.value,
     });
   };
-  const isFormFieldInvalid = (name) =>
-    !!(formik.touched[name] && formik.errors[name]);
+  const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
 
   const getFormErrorMessage = (name) => {
-    return isFormFieldInvalid(name) ? (
-      <small className="p-error">{formik.errors[name]}</small>
-    ) : (
-      ""
-    );
+    return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : "";
   };
 
   const Resend = () => {
@@ -158,12 +168,7 @@ const SignVerify = ({ Lang }) => {
         }}
       >
         <div className={styles.dElmt_1}>
-          <Image
-            src={"/images/dElmt-countBg-1.svg"}
-            layout="fill"
-            alt="bg"
-            objectFit="contain"
-          />
+          <Image src={"/images/dElmt-countBg-1.svg"} layout="fill" alt="bg" objectFit="contain" />
         </div>
 
         <div className={styles.Login_card}>
@@ -187,12 +192,7 @@ const SignVerify = ({ Lang }) => {
               </div>
             </div>
 
-            <button
-              name="login"
-              disabled={disabel}
-              type="submit"
-              className={`submit-button ${disabel == true && "LoadingButton"}`}
-            >
+            <button name="login" disabled={disabel} type="submit" className={`submit-button ${disabel == true && "LoadingButton"}`}>
               {t("auth.Verify")}
             </button>
 
@@ -205,11 +205,7 @@ const SignVerify = ({ Lang }) => {
               >
                 {t("auth.not_recived")}
               </p>
-              <button
-                onClick={() => Resend()}
-                disabled={disabelResend}
-                className={`${disabelResend == true && "Disabelresend"}`}
-              >
+              <button onClick={() => Resend()} disabled={disabelResend} className={`${disabelResend == true && "Disabelresend"}`}>
                 {t("auth.send_again")}
               </button>
             </div>

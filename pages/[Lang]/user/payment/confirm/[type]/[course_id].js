@@ -5,13 +5,13 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 // import { useDispatch } from "react-redux";
 
-const Cnofirm = ({ course_id, Lang }) => {
+const Cnofirm = ({ course_id, Lang, type }) => {
   const router = useRouter();
   // const dispatch = useDispatch();
   const { t } = useTranslation();
   useEffect(() => {
     const timeout = setTimeout(() => {
-      router.push(`/${Lang}/user/programs/details/${course_id}`);
+      router.push(`/${Lang}/user/${type}/details/${course_id}`);
     }, 3000);
     return () => clearTimeout(timeout);
   }, [Lang, course_id, router]);
@@ -43,6 +43,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       course_id: params.course_id,
+      type: params.type,
       Lang: params.Lang.toLowerCase(),
     },
   };
