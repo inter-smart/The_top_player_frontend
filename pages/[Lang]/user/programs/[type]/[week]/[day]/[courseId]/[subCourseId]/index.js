@@ -83,10 +83,14 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
       >
         <div className={`${styles.videos} ${Lang === "ar" ? "ar_Video" : "en_Video"}`}>
           <div className={styles.Main_header}>
-            <div className={`breadCramp ${Lang === "ar" ? "Ar_cramp" : "En_cramp"}`}>
-              <Link href={`/${Lang}`}>{t("menu.home")}</Link>
+            <div
+              className={`breadCramp ${
+                Lang === "ar" ? "Ar_cramp" : "En_cramp"
+              }`}
+            >
+              <Link href={`/${Lang}`} style={{textDecoration:"none"}}>{t("menu.home")}</Link>
               <span>{" > "}</span>
-              <Link href={`/${Lang}/user/programs/details/${courseId}`}>
+              <Link href={`/${Lang}/user/programs/details/${courseId}`} style={{textDecoration:"none"}}>
                 {/* {type} */}
                 {parseInt(courseId) === 1 && t("programs_details.fitness.title")}
                 {parseInt(courseId) === 2 && t("programs_details.fitness_fottboll.title")}

@@ -162,7 +162,7 @@ const Signup = ({ Lang }) => {
                 }}
               >
                 {t("auth.have_account")}
-                <Link href={`/${Lang}/admin/login`}>{t("auth.login")}</Link>
+                <Link href={`/${Lang}/admin/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
               </p>
             </div>
           </form>

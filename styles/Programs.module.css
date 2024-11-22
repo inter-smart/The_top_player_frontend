@@ -527,7 +527,7 @@
 }
 
 .days .Ar_day_finish h3 {
-  font-family: "Mont" !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .days .Ar_day_finish p {
@@ -790,7 +790,7 @@
   font-weight: 400;
   cursor: pointer;
   margin: 0 auto;
-  font-family: "Mont" !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .days_number .active {

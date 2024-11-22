@@ -48,7 +48,7 @@ const Programs = ({ Lang }) => {
             <div className="row justify-content-center">
               {Fitness && (
                 <div className="col-md-6 col-lg-4 ">
-                  <Link href={`/${Lang}/user/programs/details/1`} className={styles.card}>
+                  <Link href={`/${Lang}/user/programs/details/1`} className={styles.card} style={{textDecoration:"none"}}>
                     {/* <div className={styles.filnal_price}>
                   <p>
                     25%
@@ -111,7 +111,7 @@ const Programs = ({ Lang }) => {
               )}
               {Fitness_Fottboll && (
                 <div className="col-md-6 col-lg-4">
-                  <Link href={`/${Lang}/user/programs/details/2`} className={styles.card}>
+                  <Link href={`/${Lang}/user/programs/details/2`} className={styles.card} style={{textDecoration:"none"}}>
                     {/* <div className={styles.filnal_price}>
                   <p>
                     40%
@@ -197,7 +197,7 @@ const Programs = ({ Lang }) => {
               )}
               {Football && (
                 <div className="col-md-6 col-lg-4">
-                  <Link href={`/${Lang}/user/programs/details/3`} className={styles.card}>
+                  <Link href={`/${Lang}/user/programs/details/3`} className={styles.card} style={{textDecoration:"none"}}>
                     {/* <div className={styles.filnal_price}>
                   <p>
                     25%

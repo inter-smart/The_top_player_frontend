@@ -233,7 +233,7 @@ const Change = ({ Lang }) => {
               >
                 {t("auth.didn't_receive")}
               </p>
-              <Link href={`#`} onClick={handleResendOtp}>
+              <Link href={`#`} onClick={handleResendOtp} style={{textDecoration:"none"}}>
                 {t("auth.send_again")}
               </Link>
             </div>
@@ -247,7 +247,7 @@ const Change = ({ Lang }) => {
               >
                 {t("auth.have_account")}
               </p>
-              <Link href={`/${Lang}/admin/login`}>{t("auth.login")}</Link>
+              <Link href={`/${Lang}/admin/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
             </div>
           </form>
         </div>

@@ -75,7 +75,7 @@ const Videos = ({
         <div className={`${styles.videos} ${Lang === "ar" ? "ar_Video" : "en_Video"}`}>
           <div className={styles.Main_header}>
             <div className={`breadCramp ${Lang === "ar" ? "Ar_cramp" : "En_cramp"}`}>
-              <Link href={`/${Lang}`}>{t("menu.home")}</Link>
+              <Link href={`/${Lang}`} style={{textDecoration:"none"}}>{t("menu.home")}</Link>
               <span>{" > "}</span>
               <Link href={`/${Lang}/user/programs/details/${courseId}`}>
                 {/* {type} */}

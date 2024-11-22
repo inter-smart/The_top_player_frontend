@@ -92,6 +92,7 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
             }
             return (
               <Link
+                style={{ textDecoration: "none" }}
                 key={ele.id}
                 className={`${ele.id === parseInt(sub_id) ? styles.active : ""}
                   

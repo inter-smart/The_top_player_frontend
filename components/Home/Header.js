@@ -31,7 +31,7 @@ const Header = ({ styles, Lang }) => {
         <h2>{Lang === "ar" ? state?.subhead_ar : state?.subhead}</h2>
         <p>{Lang === "ar" ? state?.title_text_Ar : state?.title_text}</p> */}
         <div className={styles.btn_wrap}>
-          <Link href={`/${Lang}#programs`} className="baseBtn hoveranim" aria-label={t("yalla")}>
+          <Link href={`/${Lang}#programs`} className="baseBtn hoveranim" aria-label={t("yalla")} style={{textDecoration:"none"}}>
             <span>{t("yalla")}</span>
             <span
               className="icon"

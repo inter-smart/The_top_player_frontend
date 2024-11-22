@@ -63,6 +63,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
           {CoursecArr?.subCourses.map((ele) => {
             return (
               <Link
+              style={{textDecoration:"none"}}
                 key={ele.id}
                 className={`${ele.id === CoursecArr?.subCourses[0].id ? styles.active : ""} ${
                   Lang === "ar" ? styles.Ar_subCourses_Link : styles.En_subCourses_Link

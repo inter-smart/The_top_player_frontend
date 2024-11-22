@@ -36,6 +36,14 @@ const FootballProgram = dynamic(() => import("@/components/programs/Football"), 
   loading: () => <></>,
   ssr: false,
 });
+const FitnessFottball = dynamic(() => import("@/components/programs/FitnessFootball"), {
+  loading: () => <></>,
+  ssr: false,
+});
+const FootballProgram = dynamic(() => import("@/components/programs/Football"), {
+  loading: () => <></>,
+  ssr: false,
+});
 const Personlized = dynamic(() => import("@/components/programs/Personlized"), {
   loading: () => <></>,
   ssr: false,
@@ -107,6 +115,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
           {CoursecArr?.subCourses?.map((ele) => {
             return (
               <Link
+                style={{ textDecoration: "none" }}
                 key={ele.id}
                 className={`${ele.id === CoursecArr?.subCourses[0].id ? styles.active : ""} ${
                   Lang === "ar" ? styles.Ar_subCourses_Link : styles.En_subCourses_Link
