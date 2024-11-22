@@ -10,6 +10,7 @@ import InnerBanner from "@/components/layouts/InnerBanner";
 import isExpired from "@/helpers/checkExpired";
 import EnrollProgramType from "@/components/programs/EnrollProgramType";
 import MatchCongrats from "@/components/programs/MatchCongrats";
+import SampleCongrats from "@/components/programs/CongratzSample";
 
 const ProgramCard = dynamic(() => import("@/components/programs/ProgramCard"), {
   loading: () => <></>,
@@ -81,7 +82,7 @@ const Match = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
         />
       )}
       {(!CoursecArr || expired) &&  <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} CoursecArr={CoursecArr} expired={expired} />}
-      {(!CoursecArr || expired) && (
+      {/* {(!CoursecArr || expired) && (
         <>
           <MatchCongrats
             Lang={Lang}
@@ -92,7 +93,10 @@ const Match = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
             type={"match"}
           />
         </>
-      )}
+      )} */}
+
+<SampleCongrats/>
+
     </LangWrap>
   );
 };
