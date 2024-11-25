@@ -86,20 +86,20 @@ const NewsDetail = ({ banner }) => {
                                   alt="news"
                                   width={1200}
                                   height={320}
-                                  // style={{
-                                  //   objectFit: "cover",
-                                  // }}
+                                  style={{
+                                    objectFit: "cover",
+                                  }}
                                   layout="intrinsic"
                                   loading="lazy"
                                 />
                               </div>
                             </SwiperSlide>
                           ))
-                        : news?.images?.map((item) => (
+                        : news?.mobile?.map((item) => (
                             <SwiperSlide key={item?.id}>
                               <div className={styles.news_img_wrap}>
                                 <Image
-                                  src={`${process.env.customKey}/newsImages/${item?.imageUrl}`}
+                                  src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
                                   alt="news"
                                   width={1200}
                                   height={320}

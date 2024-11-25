@@ -435,13 +435,13 @@ const Navbar = ({ overHeight, state }) => {
             <div className={styles.rgtSd}>
               <div className={styles.rgtItemWrap}>
                 {/* Free Trial */}
-                {!Cookies.get("UT") && (
+                {/* {!Cookies.get("UT") && (
                   <div className={styles.item}>
                     <div className={`${styles.navBtn} hoveranim`} onClick={handleFreeTrial}>
                       <span>{t("programs.free_trial")}</span>
                     </div>
                   </div>
-                )}
+                )} */}
 
                 {/* Auth Button*/}
                 <div className={styles.item}>
