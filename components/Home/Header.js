@@ -9,20 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Header = ({ styles, Lang }) => {
   const dispatch = useDispatch();
-  const [videoLoaded, setVideoLoaded] = useState(false); // Track video loading status
   const { t } = useTranslation();
 
   useEffect(() => {
     Aos.init({ duration: 900 });
   }, []);
 
-  const handleVideoLoad = () => {
-    setVideoLoaded(true);
-  };
 
-  const handleVideoError = () => {
-    console.error("Error loading video");
-  };
+
+
 
   return (
     <div className={styles.banner_section} id="banner">
@@ -57,8 +52,6 @@ const Header = ({ styles, Lang }) => {
         </div>
       </div>
       <div className={styles.image_header}>
-        {/* Show image while video is loading */}
-        {!videoLoaded && <Image src={"/images/banner-program.jpg"} alt="Header" layout="fill" objectFit="cover" />}
 
         <video
           muted
@@ -67,9 +60,6 @@ const Header = ({ styles, Lang }) => {
           playsInline
           preload="metadata"
           aria-label="Video player"
-          onLoadedData={handleVideoLoad}
-          onError={handleVideoError}
-          style={{ display: videoLoaded ? "block" : "none" }} // Hide video initially
         >
           <source
             src="https://backend.thetopplayer.com/videos/header.mp4"

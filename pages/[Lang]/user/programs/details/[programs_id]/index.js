@@ -28,22 +28,7 @@ const ProgramCard = dynamic(() => import("@/components/programs/ProgramCard"), {
   loading: () => <></>,
   ssr: false,
 });
-const FitnessFottball = dynamic(() => import("@/components/programs/FitnessFootball"), {
-  loading: () => <></>,
-  ssr: false,
-});
-const FootballProgram = dynamic(() => import("@/components/programs/Football"), {
-  loading: () => <></>,
-  ssr: false,
-});
-const FitnessFottball = dynamic(() => import("@/components/programs/FitnessFootball"), {
-  loading: () => <></>,
-  ssr: false,
-});
-const FootballProgram = dynamic(() => import("@/components/programs/Football"), {
-  loading: () => <></>,
-  ssr: false,
-});
+
 const Personlized = dynamic(() => import("@/components/programs/Personlized"), {
   loading: () => <></>,
   ssr: false,

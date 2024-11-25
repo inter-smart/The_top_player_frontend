@@ -4,6 +4,7 @@ import AuthSlice from "./AuthSlice";
 import CourcesSlice from "./CourcesSlice";
 import FaqSlice from "./FaqSlice";
 import NewsSlice from "./NewsSlice";
+import CongratsSlice from "./CongratsSlice";
 import BannerSlice from "./BannerSlice";
 import TestimonialSlice from "./TestimonialSlice";
 import WhoSlice from "./WhoSlice";
@@ -24,6 +25,7 @@ export default configureStore({
     WhoSlice,
     CurrencySlice,
     CouponSlice,
+    CongratsSlice
   },
   //   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

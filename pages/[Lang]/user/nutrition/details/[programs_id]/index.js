@@ -10,6 +10,7 @@ import InnerBanner from "@/components/layouts/InnerBanner";
 import isExpired from "@/helpers/checkExpired";
 import EnrollProgramType from "@/components/programs/EnrollProgramType";
 import MatchCongrats from "@/components/programs/MatchCongrats";
+import CongratsBox from "@/components/programs/CongratzBox";
 
 const ProgramCard = dynamic(() => import("@/components/programs/ProgramCard"), {
   loading: () => <></>,
@@ -70,14 +71,19 @@ const Nutrition = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
         />
       )}
 
-      {CoursecArr && !expired && (
-        <MatchCongrats Lang={Lang} programId={programs_id} CoursecArr={CoursecArr} expired={expired} CourseByIdArray={CourseByIdArray} type={"nutrition"} />
-      )}
+      {CoursecArr && !expired && <CongratsBox Lang={Lang} type={"nutrition"} />}
 
-      <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} CoursecArr={CoursecArr} expired={expired}/>
+      <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} CoursecArr={CoursecArr} expired={expired} />
 
       {(!CoursecArr || expired) && (
-        <MatchCongrats Lang={Lang} programId={programs_id} CoursecArr={CoursecArr} expired={expired} CourseByIdArray={CourseByIdArray} type={"nutrition"}/>
+        <MatchCongrats
+          Lang={Lang}
+          programId={programs_id}
+          CoursecArr={CoursecArr}
+          expired={expired}
+          CourseByIdArray={CourseByIdArray}
+          type={"nutrition"}
+        />
       )}
     </LangWrap>
   );
