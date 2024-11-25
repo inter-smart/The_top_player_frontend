@@ -9,7 +9,7 @@ const nextConfig = {
     // customKey: "https://backend.thetopplayer.com/staging",
     // customKey: "https://crm.intersmarthosting.in/topplayer",
     // webDomain: "https://interregionall.vercel.app",
-    // webDomain: "https://www.thetopplayer.com",
+    webDomain: "https://www.thetopplayer.com",
     // webDomain: "https://the-top-player-frontend-2.onrender.com",
     // webDomain: "https://the-top-player-frontend-furjqjv5u-vaishnav-vijayan07s-projects.vercel.app/en",
     // webDomain: "http://localhost:4000",
