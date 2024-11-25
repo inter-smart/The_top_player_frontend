@@ -7,26 +7,21 @@ import { useTranslation } from "react-i18next";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 
-const Header = ({ styles, Lang }) => {
-  const dispatch = useDispatch();
+const Header = ({ styles, Lang, state }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
     Aos.init({ duration: 900 });
   }, []);
 
-
-
-
-
   return (
     <div className={styles.banner_section} id="banner">
       <div className={styles.banner_info}>
-        {/* <h1>{Lang === "ar" ? state?.head_ar : state?.head}</h1>
+        <h1>{Lang === "ar" ? state?.head_ar : state?.head}</h1>
         <h2>{Lang === "ar" ? state?.subhead_ar : state?.subhead}</h2>
-        <p>{Lang === "ar" ? state?.title_text_Ar : state?.title_text}</p> */}
+        <p>{Lang === "ar" ? state?.title_text_Ar : state?.title_text}</p>
         <div className={styles.btn_wrap}>
-          <Link href={`/${Lang}#programs`} className="baseBtn hoveranim" aria-label={t("yalla")} style={{textDecoration:"none"}}>
+          <Link href={`/${Lang}#programs`} className="baseBtn hoveranim" aria-label={t("yalla")} style={{ textDecoration: "none" }}>
             <span>{t("yalla")}</span>
             <span
               className="icon"
@@ -52,15 +47,7 @@ const Header = ({ styles, Lang }) => {
         </div>
       </div>
       <div className={styles.image_header}>
-
-        <video
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="Video player"
-        >
+        <video muted autoPlay loop playsInline preload="metadata" aria-label="Video player">
           <source
             // src="https://backend.thetopplayer.com/videos/header.mp4"
             src={`${process.env.customKey}/banner_videos/${state.videoUrl}`}
