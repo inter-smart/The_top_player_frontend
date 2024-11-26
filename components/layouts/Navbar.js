@@ -25,13 +25,10 @@ const Navbar = ({ overHeight, state }) => {
   const [show, setShow] = useState(false);
   const Lang = router?.query?.Lang;
 
-  console.log("query", isMobile);
-
   const showMsg = (msg) => {
     toast.current.show({
       severity: "success",
       summary: msg,
-      // detail: formik.values.value,
     });
   };
   const [toggle, setToggle] = useState(false);
@@ -122,7 +119,7 @@ const Navbar = ({ overHeight, state }) => {
 
   return (
     <LangWrap Lang={router?.query?.Lang?.toLowerCase() ? router?.query?.Lang?.toLowerCase() : "en"}>
-      <Toast ref={toast} />
+      <Toast ref={toast} position={isMobile ? "top-center" : "top-right"} />
       <div
         className={`${styles.navbar} ${
           router.pathname.includes("/admin/login") ||
