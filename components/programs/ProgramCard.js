@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Coupon from "../layouts/Coupon";
 
-const FREE_COURSE_ID = 17;
 
 const ProgramCard = ({ Lang, programDetails, programsId, expired, isLoggedIn, onTriggerScroll }) => {
   const { t } = useTranslation();
@@ -71,7 +70,7 @@ const ProgramCard = ({ Lang, programDetails, programsId, expired, isLoggedIn, on
               </div>
               <div className={styles.btnWrap}>
                 <>
-                  {programDetails?.id === FREE_COURSE_ID && (
+                  {programDetails?.id === process.env.FREE_COURSE_ID && (
                     <button onClick={() => handleRedirect("free")} className="baseBtn hoveranim" aria-label="view all button">
                       <span>{t("programs.free_trial")}</span>
                       <span

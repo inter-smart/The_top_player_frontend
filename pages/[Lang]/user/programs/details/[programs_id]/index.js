@@ -39,7 +39,6 @@ const Personlized2 = dynamic(() => import("@/components/programs/Personalized2")
 });
 
 const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }) => {
-  const FREE_COURSE_ID = 17;
   const router = useRouter();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -61,7 +60,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
   console.log("WATCHED DETAILS",weeksFinished)
   console.log("WATCHED DETAILS",CoursecArr?.subCourses[0])
 
-  const freeCheck = CourseByIdArray?.id == FREE_COURSE_ID ? isLoggedIn && CoursecArr : isLoggedIn && CoursecArr && !expired;
+  const freeCheck = CourseByIdArray?.id == process.env.FREE_COURSE_ID ? isLoggedIn && CoursecArr : isLoggedIn && CoursecArr && !expired;
 
   const scrollToDiv = () => {
     if (targetDivRef.current) {
