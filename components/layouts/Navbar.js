@@ -3,11 +3,8 @@ import Link from "next/link";
 // import styles from "@/styles/Navbar.module.css";
 import styles from "@/styles/Navbar.module.scss";
 import { useRouter } from "next/router";
-import { AiFillInstagram } from "react-icons/ai";
-import { BsWhatsapp } from "react-icons/bs";
-import { IoPersonCircleOutline } from "react-icons/io5";
+import { IoLockOpen, IoPersonCircleOutline } from "react-icons/io5";
 import { Sidebar } from "primereact/sidebar";
-import { FaTiktok } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
@@ -20,11 +17,15 @@ import { useTranslation } from "react-i18next";
 import LangWrap from "./LangWarp";
 import { Toast } from "primereact/toast";
 import { getAllCurrencies, setCurrency } from "@/store/CurrencySlice";
+import { useMediaQuery } from "react-responsive";
 
 const Navbar = ({ overHeight, state }) => {
   const router = useRouter();
+  const isMobile = useMediaQuery({ query: "(max-width: 770px)" });
   const [show, setShow] = useState(false);
-  const Lang = router?.query?.Lang
+  const Lang = router?.query?.Lang;
+
+  console.log("query", isMobile);
 
   const showMsg = (msg) => {
     toast.current.show({
@@ -59,7 +60,9 @@ const Navbar = ({ overHeight, state }) => {
     dispatch(setCurrency(currency));
   };
 
-  const handleFreeTrial = () => {
+  const handleFreeTrial = (e) => {
+    e.preventDefault();
+    setVisible(false);
     sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
     sessionStorage.setItem("isFree", "true");
     router.push(`/${Lang}/admin/login`);
@@ -153,9 +156,7 @@ const Navbar = ({ overHeight, state }) => {
               direction: router?.query?.Lang?.toLowerCase() === "ar" ? "rtl" : "ltr",
             }}
           >
-            <div
-              className={`${styles.Links_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}
-            >
+            <div className={`${styles.Links_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}>
               <button className={styles.close_side} onClick={() => setVisible(false)}>
                 <IoClose />
               </button>
@@ -207,9 +208,7 @@ const Navbar = ({ overHeight, state }) => {
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}#programs`}
                 style={{ textDecoration: "none" }}
-                className={
-                  router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#programs`) ? styles.active : styles.link
-                }
+                className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#programs`) ? styles.active : styles.link}
               >
                 {t("menu.our_programs")}
               </Link>
@@ -236,11 +235,7 @@ const Navbar = ({ overHeight, state }) => {
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/payment-program`}
                   onClick={() => setVisible(false)}
                   style={{ textDecoration: "none" }}
-                  className={
-                    router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/payment-program`)
-                      ? styles.active
-                      : styles.link
-                  }
+                  className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/payment-program`) ? styles.active : styles.link}
                 >
                   {t("menu.payments")}
                 </Link>
@@ -250,9 +245,7 @@ const Navbar = ({ overHeight, state }) => {
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/profile`}
                   onClick={() => setVisible(false)}
                   style={{ textDecoration: "none" }}
-                  className={
-                    router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/profile`) ? styles.active : styles.link
-                  }
+                  className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/profile`) ? styles.active : styles.link}
                 >
                   {t("menu.edit_profile")}
                 </Link>
@@ -262,11 +255,7 @@ const Navbar = ({ overHeight, state }) => {
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/update-password`}
                   onClick={() => setVisible(false)}
                   style={{ textDecoration: "none" }}
-                  className={
-                    router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/update-password`)
-                      ? styles.active
-                      : styles.link
-                  }
+                  className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/update-password`) ? styles.active : styles.link}
                 >
                   {t("menu.update_pass")}
                 </Link>
@@ -276,14 +265,30 @@ const Navbar = ({ overHeight, state }) => {
                   onClick={() => setVisible(false)}
                   href={`/${router?.query?.Lang?.toLowerCase()}/user/programs`}
                   style={{ textDecoration: "none" }}
-                  className={
-                    router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/programs`) ? styles.active : styles.link
-                  }
+                  className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}/user/programs`) ? styles.active : styles.link}
                 >
                   {t("menu.my_programs")}
                 </Link>
               )}
               {Cookies.get("UT") && <hr />}
+
+              {isMobile && !Cookies.get("UT") && (
+                <Link
+                  href="#"
+                  className={`${styles.sign_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}
+                  onClick={(e) => handleFreeTrial(e)}
+                  style={{ textDecoration: "none !important" }}
+                >
+                  <IoLockOpen
+                    style={{
+                      marginRight: router?.query?.Lang?.toLowerCase() === "ar" ? "0" : "10px",
+                      marginLeft: router?.query?.Lang?.toLowerCase() === "ar" ? "10px" : "0",
+                    }}
+                  />
+                  <span>{t("programs.free_trial")}</span>
+                </Link>
+              )}
+
               {!Cookies.get("UT") && (
                 <Link
                   href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`}
@@ -435,13 +440,13 @@ const Navbar = ({ overHeight, state }) => {
             <div className={styles.rgtSd}>
               <div className={styles.rgtItemWrap}>
                 {/* Free Trial */}
-                {/* {!Cookies.get("UT") && (
+                {!isMobile && !Cookies.get("UT") && (
                   <div className={styles.item}>
-                    <div className={`${styles.navBtn} hoveranim`} onClick={handleFreeTrial}>
+                    <div className={`${styles.navBtn} hoveranim`} onClick={(e) => handleFreeTrial(e)}>
                       <span>{t("programs.free_trial")}</span>
                     </div>
                   </div>
-                )} */}
+                )}
 
                 {/* Auth Button*/}
                 <div className={styles.item}>
