@@ -435,8 +435,8 @@
 }
 
 .tamara_icon {
-  width: 30%;
-  height: 10%;
+  width: 91px;
+  /* height: 10%; */
   position: absolute;
   z-index: 1000;
   top: 2%;
@@ -506,13 +506,13 @@
 }
 
 .info_card h4 {
-  font-size: 26px;
+  font-size: 20px;
   line-height: 1.2;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
-@media (max-width: 1551.98px) {
+/* @media (max-width: 1551.98px) {
   .info_card h4 {
     font-size: 22px;
   }
@@ -528,7 +528,7 @@
   .info_card h4 {
     font-size: 18px;
   }
-}
+} */
 
 .info_card h4 span {
   color: var(--main_color);
