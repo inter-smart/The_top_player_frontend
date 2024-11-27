@@ -219,12 +219,12 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
                     <div className={styles.icon_parent}>
                       {isPurchased ? (
                         expired ? (
-                          <div className={styles.lock_icon}>
+                          <div className={Lang == "en" ? styles.lock_icon : styles.lock_icon_ar}>
                             <RiLock2Line onClick={() => handleClick(0, 0)} />
                           </div>
                         ) : null
                       ) : (
-                        <div className={styles.lock_icon}>
+                        <div className={Lang == "en" ? styles.lock_icon : styles.lock_icon_ar}>
                           <RiLock2Line onClick={() => handleClick(0, 0)} />
                         </div>
                       )}
@@ -304,12 +304,12 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
                     <div className={styles.icon_parent}>
                       {isPurchased ? (
                         expired ? (
-                          <div className={styles.lock_icon}>
+                          <div className={Lang == "en" ? styles.lock_icon : styles.lock_icon_ar}>
                             <RiLock2Line onClick={() => handleClick(0, 0)} />
                           </div>
                         ) : null
                       ) : (
-                        <div className={styles.lock_icon}>
+                        <div className={Lang == "en" ? styles.lock_icon : styles.lock_icon_ar}>
                           <RiLock2Line onClick={() => handleClick(0, 0)} />
                         </div>
                       )}
@@ -388,12 +388,12 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
                     <div className={styles.icon_parent}>
                       {isPurchased ? (
                         expired ? (
-                          <div className={styles.lock_icon}>
+                          <div className={Lang == "en" ? styles.lock_icon : styles.lock_icon_ar}>
                             <RiLock2Line onClick={() => handleClick(0, 0)} />
                           </div>
                         ) : null
                       ) : (
-                        <div className={styles.lock_icon}>
+                        <div className={Lang == "en" ? styles.lock_icon : styles.lock_icon_ar}>
                           <RiLock2Line onClick={() => handleClick(0, 0)} />
                         </div>
                       )}

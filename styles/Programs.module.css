@@ -670,6 +670,17 @@
   font-size: 70px;
 }
 
+.lock_icon_ar{
+  position: absolute;
+  color: #020202;
+  top: 18%;
+  left: 62%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  font-size: 70px;
+}
+
 .days_number {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
