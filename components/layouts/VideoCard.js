@@ -57,11 +57,11 @@ const VideoCard = ({
         cursor: "pointer",
       }}
       onClick={() => {
-        // console.log(videoURl)
+        // //console.log(videoURl)
         const video = videos.filter((ele) => ele.id === id)[0];
         const video_key = videos.indexOf(video);
         setVideoKey(video_key);
-        // console.log(video_key)
+        // //console.log(video_key)
         router.push(router.asPath)
         const data = {
           id,

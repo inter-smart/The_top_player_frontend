@@ -95,7 +95,7 @@ export async function getServerSideProps({ params }) {
     })
     .then((res) => res.data)
     .catch((err) => {
-      console.log(err);
+      //console.log(err);
       return null;
     });
   // return result;

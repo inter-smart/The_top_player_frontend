@@ -11,7 +11,11 @@ const Cnofirm = ({ course_id, Lang, type }) => {
   const { t } = useTranslation();
   useEffect(() => {
     const timeout = setTimeout(() => {
-      router.push(`/${Lang}/user/${type}/details/${course_id}`);
+      if (course_id == process.env.FREE_COURSE_ID) {
+        router.push(`/${Lang}/user/${type}/details/${course_id}/sub/${process.env.FREE_SUB_ID}`);
+      } else {
+        router.push(`/${Lang}/user/${type}/details/${course_id}`);
+      }
     }, 3000);
     return () => clearTimeout(timeout);
   }, [Lang, course_id, router]);

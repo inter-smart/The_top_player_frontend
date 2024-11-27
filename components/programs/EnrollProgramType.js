@@ -18,6 +18,10 @@ const EnrollProgramType = ({ Lang, programId, CoursecArr, CourseByIdArray, expir
       router.push(`/${Lang}/user/payment/${programId}`);
     } else {
       sessionStorage.setItem("courseId", programId);
+      if (programId === process.env.FREE_COURSE_ID) {
+        sessionStorage.setItem("isFree", "true");
+        sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
+      }
       router.push(`/${Lang}/admin/login`);
     }
   };

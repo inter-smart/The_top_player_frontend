@@ -107,7 +107,7 @@ export async function getServerSideProps({ req, params }) {
       });
       return response?.data;
     } catch (err) {
-      console.log(err?.response?.data?.message);
+      //console.log(err?.response?.data?.message);
       return null;
     }
   };

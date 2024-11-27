@@ -22,6 +22,7 @@ import isExpired from "@/helpers/checkExpired";
 import { useSelector } from "react-redux";
 import { RiLock2Line } from "react-icons/ri";
 import ProgramCard from "@/components/programs/ProgramCard";
+import EnrollProgram from "@/components/programs/EnrollProgram";
 
 const Personlized = dynamic(() => import("@/components/programs/Personalized2"), {
   loading: () => <></>,
@@ -56,9 +57,7 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
   const daysFinished = SubCourseArr?.finished_days?.length;
   const weeksFinished = SubCourseArr?.finished_weeks?.length * 2;
   const AllDays_finished = daysFinished + weeksFinished;
-  // console.log(AllDays_finished)
-
-  console.log("value", expired);
+  // //console.log(AllDays_finished)
 
   const handleClick = (week, day) => {
     if (day == 1) {
@@ -87,9 +86,6 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
       {CoursecArr?.subCourses?.length > 1 && (
         <div className={styles.sub_course} style={{ marginTop: "15px" }}>
           {CoursecArr?.subCourses?.map((ele) => {
-            {
-              console.log("ele", ele);
-            }
             return (
               <Link
                 style={{ textDecoration: "none" }}
@@ -200,7 +196,7 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
                         </span>
                       </div>
                       <div className={styles.start_btn} onClick={() => handleClick(1, 1)}>
-                      {t(SubCourseArr?.finished_weeks.includes(1) ? "programs_details.completed" : "programs_details.start")}
+                        {t(SubCourseArr?.finished_weeks.includes(1) ? "programs_details.completed" : "programs_details.start")}
                       </div>
                     </div>
                   </div>
@@ -465,9 +461,11 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
           </div>
         </div>
       )}
-
-      <Testimonials Lang={Lang} programId={programs_id} />
-      {/* </div> */}
+      {}
+      {!isPurchased && <Testimonials Lang={Lang} programId={programs_id} />}
+      {(!isPurchased || expired) && (
+        <EnrollProgram Lang={Lang} programId={programs_id} CoursecArr={CoursecArr} expired={expired} CourseByIdArray={CourseByIdArray} />
+      )}
     </LangWrap>
   );
 };
@@ -475,8 +473,6 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
 export default Fitness;
 
 export async function getServerSideProps({ req, params }) {
-  console.log("params", params);
-
   try {
     const result = await axios
       .get(`${process.env.customKey}/course/${parseInt(params.programs_id)}`, {
@@ -508,7 +504,7 @@ export async function getServerSideProps({ req, params }) {
       })
       .then((res) => res.data.course)
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         return null;
       });
     return {

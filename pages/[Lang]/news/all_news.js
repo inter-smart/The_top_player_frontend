@@ -116,7 +116,7 @@ export async function getServerSideProps({ req, params }) {
       },
     };
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     return {
       props: {
         Lang: params.Lang.toLowerCase(),

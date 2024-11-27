@@ -42,11 +42,11 @@ const VideoShow = ({
   video_image,
   day_time,
 }) => {
-  console.log(
+  //console.log(
     `2 => Lang : ${Lang} - type: ${type} - week : ${week_id} -  day : ${day_id} - courseId: ${courseId} - subCourseId : ${subCourseId} - videId : ${video_id}`
   );
-  console.log(`3 => video_key : ${video_key + 1} - list: ${list} `);
-  console.log(`3 => cuurent_video : ${video_key} - list: ${next_id} `);
+  //console.log(`3 => video_key : ${video_key + 1} - list: ${list} `);
+  //console.log(`3 => cuurent_video : ${video_key} - list: ${next_id} `);
   const dispatch = useDispatch();
   const handle = useFullScreenHandle();
   // const router = useRouter();
@@ -119,14 +119,14 @@ const VideoShow = ({
   //   const handleFullscreenChange = () => {
   //     setIsFullscreen(videoRef?.current?.getState()?.player?.isFullscreen);
   //     if (videoRef?.current?.getState()?.player?.isFullscreen) {
-  //       // console.log("hidden");
+  //       // //console.log("hidden");
   //       document.body.style.overflow = "hidden";
   //       document.body.style.overflow = "hidden";
   //       handle.enter
-  //       console.log(handle.active);
+  //       //console.log(handle.active);
   //     } else {
-  //       console.log("visible");
-  //       // console.log("unset");
+  //       //console.log("visible");
+  //       // //console.log("unset");
   //       document.body.style.overflow = "unset";
   //       document.body.style.overflow = "unset";
   //       handle.exit
@@ -179,7 +179,7 @@ const VideoShow = ({
   //     video.removeEventListener('MSFullscreenChange', handleFullscreenChange);
   //   };
   // }, []);
-  // console.log(video_id)
+  // //console.log(video_id)
 
   const { user_info } = useSelector((state) => state.AuthSlice);
 
@@ -189,7 +189,7 @@ const VideoShow = ({
     }
   }, [user_info, dispatch]);
 
-  // console.log(user_info);
+  // //console.log(user_info);
   // const togglePlay = () => {
   //   if (videoRef.current.paused) {
   //     videoRef.current.play();

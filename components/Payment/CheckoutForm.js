@@ -46,7 +46,7 @@ const CheckoutForm = ({ course_id, Lang, type }) => {
       EMptyInput(result.error.message);
       setDisabel(false);
     } else {
-      // console.log(result)
+      // //console.log(result)
       show("Payment success");
       setDisabel(false);
       // Your customer will be redirected to your `return_url`. For some payment

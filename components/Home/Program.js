@@ -49,7 +49,6 @@ const Program = ({ styles, Lang }) => {
 
   const handleRedirect = (item, course) => {
     const isHaveSubCourses = course?.sub_courses.length > 1;
-    console.log("isHaveSubCourses", isHaveSubCourses);
 
     if (course?.isFull) {
       return;

@@ -214,7 +214,7 @@ const Signup = ({ Lang }) => {
                   defaultCountry="AE"
                   value={formik.values.phone}
                   onChange={(e) => {
-                    // console.log(e)
+                    // //console.log(e)
                     formik.setFieldValue("phone", e);
                   }}
                 />

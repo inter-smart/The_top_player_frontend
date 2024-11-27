@@ -28,14 +28,17 @@ const Login = ({ Lang }) => {
   const [courseId, setCourseid] = useState(null);
   const [tamraId, setTamaraid] = useState(null);
   const [isFree, setIsFree] = useState(null);
+  const [subId, setSubId] = useState(null);
 
   useEffect(() => {
     const courseId = sessionStorage.getItem("courseId");
     const tamaraId = sessionStorage.getItem("tamaraId");
     const isFree = sessionStorage.getItem("isFree");
+    const subId = sessionStorage.getItem("subId");
     setCourseid(courseId);
     setTamaraid(tamaraId);
     setIsFree(isFree);
+    setSubId(subId);
   }, []);
 
   useEffect(() => {
@@ -86,7 +89,7 @@ const Login = ({ Lang }) => {
             show();
 
             if (!res.verified) {
-              console.log("here 2");
+              //console.log("here 2");
               router.push({
                 pathname: `/${Lang}/admin/sign-verify`,
                 query: { email: data.email },
@@ -98,11 +101,12 @@ const Login = ({ Lang }) => {
                 formik.resetForm();
                 if (courseId) {
                   if (isFree) {
-                    router.push(`/${Lang}/user/programs/details/${courseId}`);
+                    router.push(`/${Lang}/user/programs/details/${courseId}/sub/${subId}`);
+                    sessionStorage.removeItem("subId")
                   } else {
                     router.push(`/${Lang}/user/payment/${courseId}`);
                   }
-                  sessionStorage.removeItem("courseId");
+                  sessionStorage.removeItem("courseId")
                   sessionStorage.removeItem("isFree");
                   setDisabed(false);
                   return;
@@ -135,7 +139,7 @@ const Login = ({ Lang }) => {
 
           .catch((err) => {
             setDisabed(false);
-            // console.log(err.response.data.verified)
+            // //console.log(err.response.data.verified)
 
             if (err?.response?.data?.verified === false) {
               // router.push({
@@ -179,7 +183,7 @@ const Login = ({ Lang }) => {
   };
 
   const handleKeyPress = (event) => {
-    console.log("enter key pressed");
+    //console.log("enter key pressed");
     if (event.key === "Enter") {
       event.preventDefault(); // Prevent default form submission behavior
       formik.handleSubmit(); // Manually submit the form

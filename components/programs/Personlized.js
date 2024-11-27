@@ -12,7 +12,7 @@ const Personlized = ({ Lang, videoUrl, CoursecArr, expired }) => {
 
   const typeSpecific = currentPath.split("/").includes("nutrition") || currentPath.split("/").includes("match");
 
-  console.log("typeSpecific", typeSpecific);
+  //console.log("typeSpecific", typeSpecific);
 
   return (
     <div className={styles.personlized_section}>

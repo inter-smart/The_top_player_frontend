@@ -18,22 +18,25 @@ import Cookies from "js-cookie";
 const Change = ({ Lang }) => {
   const [disabel, setDisabed] = useState(false);
   // const [disabelResend, setDisabedResend] = useState(false);
-  // console.log(Lang)
+  // //console.log(Lang)
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const router = useRouter();
   const [courseId, setCourseid] = useState(null);
   const [tamaraId, setTamaraid] = useState(null);
   const [isFree, setIsFree] = useState(null);
+  const [subId, setSubId] = useState(null);
   const [deviceId, setDeviceId] = useState("");
 
   useEffect(() => {
     const id = sessionStorage.getItem("courseId");
     const tamId = sessionStorage.getItem("tamaraId");
     const isFree = sessionStorage.getItem("isFree");
+    const subId = sessionStorage.getItem("subId");
     setCourseid(id);
     setTamaraid(tamId);
     setIsFree(isFree);
+    setSubId(subId);
   }, []);
 
   useEffect(() => {
@@ -83,7 +86,8 @@ const Change = ({ Lang }) => {
             setDisabed(false);
             if (courseId) {
               if (isFree) {
-                router.push(`/${Lang}/user/programs/details/${courseId}`);
+                router.push(`/${Lang}/user/programs/details/${courseId}/sub/${subId}`);
+                sessionStorage.removeItem("subId");
               } else {
                 router.push(`/${Lang}/user/payment/${courseId}`);
               }
@@ -102,9 +106,9 @@ const Change = ({ Lang }) => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            //console.log(err);
             setDisabed(false);
-            // console.log(err.response.data.message)
+            // //console.log(err.response.data.message)
             if (err?.response?.data?.message) {
               EMptyInput(err.response.data.message);
             } else {

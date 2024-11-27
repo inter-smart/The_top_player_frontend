@@ -16,7 +16,7 @@ import LangWrap from "@/components/layouts/LangWarp";
 const UpdatePassword = ({ Lang }) => {
   const [disabel, setDisabed] = useState(false);
   // const [disabelResend, setDisabedResend] = useState(false);
-  // console.log(Lang)
+  // //console.log(Lang)
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -56,7 +56,7 @@ const UpdatePassword = ({ Lang }) => {
           })
           .catch((err) => {
             setDisabed(false);
-            // console.log(err.response.data.message)
+            // //console.log(err.response.data.message)
             if (err?.response?.data?.message) {
               EMptyInput(err.response.data.message);
             } else {

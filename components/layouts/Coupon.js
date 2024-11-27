@@ -34,7 +34,6 @@ const Coupon = ({ courseAmount, Lang, currentCurrency }) => {
       ).unwrap();
       setSuccess(true);
     } catch (error) {
-      console.log(error);
 
       setSuccess(false);
       setError(error);

@@ -21,7 +21,7 @@ import { courseById } from "@/store/CourcesSlice";
 import Coupon from "@/components/layouts/Coupon";
 
 const Payment = ({ course_id, Lang, CourseByIdArray }) => {
-  console.log("CourseByIdArray", CourseByIdArray?.course_type);
+  //console.log("CourseByIdArray", CourseByIdArray?.course_type);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const router = useRouter();
@@ -74,7 +74,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
         }
       )
       .then((res) => {
-        console.log("res===>", res.data);
+        //console.log("res===>", res.data);
         setIsLoading(false);
         if (res?.data?.data?.checkoutUrl) {
           window.location.href = res?.data?.data?.checkoutUrl;
@@ -82,7 +82,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log(err);
+        //console.log(err);
       });
   };
 
@@ -238,7 +238,7 @@ export async function getServerSideProps({ req, params }) {
       })
       .then((res) => res.data.course)
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         return null;
       });
     return {

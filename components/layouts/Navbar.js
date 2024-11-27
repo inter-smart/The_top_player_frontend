@@ -44,6 +44,7 @@ const Navbar = ({ overHeight, state }) => {
   const toast = useRef(null);
 
   const courseId = sessionStorage.getItem("courseId");
+  const subId = sessionStorage.getItem("subId");
   const tamaraId = sessionStorage.getItem("tamaraId");
   const isFree = sessionStorage.getItem("isFree");
 
@@ -61,6 +62,7 @@ const Navbar = ({ overHeight, state }) => {
     e.preventDefault();
     setVisible(false);
     sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
+    sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
     sessionStorage.setItem("isFree", "true");
     router.push(`/${Lang}/admin/login`);
   };
@@ -292,6 +294,7 @@ const Navbar = ({ overHeight, state }) => {
                   className={`${styles.sign_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}
                   onClick={() => {
                     courseId && sessionStorage.removeItem("courseId");
+                    subId && sessionStorage.removeItem("subId");
                     tamaraId && sessionStorage.removeItem("tamaraId");
                     isFree && sessionStorage.removeItem("isFree");
                     setVisible(false);
@@ -314,6 +317,7 @@ const Navbar = ({ overHeight, state }) => {
                   className={`${styles.sign_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}
                   onClick={() => {
                     courseId && sessionStorage.removeItem("courseId");
+                    subId && sessionStorage.removeItem("subId");
                     tamaraId && sessionStorage.removeItem("tamaraId");
                     isFree && sessionStorage.removeItem("isFree");
                     setVisible(false);
@@ -457,6 +461,7 @@ const Navbar = ({ overHeight, state }) => {
                       onClick={() => {
                         setToggle(false);
                         courseId && sessionStorage.removeItem("courseId");
+                        subId && sessionStorage.removeItem("subId");
                         tamaraId && sessionStorage.removeItem("tamaraId");
                         isFree && sessionStorage.removeItem("isFree");
                       }}
@@ -492,6 +497,7 @@ const Navbar = ({ overHeight, state }) => {
                             onClick={() => {
                               setToggle(false);
                               courseId && sessionStorage.removeItem("courseId");
+                              subId && sessionStorage.removeItem("subId");
                               tamaraId && sessionStorage.removeItem("tamaraId");
                               isFree && sessionStorage.removeItem("isFree");
                             }}
@@ -507,6 +513,7 @@ const Navbar = ({ overHeight, state }) => {
                             onClick={() => {
                               setToggle(false);
                               courseId && sessionStorage.removeItem("courseId");
+                              subId && sessionStorage.removeItem("subId");
                               tamaraId && sessionStorage.removeItem("tamaraId");
                               isFree && sessionStorage.removeItem("isFree");
                             }}

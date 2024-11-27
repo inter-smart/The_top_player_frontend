@@ -73,7 +73,7 @@ const Nutrition = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
 
       {CoursecArr && !expired && <CongratsBox Lang={Lang} type={"nutrition"} />}
 
-      <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} CoursecArr={CoursecArr} expired={expired} />
+      {(!CoursecArr || expired) && <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} CoursecArr={CoursecArr} expired={expired} />}
 
       {(!CoursecArr || expired) && (
         <MatchCongrats
@@ -104,7 +104,7 @@ export async function getServerSideProps({ req, params }) {
       });
       return response?.data;
     } catch (err) {
-      console.log(err?.response?.data?.message);
+      //console.log(err?.response?.data?.message);
       return null;
     }
   };

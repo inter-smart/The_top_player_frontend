@@ -23,6 +23,7 @@ const SignVerify = ({ Lang }) => {
   const [courseId, setCourseid] = useState(null);
   const [tamaraId, setTamaraid] = useState(null);
   const [isFree, setIsFree] = useState(null);
+  const [subId, setSubId] = useState(null);
 
   // const router = useRouter()
   const { t } = useTranslation();
@@ -32,11 +33,13 @@ const SignVerify = ({ Lang }) => {
     const id = sessionStorage.getItem("courseId");
     const tamId = sessionStorage.getItem("tamaraId");
     const isFree = sessionStorage.getItem("isFree");
+    const subId = sessionStorage.getItem("subId");
     setCourseid(id);
     setTamaraid(tamId);
     setIsFree(isFree);
+    setSubId(subId);
   }, []);
-  // console.log(router);
+  // //console.log(router);
   // const [device_id, setDevice_id] = useState("");
 
   // useEffect(() => {
@@ -78,10 +81,11 @@ const SignVerify = ({ Lang }) => {
             show(t("auth.succ_login"));
             formik.resetForm();
             setDisabed(false);
-            console.log("Here");
+            //console.log("Here");
             if (courseId) {
               if (isFree) {
-                router.push(`/${Lang}/user/programs/details/${courseId}`);
+                router.push(`/${Lang}/user/programs/details/${courseId}/sub/${subId}`);
+                sessionStorage.removeItem("subId");
               } else {
                 router.push(`/${Lang}/user/payment/${courseId}`);
               }

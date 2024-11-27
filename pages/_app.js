@@ -55,7 +55,7 @@ function App({ Component, pageProps, canonical, Path }) {
         }
         const data = await response.json();
         // Process the data as needed
-        // console.log("Visited data:", data);
+        // //console.log("Visited data:", data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

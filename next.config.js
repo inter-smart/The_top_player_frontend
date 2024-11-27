@@ -2,6 +2,7 @@
 const nextConfig = {
   env: {
     FREE_COURSE_ID: 2,
+    FREE_SUB_ID: 2,
     // customKey: "https://crm.intersmarthosting.in/topplayer",
     // customKey: "http://192.168.29.154:7700",
     // customKey: "http://localhost:7700",

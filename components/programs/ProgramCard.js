@@ -39,6 +39,7 @@ const ProgramCard = ({ Lang, programDetails, programsId, expired, isLoggedIn, on
       sessionStorage.setItem(isTamaraPath ? "tamaraId" : "courseId", programsId);
       if (isFree) {
         sessionStorage.setItem("isFree", "true");
+        sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
       }
       router.push(adminLoginPath);
     }
@@ -70,7 +71,7 @@ const ProgramCard = ({ Lang, programDetails, programsId, expired, isLoggedIn, on
               </div>
               <div className={styles.btnWrap}>
                 <>
-                  {programDetails?.id === process.env.FREE_COURSE_ID && (
+                  {programDetails?.id === process.env.FREE_COURSE_ID && !expired && (
                     <button onClick={() => handleRedirect("free")} className="baseBtn hoveranim" aria-label="view all button">
                       <span>{t("programs.free_trial")}</span>
                       <span

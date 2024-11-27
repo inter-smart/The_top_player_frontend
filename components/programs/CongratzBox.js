@@ -12,7 +12,7 @@ const CongratsBox = ({ type, Lang }) => {
   const { congrats, initialloading, error } = useSelector((state) => state.CongratsSlice);
   const { user_info } = useSelector((state) => state.AuthSlice);
 
-  console.log("DATA", congrats);
+  //console.log("DATA", congrats);
 
   useEffect(() => {
     dispatch(getCongratsData());

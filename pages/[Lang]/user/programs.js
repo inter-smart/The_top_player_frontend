@@ -28,6 +28,8 @@ const Programs = ({ Lang }) => {
   const Fitness_Fottboll = subscribedCourseArr?.find((ele) => ele.courseId === 2);
   const Football = subscribedCourseArr?.find((ele) => ele.courseId === 3);
 
+  console.log("MY PROGRAM", subscribedCourseArr);
+
   return (
     <LangWrap Lang={Lang}>
       <div className={"inner_section_outer"}>
@@ -40,15 +42,13 @@ const Programs = ({ Lang }) => {
           <div className={`${styles.Program_Section} padding_all ${styles.our_programs}`}>
             <div className={"tleWrap"}>
               <h1 className="mTle">{t("programs.my_programs")}</h1>
-              <div className={styles.top1_titlle}>
-                {/* <h3 className={styles.small_title}>{t("programs.top")}</h3> */}
-              </div>
+              <div className={styles.top1_titlle}>{/* <h3 className={styles.small_title}>{t("programs.top")}</h3> */}</div>
             </div>
 
             <div className="row justify-content-center">
               {Fitness && (
                 <div className="col-md-6 col-lg-4 ">
-                  <Link href={`/${Lang}/user/programs/details/1`} className={styles.card} style={{textDecoration:"none"}}>
+                  <Link href={`/${Lang}/user/programs/details/1`} className={styles.card} style={{ textDecoration: "none" }}>
                     {/* <div className={styles.filnal_price}>
                   <p>
                     25%
@@ -63,8 +63,7 @@ const Programs = ({ Lang }) => {
                       <ul className={`${Lang === "ar" ? styles.rightText : styles.leftText}`}>
                         <li>
                           <p>
-                            {t("programs.fitness.line1_1")}{" "}
-                            <span className="En_num">{t("programs.fitness.line1_2")}</span>
+                            {t("programs.fitness.line1_1")} <span className="En_num">{t("programs.fitness.line1_2")}</span>
                             {t("programs.fitness.line1_3")}
                           </p>
                         </li>
@@ -111,7 +110,11 @@ const Programs = ({ Lang }) => {
               )}
               {Fitness_Fottboll && (
                 <div className="col-md-6 col-lg-4">
-                  <Link href={`/${Lang}/user/programs/details/2`} className={styles.card} style={{textDecoration:"none"}}>
+                  <Link
+                    href={`/${Lang}/user/programs/details/${process.env.FREE_COURSE_ID}/sub/${process.env.FREE_COURSE_SUB_ID}`}
+                    className={styles.card}
+                    style={{ textDecoration: "none" }}
+                  >
                     {/* <div className={styles.filnal_price}>
                   <p>
                     40%
@@ -197,7 +200,7 @@ const Programs = ({ Lang }) => {
               )}
               {Football && (
                 <div className="col-md-6 col-lg-4">
-                  <Link href={`/${Lang}/user/programs/details/3`} className={styles.card} style={{textDecoration:"none"}}>
+                  <Link href={`/${Lang}/user/programs/details/3`} className={styles.card} style={{ textDecoration: "none" }}>
                     {/* <div className={styles.filnal_price}>
                   <p>
                     25%

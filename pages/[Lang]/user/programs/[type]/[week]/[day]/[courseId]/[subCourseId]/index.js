@@ -49,13 +49,13 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
       day: day_id,
       week: week_id,
     };
-    console.log("data =====>", data);
+    //console.log("data =====>", data);
     dispatch(videos_in_days(data));
   }, [dispatch, day_id, courseId, subCourseId]);
   const { videos } = useSelector((state) => state.CourcesSlice);
 
-  // console.log(videos[0]);
-  // console.log(videos[1]);
+  // //console.log(videos[0]);
+  // //console.log(videos[1]);
   const [videoURl, setVideoUrl] = useState(null);
   const [video_key, setVideoKey] = useState({});
 
@@ -64,13 +64,13 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
   //     setVideoUrl(videos[0]);
   //   }
   // }, [videos, videoURl]);
-  // console.log(videos);
+  // //console.log(videos);
 
   // const Next_video = videos.filter((ele, key) => key === video_key + 1)[0];
 
-  // console.log(router.asPath)
+  // //console.log(router.asPath)
 
-  // console.log()
+  // //console.log()
   const day_time = day_id % 5;
   return (
     <LangWrap Lang={Lang}>
@@ -226,7 +226,7 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
 export default FristVideos;
 
 export async function getServerSideProps({ req, params }) {
-  console.log("params", params);
+  //console.log("params", params);
   const { Lang, type, week, day, courseId, subCourseId } = params;
 
   try {
@@ -239,7 +239,7 @@ export async function getServerSideProps({ req, params }) {
         },
       })
       .then((res) => res.data);
-      console.log("videos_in_days", result);
+      //console.log("videos_in_days", result);
     return {
       props: {
         videos: result,
@@ -254,7 +254,7 @@ export async function getServerSideProps({ req, params }) {
       },
     };
   } catch (err) {
-    console.log("errrr", err.response.data);
+    //console.log("errrr", err.response.data);
 
     return {
       props: {

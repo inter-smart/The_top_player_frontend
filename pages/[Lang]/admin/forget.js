@@ -57,7 +57,7 @@ const Signup = ({ Lang }) => {
             setDisabed(false);
           })
           .catch((err) => {
-            console.log(err);
+            //console.log(err);
             setDisabed(false);
             if (err?.response?.data?.message) {
               EMptyInput(err.response.data.message);

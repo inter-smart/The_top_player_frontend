@@ -661,7 +661,7 @@ body:has(> * .video-react-fullscreen) {
 }
 
 .accordion-button {
-  text-align: start;
+  text-align: unset;
 }
 .accordion-button:focus {
   box-shadow: none;

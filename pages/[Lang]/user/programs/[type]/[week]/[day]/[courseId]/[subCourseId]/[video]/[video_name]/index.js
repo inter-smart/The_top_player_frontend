@@ -41,7 +41,7 @@ const Videos = ({
 }) => {
   // const dispatch = useDispatch();
   // const { videos } = useSelector((state) => state.CourcesSlice);
-  // console.log(
+  // //console.log(
   //   `Lang : ${Lang} - type: ${type} - week : ${week_id} -  day : ${day_id} - courseId: ${courseId} - subCourseId : ${subCourseId} - videId : ${video_id}`
   // );
   const { t } = useTranslation();
@@ -60,9 +60,9 @@ const Videos = ({
   const video_key = videos.indexOf(video);
   const Next_video = videos.filter((ele, key) => key === video_key + 1)[0];
   // const Next_key = videos.indexOf(Next_video);
-  // console.log(video );
-  // console.log(Next_video );
-  // console.log(Next_video?.id)
+  // //console.log(video );
+  // //console.log(Next_video );
+  // //console.log(Next_video?.id)
 
   return (
     <LangWrap Lang={Lang}>
