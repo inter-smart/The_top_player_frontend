@@ -42,9 +42,6 @@ const VideoShow = ({
   video_image,
   day_time,
 }) => {
-  //console.log(
-    `2 => Lang : ${Lang} - type: ${type} - week : ${week_id} -  day : ${day_id} - courseId: ${courseId} - subCourseId : ${subCourseId} - videId : ${video_id}`
-  );
   //console.log(`3 => video_key : ${video_key + 1} - list: ${list} `);
   //console.log(`3 => cuurent_video : ${video_key} - list: ${next_id} `);
   const dispatch = useDispatch();
