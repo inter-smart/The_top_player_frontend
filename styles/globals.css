@@ -661,8 +661,12 @@ body:has(> * .video-react-fullscreen) {
 }
 
 .accordion-button {
-  text-align: unset;
+  text-align: unset !important;
 }
+.accordion-button h6{
+  text-align: unset !important;
+}
+
 .accordion-button:focus {
   box-shadow: none;
 }
