@@ -55,11 +55,6 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
   const weeksFinished = CoursecArr?.subCourses[0]?.finished_weeks?.length * 2;
   const AllDays_finished = daysFinished + weeksFinished;
 
-  //console.log("WATCHED DETAILS",daysFinished)
-  //console.log("WATCHED DETAILS",weeksFinished)
-  //console.log("WATCHED DETAILS",weeksFinished)
-  //console.log("WATCHED DETAILS",CoursecArr?.subCourses[0])
-
   const freeCheck = CourseByIdArray?.id == process.env.FREE_COURSE_ID ? isLoggedIn && CoursecArr : isLoggedIn && CoursecArr && !expired;
 
   const scrollToDiv = () => {
@@ -509,10 +504,9 @@ export async function getServerSideProps({ req, params }) {
         },
       });
 
-
       return response?.data;
     } catch (err) {
-      //console.log(err);
+      console.log(err);
 
       return null;
     }
@@ -524,7 +518,6 @@ export async function getServerSideProps({ req, params }) {
   const [courseById, course] = await Promise.all([getData(`${customKey}/courseById/${programId}`), getData(`${customKey}/course/${programId}`)]);
 
   const errorStatus = course ? false : true;
-
 
   return {
     props: {

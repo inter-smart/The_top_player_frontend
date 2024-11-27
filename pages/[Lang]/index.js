@@ -12,6 +12,8 @@ import dynamic from "next/dynamic";
 import LangWrap from "@/components/layouts/LangWarp";
 import NewsDetail from "./news/[news_id]";
 import axios from "axios";
+import FreeTrial from "@/components/layouts/FreeTrial";
+import { useMediaQuery } from "react-responsive";
 const LangChange = dynamic(() => import("@/components/layouts/LangChange"), {
   loading: () => <></>,
   ssr: false,
@@ -45,6 +47,10 @@ const FAQs = dynamic(() => import("@/components/Home/FAQs"), {
   ssr: false,
 });
 export default function Home({ Lang, MainBanner }) {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 770px)",
+  });
+
   return (
     <>
       <Head>
@@ -67,18 +73,14 @@ export default function Home({ Lang, MainBanner }) {
       <main>
         <LangWrap Lang={Lang.toLowerCase()}>
           <LangChange Lang={Lang.toLowerCase()}>
-            <Header
-              styles={stylesSass}
-              className={"sdkjbhd"}
-              Lang={Lang.toLowerCase()}
-              state={MainBanner[0]}
-            />
+            <Header styles={stylesSass} className={"sdkjbhd"} Lang={Lang.toLowerCase()} state={MainBanner[0]} />
             <Who styles={stylesSass} Lang={Lang.toLowerCase()} />
             <News styles={stylesSass} Lang={Lang.toLowerCase()} />
             <Program styles={styles} Lang={Lang.toLowerCase()} />
             <Suspense styles={styles} Lang={Lang.toLowerCase()} />
             <FAQs styles={styles} Lang={Lang.toLowerCase()} />
             <Contact styles={styles} Lang={Lang.toLowerCase()} />
+            {isMobile && <FreeTrial Lang={Lang.toLowerCase()} />}
           </LangChange>
         </LangWrap>
       </main>
@@ -95,7 +97,7 @@ export async function getServerSideProps({ params }) {
     })
     .then((res) => res.data)
     .catch((err) => {
-      //console.log(err);
+      console.log(err);
       return null;
     });
   // return result;
