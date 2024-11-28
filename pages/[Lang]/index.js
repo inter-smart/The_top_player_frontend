@@ -1,20 +1,9 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import stylesSass from "@/styles/Home.module.scss";
-// import Header from "@/components/Home/Header";
-// import Who from "@/components/Home/who";
-// import FAQs from "@/components/Home/FAQs";
-// import Program from "@/components/Home/Program";
-// import Suspense from "@/components/Home/Suspense";
-// import Contact from "@/components/Home/contact";
-// import LangChange from "@/components/layouts/LangChange";
 import dynamic from "next/dynamic";
 import LangWrap from "@/components/layouts/LangWarp";
-import NewsDetail from "./news/[news_id]";
 import axios from "axios";
-import FreeTrial from "@/components/layouts/FreeTrial";
-import { useMediaQuery } from "react-responsive";
-import { useSelector } from "react-redux";
 const LangChange = dynamic(() => import("@/components/layouts/LangChange"), {
   loading: () => <></>,
   ssr: false,
@@ -48,13 +37,6 @@ const FAQs = dynamic(() => import("@/components/Home/FAQs"), {
   ssr: false,
 });
 export default function Home({ Lang, MainBanner }) {
-
-  const { user_info } = useSelector((state) => state.AuthSlice);
-
-  const isMobile = useMediaQuery({
-    query: "(max-width: 770px)",
-  });
-
   return (
     <>
       <Head>
@@ -84,7 +66,6 @@ export default function Home({ Lang, MainBanner }) {
             <Suspense styles={styles} Lang={Lang.toLowerCase()} />
             <FAQs styles={styles} Lang={Lang.toLowerCase()} />
             <Contact styles={styles} Lang={Lang.toLowerCase()} />
-            {(isMobile && !user_info) && <FreeTrial Lang={Lang.toLowerCase()} />}
           </LangChange>
         </LangWrap>
       </main>

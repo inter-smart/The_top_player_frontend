@@ -61,10 +61,15 @@ const Navbar = ({ overHeight, state }) => {
   const handleFreeTrial = (e) => {
     e.preventDefault();
     setVisible(false);
-    sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
-    sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
-    sessionStorage.setItem("isFree", "true");
-    router.push(`/${Lang}/admin/login`);
+
+    if (getUser) {
+      router.push(`/${Lang}/user/programs/details/${process.env.FREE_COURSE_ID}/sub/${process.env.FREE_SUB_ID}`);
+    } else {
+      sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
+      sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
+      sessionStorage.setItem("isFree", "true");
+      router.push(`/${Lang}/admin/login`);
+    }
   };
 
   useEffect(() => {
@@ -441,7 +446,7 @@ const Navbar = ({ overHeight, state }) => {
             <div className={styles.rgtSd}>
               <div className={styles.rgtItemWrap}>
                 {/* Free Trial */}
-                {!isMobile && !Cookies.get("UT") && (
+                {!isMobile && (
                   <div className={styles.item}>
                     <div className={`${styles.navBtn} hoveranim`} onClick={(e) => handleFreeTrial(e)}>
                       <span>{t("programs.free_trial")}</span>
