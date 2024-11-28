@@ -73,7 +73,7 @@ const Programs = ({ Lang }) => {
             <div className="row justify-content-center">
               {myPrograms?.length > 0 &&
                 myPrograms?.map((item, index) => (
-                  <div className="col-md-6 col-lg-4 mb-2">
+                  <div className="col-md-6 col-lg-4 mb-2" key={item?.id}>
                     <div
                       onClick={() => handleRedirection(item?.course?.course_type, item?.course?.id)}
                       className={styles.card}
