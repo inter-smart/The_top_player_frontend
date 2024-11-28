@@ -111,7 +111,7 @@ const Programs = ({ Lang }) => {
               {Fitness_Fottboll && (
                 <div className="col-md-6 col-lg-4">
                   <Link
-                    href={`/${Lang}/user/programs/details/${process.env.FREE_COURSE_ID}/sub/${process.env.FREE_COURSE_SUB_ID}`}
+                    href={`/${Lang}/user/programs/details/${process.env.FREE_COURSE_ID}/sub/${process.env.FREE_SUB_ID}`}
                     className={styles.card}
                     style={{ textDecoration: "none" }}
                   >
