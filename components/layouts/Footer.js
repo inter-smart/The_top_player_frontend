@@ -16,8 +16,10 @@ import { subscribeReducer } from "@/store/AuthSlice";
 import { Toast } from "primereact/toast";
 import LangWrap from "./LangWarp";
 import { getFooter } from "@/store/FooterSlice";
-const Footer = () => {
+import Cookies from "js-cookie";
+const Footer = ({ Lang }) => {
   const { t } = useTranslation();
+  const getUser = Cookies.get("UT");
 
   useEffect(() => {
     dispatch(getFooter());
@@ -75,6 +77,20 @@ const Footer = () => {
     });
   };
 
+  const handleFreeTrial = (e) => {
+    const { Lang } = router.query;
+    e.preventDefault();
+
+    if (getUser) {
+      router.push(`/${Lang}/user/programs/details/${process.env.FREE_COURSE_ID}/sub/${process.env.FREE_SUB_ID}`);
+    } else {
+      sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
+      sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
+      sessionStorage.setItem("isFree", "true");
+      router.push(`/${Lang}/admin/login`);
+    }
+  };
+
   return (
     <LangWrap Lang={router?.query?.Lang?.toLowerCase() ? router?.query?.Lang?.toLowerCase() : "en"}>
       <Toast ref={toast} />
@@ -116,6 +132,9 @@ const Footer = () => {
                 </Link>
                 <Link href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`} className="customLink">
                   {t("auth.login")}
+                </Link>
+                <Link href="#" onClick={(e) => handleFreeTrial(e)} className="customLink">
+                  {t("programs.free_trial")}
                 </Link>
               </div>
             </div>
