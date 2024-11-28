@@ -54,6 +54,7 @@
   "programs": {
     "title": "Our Programs",
     "my_programs": "My Programs",
+    "no_programs": "No Programs Found",
     "top": "TOP 1",
     "off": "off",
     "join": "Join Now",
@@ -174,6 +175,7 @@
     "tiktok": "Tiktok",
     "whatsapp": "Whatsapp",
     "subscribe": "Subscribe",
+    "snapchat":"Snapchat",
     "email": "Email",
     "enter_email": "Enter your Email",
     "payment": "Payment",

@@ -14,6 +14,7 @@ import NewsDetail from "./news/[news_id]";
 import axios from "axios";
 import FreeTrial from "@/components/layouts/FreeTrial";
 import { useMediaQuery } from "react-responsive";
+import { useSelector } from "react-redux";
 const LangChange = dynamic(() => import("@/components/layouts/LangChange"), {
   loading: () => <></>,
   ssr: false,
@@ -47,6 +48,9 @@ const FAQs = dynamic(() => import("@/components/Home/FAQs"), {
   ssr: false,
 });
 export default function Home({ Lang, MainBanner }) {
+
+  const { user_info } = useSelector((state) => state.AuthSlice);
+
   const isMobile = useMediaQuery({
     query: "(max-width: 770px)",
   });
@@ -80,7 +84,7 @@ export default function Home({ Lang, MainBanner }) {
             <Suspense styles={styles} Lang={Lang.toLowerCase()} />
             <FAQs styles={styles} Lang={Lang.toLowerCase()} />
             <Contact styles={styles} Lang={Lang.toLowerCase()} />
-            {isMobile && <FreeTrial Lang={Lang.toLowerCase()} />}
+            {(isMobile && !user_info) && <FreeTrial Lang={Lang.toLowerCase()} />}
           </LangChange>
         </LangWrap>
       </main>

@@ -55,6 +55,7 @@
   "programs": {
     "title": "برامجنا",
     "my_programs": "برامجي",
+    "no_programs": "لم يتم العثور على برامج",
     "yalla": "يلا !",
     "congratulations": "مبروك",
     "top": "توب 1",
@@ -164,6 +165,7 @@
     "instagram": "إنستجرام",
     "tiktok": "تيك توك",
     "whatsapp": "واتساب",
+    "snapchat":"سناب شات",
     "subscribe": "الاشتراك",
     "email": "البريد الإلكتروني",
     "enter_email": "ادخل بريدك الإلكتروني",

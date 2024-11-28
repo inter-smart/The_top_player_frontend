@@ -2,7 +2,7 @@ import { HiOutlineMailOpen } from "react-icons/hi";
 import { FiPhoneCall } from "react-icons/fi";
 import { GrLocation } from "react-icons/gr";
 import { IoShareSocialOutline } from "react-icons/io5";
-import { FaTiktok } from "react-icons/fa";
+import { FaSnapchat, FaTiktok } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { BsWhatsapp } from "react-icons/bs";
 import { useFormik } from "formik";
@@ -117,6 +117,17 @@ const Contact = ({ styles, Lang }) => {
                     </div>
                     <h4>{t("contact.social")}</h4>
                     <div className={styles.iconsSec}>
+                      <a
+                        style={{ textDecoration: "none" }}
+                        aria-label="our snapchat"
+                        href={"https://www.snapchat.com/add/thetop.player"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.span_div}
+                      >
+                        <FaSnapchat />
+                      </a>
+                      
                       <a
                         style={{ textDecoration: "none" }}
                         aria-label="oufacebook"

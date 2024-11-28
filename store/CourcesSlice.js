@@ -72,6 +72,25 @@ export const getsubscribedCourse = createAsyncThunk("Cources/getsubscribedCourse
     return rejectWithValue(err?.response?.data?.message);
   }
 });
+export const getMyPrograms = createAsyncThunk("Cources/getMyPrograms", async (token, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .get(`${process.env.customKey}/my_courses`, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Access-Token": token ? token : Cookies.get("UT"),
+        },
+      })
+      .then((res) => {
+        return res.data;
+      });
+    return result;
+  } catch (err) {
+    return rejectWithValue(err?.response?.data?.message);
+  }
+});
 export const checkToken = createAsyncThunk("Cources/checkToken", async (data, thunkAPI) => {
   const { rejectWithValue } = thunkAPI;
   try {
@@ -103,8 +122,8 @@ export const videos_in_days = createAsyncThunk("Cources/videos_in_days", async (
         },
       })
       .then((res) => res.data);
-      console.log("videos_in_days", result);
-      
+    console.log("videos_in_days", result);
+
     return result;
   } catch (err) {
     return rejectWithValue(err);
@@ -197,6 +216,7 @@ const CourcesSlice = createSlice({
     videos: null,
     Curreent_video: null,
     CourseById: null,
+    myPrograms: null,
   },
   reducers: {
     ClearToken: (state, action) => {
@@ -290,6 +310,18 @@ const CourcesSlice = createSlice({
       .addCase(courseById.rejected, (state, action) => {
         state.isCourcesLoading = false;
         state.CourseById = null;
+      })
+      .addCase(getMyPrograms.pending, (state, action) => {
+        state.isCourcesLoading = true;
+        state.myPrograms = null;
+      })
+      .addCase(getMyPrograms.fulfilled, (state, action) => {
+        state.isCourcesLoading = false;
+        state.myPrograms = action.payload.data;
+      })
+      .addCase(getMyPrograms.rejected, (state, action) => {
+        state.isCourcesLoading = false;
+        state.myPrograms = null;
       });
   },
 });

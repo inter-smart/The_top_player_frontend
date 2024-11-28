@@ -89,15 +89,7 @@ const Footer = () => {
             <div className={`col-md-4 ${styles.column}`}>
               {/* <h2>{t("title")}</h2> */}
               <div className={styles.logoWrap}>
-                <Image
-                  src={"/images/logo-light.svg"}
-                  alt="bg"
-                  width={218}
-                  height={60}
-                  layout="responsive"
-                  objectFit="contain"
-                  loading="lazy"
-                />
+                <Image src={"/images/logo-light.svg"} alt="bg" width={218} height={60} layout="responsive" objectFit="contain" loading="lazy" />
               </div>
               {footer?.map((item) => (
                 <p key={item.id}>{router?.query?.Lang?.toLowerCase() === "ar" ? item?.footer_ar : item?.footer_en}</p>
@@ -167,6 +159,15 @@ const Footer = () => {
                   className={`${styles.span_div} customLink`}
                 >
                   {t("footer.tiktok")}
+                </a>
+                <a
+                  aria-label="Snapchat"
+                  href="https://www.snapchat.com/add/thetop.player"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.span_div} customLink`}
+                >
+                  {t("footer.snapchat")}
                 </a>
               </div>
             </div>
