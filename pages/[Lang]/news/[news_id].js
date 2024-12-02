@@ -80,11 +80,11 @@ const NewsDetail = ({ banner }) => {
                         }}
                       >
                         {isMobile
-                          ? news?.mobile?.map((item) => (
+                          ? news?.images?.map((item) => (
                               <SwiperSlide key={item?.id}>
                                 <div className={styles.news_img_wrap}>
                                   <Image
-                                    src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
+                                    src={`${process.env.customKey}/newsImages/${item?.imageUrl}`}
                                     alt="news"
                                     width={1200}
                                     height={320}
