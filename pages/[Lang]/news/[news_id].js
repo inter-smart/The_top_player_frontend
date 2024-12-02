@@ -20,6 +20,7 @@ import axios from "axios";
 
 const NewsDetail = ({ banner }) => {
   const { banner_text, banner_text_ar } = banner;
+  const max_createdAt = "2024-11-01T14:49:49.000Z";
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -29,14 +30,14 @@ const NewsDetail = ({ banner }) => {
 
   const isMobile = useMediaQuery({ query: "(max-width: 770px)" });
 
-  
-
   useEffect(() => {
     if (news_id) {
       dispatch(getNewsById(news_id));
       dispatch(getAllNews(1));
     }
   }, [dispatch, news_id]);
+
+  console.log("NEWS",news?.createdAt >= max_createdAt)
 
   return (
     <LangWrap Lang={Lang.toLowerCase()}>
@@ -60,60 +61,99 @@ const NewsDetail = ({ banner }) => {
                 <div className={styles.imageWrap}>
                   <p>{Lang === "ar" ? news?.description_ar : news?.description_en}</p>
 
-                  <div className={styles.swiperNewsWrapper}>
-                    <Swiper
-                      dir={Lang === "ar" ? "rtl" : "ltr"}
-                      key={Lang}
-                      loop={true}
-                      spaceBetween={10}
-                      slidesPerView={1}
-                      autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                      }}
-                      modules={[EffectFade, Autoplay]}
-                      initialSlide={1}
-                      style={{
-                        padding: 0,
-                      }}
-                    >
-                      {isMobile
-                        ? news?.mobile?.map((item) => (
-                            <SwiperSlide key={item?.id}>
-                              <div className={styles.news_img_wrap}>
-                                <Image
-                                  src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
-                                  alt="news"
-                                  width={1200}
-                                  height={320}
-                                  style={{
-                                    objectFit: "cover",
-                                  }}
-                                  layout="intrinsic"
-                                  loading="lazy"
-                                />
-                              </div>
-                            </SwiperSlide>
-                          ))
-                        : news?.mobile?.map((item) => (
-                            <SwiperSlide key={item?.id}>
-                              <div className={styles.news_img_wrap}>
-                                <Image
-                                  src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
-                                  alt="news"
-                                  width={1200}
-                                  height={320}
-                                  style={{
-                                    objectFit: "cover",
-                                  }}
-                                  layout="intrinsic"
-                                  loading="lazy"
-                                />
-                              </div>
-                            </SwiperSlide>
-                          ))}
-                    </Swiper>
-                  </div>
+                  {news?.createdAt >= max_createdAt ? (
+                    <div className={styles.swiperNewsWrapper}>
+                      <Swiper
+                        dir={Lang === "ar" ? "rtl" : "ltr"}
+                        key={Lang}
+                        loop={true}
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        autoplay={{
+                          delay: 2500,
+                          disableOnInteraction: false,
+                        }}
+                        modules={[EffectFade, Autoplay]}
+                        initialSlide={1}
+                        style={{
+                          padding: 0,
+                        }}
+                      >
+                        {isMobile
+                          ? news?.mobile?.map((item) => (
+                              <SwiperSlide key={item?.id}>
+                                <div className={styles.news_img_wrap}>
+                                  <Image
+                                    src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
+                                    alt="news"
+                                    width={1200}
+                                    height={320}
+                                    style={{
+                                      objectFit: "cover",
+                                    }}
+                                    layout="intrinsic"
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </SwiperSlide>
+                            ))
+                          : news?.images?.map((item) => (
+                              <SwiperSlide key={item?.id}>
+                                <div className={styles.news_img_wrap}>
+                                  <Image
+                                    src={`${process.env.customKey}/newsImages/${item?.imageUrl}`}
+                                    alt="news"
+                                    width={1200}
+                                    height={320}
+                                    style={{
+                                      objectFit: "cover",
+                                    }}
+                                    layout="intrinsic"
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </SwiperSlide>
+                            ))}
+                      </Swiper>
+                    </div>
+                  ) : (
+                    <div className={styles.swiperNewsWrapper}>
+                      <Swiper
+                        dir={Lang === "ar" ? "rtl" : "ltr"}
+                        key={Lang}
+                        loop={true}
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        autoplay={{
+                          delay: 2500,
+                          disableOnInteraction: false,
+                        }}
+                        modules={[EffectFade, Autoplay]}
+                        initialSlide={1}
+                        style={{
+                          padding: 0,
+                        }}
+                      >
+                        {news?.mobile?.map((item) => (
+                          <SwiperSlide key={item?.id}>
+                            <div className={styles.news_img_wrap}>
+                              <Image
+                                src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
+                                alt="news"
+                                width={1200}
+                                height={320}
+                                style={{
+                                  objectFit: "cover",
+                                }}
+                                layout="intrinsic"
+                                loading="lazy"
+                              />
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -193,8 +233,6 @@ export async function getServerSideProps({ req, params }) {
     });
 
     const data = response.data.data;
-
-    
 
     return {
       props: {
