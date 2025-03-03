@@ -276,7 +276,7 @@ const Navbar = ({ overHeight, state }) => {
               )}
               {Cookies.get("UT") && <hr />}
 
-              {isMobile && !Cookies.get("UT") && (
+              {/* {isMobile && !Cookies.get("UT") && (
                 <Link
                   href="#"
                   className={`${styles.sign_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}
@@ -291,7 +291,7 @@ const Navbar = ({ overHeight, state }) => {
                   />
                   <span>{t("programs.free_trial")}</span>
                 </Link>
-              )}
+              )} */}
 
               {!Cookies.get("UT") && (
                 <Link
@@ -446,13 +446,13 @@ const Navbar = ({ overHeight, state }) => {
             <div className={styles.rgtSd}>
               <div className={styles.rgtItemWrap}>
                 {/* Free Trial */}
-                {!isMobile && (
+                {/* {!isMobile && (
                   <div className={styles.item}>
                     <div className={`${styles.navBtn} hoveranim`} onClick={(e) => handleFreeTrial(e)}>
                       <span>{t("programs.free_trial")}</span>
                     </div>
                   </div>
-                )}
+                )} */}
 
                 {/* Auth Button*/}
                 <div className={styles.item}>

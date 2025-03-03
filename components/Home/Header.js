@@ -64,7 +64,7 @@ const Header = ({ styles, Lang, state }) => {
               </svg>
             </span>
           </Link>
-          {isMobile && (
+          {/* {isMobile && (
             <Link
               href="#"
               onClick={(e) => handleFreeTrial(e)}
@@ -94,7 +94,7 @@ const Header = ({ styles, Lang, state }) => {
                 </svg>
               </span>
             </Link>
-          )}
+          )} */}
         </div>
       </div>
       <div className={styles.image_header}>

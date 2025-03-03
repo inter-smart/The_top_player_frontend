@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    FREE_COURSE_ID: 2,
-    FREE_SUB_ID: 2,
+    FREE_COURSE_ID: "2",
+    FREE_SUB_ID: "2",
     // FREE_COURSE_ID: 17,
     // FREE_SUB_ID: 11,
     // customKey: "https://crm.intersmarthosting.in/topplayer",
