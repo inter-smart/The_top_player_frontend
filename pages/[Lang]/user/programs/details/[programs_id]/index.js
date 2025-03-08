@@ -20,10 +20,6 @@ import EnrollProgram from "@/components/programs/EnrollProgram";
 import { courseById } from "@/store/CourcesSlice";
 import isExpired from "@/helpers/checkExpired";
 
-const FitnessProgram = dynamic(() => import("@/components/programs/Fitness"), {
-  loading: () => <></>,
-  ssr: false,
-});
 const ProgramCard = dynamic(() => import("@/components/programs/ProgramCard"), {
   loading: () => <></>,
   ssr: false,
@@ -40,7 +36,6 @@ const Personlized2 = dynamic(() => import("@/components/programs/Personalized2")
 
 const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }) => {
   const router = useRouter();
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const toast = useRef(null);
   const targetDivRef = useRef(null);
@@ -55,7 +50,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
   const weeksFinished = CoursecArr?.subCourses[0]?.finished_weeks?.length * 2;
   const AllDays_finished = daysFinished + weeksFinished;
 
-  const freeCheck = CourseByIdArray?.id == process.env.FREE_COURSE_ID ? isLoggedIn && CoursecArr : isLoggedIn && CoursecArr && !expired;
+  const freeCheck = isLoggedIn && CoursecArr;
 
   const scrollToDiv = () => {
     if (targetDivRef.current) {
@@ -121,7 +116,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
         />
       )}
 
-      {!isPurchased || expired ? <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} /> : <Personlized2 Lang={Lang} styles={styles} />}
+      {!isLoggedIn ? <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} /> : <Personlized2 Lang={Lang} styles={styles} />}
 
       {freeCheck && (
         <div className={styles.enrolled_section}>
@@ -202,7 +197,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
                           <GiTrophyCup />
                         </span>
                       </div>
-                      <div onClick={() => handleClick(1, isPurchased ? (expired ? 0 : 1) : 0)} className={styles.start_btn}>
+                      <div onClick={() => handleClick(1, 1)} className={styles.start_btn}>
                         {" "}
                         {t(CoursecArr?.subCourses[0]?.finished_weeks.includes(1) ? "programs_details.completed" : "programs_details.start")}
                       </div>
@@ -484,7 +479,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
 
       {!isPurchased && <Testimonials Lang={Lang} programId={programs_id} />}
 
-      {(!CoursecArr || expired) && (
+      {(!isPurchased || expired) && (
         <EnrollProgram Lang={Lang} programId={programs_id} CoursecArr={CoursecArr} expired={expired} CourseByIdArray={CourseByIdArray} />
       )}
     </LangWrap>
@@ -519,10 +514,13 @@ export async function getServerSideProps({ req, params }) {
 
   const errorStatus = course ? false : true;
 
+  console.log("errorStatus", course?.isPurchased);
+  console.log("errorStatus", course);
+
   return {
     props: {
       CoursecArr: course,
-      isPurchased: course?.isPurchased || null,
+      isPurchased: course?.isPurchased == undefined ? false : course?.isPurchased,
       CourseByIdArray: courseById ? courseById.course : null,
       programs_id: params.programs_id,
       Lang: params.Lang.toLowerCase(),

@@ -27,6 +27,9 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
   const { t } = useTranslation();
   const router = useRouter();
 
+  console.log("ERROR",error_Text)
+  console.log("ERROR",error_status)
+
   useEffect(() => {
     if (error_status === 401) {
       Cookies.remove("UT");
@@ -239,7 +242,7 @@ export async function getServerSideProps({ req, params }) {
         },
       })
       .then((res) => res.data);
-      //console.log("videos_in_days", result);
+      console.log("videos_in_days", result);
     return {
       props: {
         videos: result,
@@ -254,7 +257,7 @@ export async function getServerSideProps({ req, params }) {
       },
     };
   } catch (err) {
-    //console.log("errrr", err.response.data);
+    console.log("errrr", err.response.data);
 
     return {
       props: {
