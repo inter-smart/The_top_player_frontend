@@ -84,7 +84,7 @@ const Signup = ({ Lang }) => {
             formik.resetForm();
             setTimeout(() => {
               router.push({
-                pathname: `/${Lang}/admin/sign-verify`,
+                pathname: `/${Lang}/auth/sign-verify`,
                 query: { email: data.email },
               });
             }, 1500);
@@ -287,7 +287,7 @@ const Signup = ({ Lang }) => {
               >
                 {" "}
                 {t("auth.have_account")}{" "}
-                <Link href={`/${Lang}/admin/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
+                <Link href={`/${Lang}/auth/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
               </p>
             </div>
           </form>

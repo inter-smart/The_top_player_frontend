@@ -53,7 +53,7 @@ const Signup = ({ Lang }) => {
             show(t("auth.succ_signup"));
             formik.resetForm();
             router.push({
-              pathname: `/${Lang}/admin/change`,
+              pathname: `/${Lang}/auth/change`,
               query: {
                 email: data.email,
               },
@@ -150,7 +150,7 @@ const Signup = ({ Lang }) => {
                 }}
               >
                 {t("auth.have_account")}
-                <Link href={`/${Lang}/admin/login`}>{t("auth.login")}</Link>
+                <Link href={`/${Lang}/auth/login`}>{t("auth.login")}</Link>
               </p>
             </div> */}
           </form>

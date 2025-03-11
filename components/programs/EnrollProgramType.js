@@ -22,7 +22,7 @@ const EnrollProgramType = ({ Lang, programId, CoursecArr, CourseByIdArray, expir
         sessionStorage.setItem("isFree", "true");
         sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
       }
-      router.push(`/${Lang}/admin/login`);
+      router.push(`/${Lang}/auth/login`);
     }
   };
 

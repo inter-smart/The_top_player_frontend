@@ -30,7 +30,7 @@ const ProgramCard = ({ Lang, programDetails, programsId, expired, isLoggedIn, on
     const userPath = isFree
       ? `/${Lang}/user/${isTamaraPath ? "camps" : "programs"}/details/${programsId}`
       : `/${Lang}/user/payment/${isTamaraPath ? "tamara/" : ""}${programsId}`;
-    const adminLoginPath = `/${Lang}/admin/login`;
+    const adminLoginPath = `/${Lang}/auth/login`;
 
     if (hasUTCookie) {
       router.push(userPath);

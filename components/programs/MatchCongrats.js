@@ -18,7 +18,7 @@ const MatchCongrats = ({ Lang, programId, CoursecArr, CourseByIdArray, expired, 
       router.push(`/${Lang}/user/payment/${programId}`);
     } else {
       sessionStorage.setItem("courseId", programId);
-      router.push(`/${Lang}/admin/login`);
+      router.push(`/${Lang}/auth/login`);
     }
   };
 

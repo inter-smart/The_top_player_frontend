@@ -148,7 +148,7 @@ const Navbar = ({ overHeight, state }) => {
               {Cookies.get("UT") && <hr />}
               {!Cookies.get("UT") && (
                 <Link
-                  href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`}
+                  href={`/${router?.query?.Lang?.toLowerCase()}/auth/login`}
                   className={styles.sign_side}
                   onClick={() => setVisible(false)}
                 >
@@ -164,7 +164,7 @@ const Navbar = ({ overHeight, state }) => {
 
               {!Cookies.get("UT") && (
                 <Link
-                  href={`/${router?.query?.Lang?.toLowerCase()}/admin/signup`}
+                  href={`/${router?.query?.Lang?.toLowerCase()}/auth/signup`}
                   className={styles.sign_side}
                   onClick={() => setVisible(false)}
                 >
@@ -437,7 +437,7 @@ const Navbar = ({ overHeight, state }) => {
               <div className={styles.Login}>
                 {!Cookies.get("UT") && (
                   <Link
-                    href={`/${router?.query?.Lang?.toLowerCase()}/admin/signup`}
+                    href={`/${router?.query?.Lang?.toLowerCase()}/auth/signup`}
                     onClick={() => {
                       setToggle(false);
                     }}
@@ -503,13 +503,13 @@ const Navbar = ({ overHeight, state }) => {
                     }}
                   >
                     {!Cookies.get("UT") && (
-                      <Link href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`} onClick={() => setToggle(false)}>
+                      <Link href={`/${router?.query?.Lang?.toLowerCase()}/auth/login`} onClick={() => setToggle(false)}>
                         {t("menu.login")}
                       </Link>
                     )}
                     {!Cookies.get("UT") && <hr />}
                     {!Cookies.get("UT") && (
-                      <Link href={`/${router?.query?.Lang?.toLowerCase()}/admin/signup`} onClick={() => setToggle(false)}>
+                      <Link href={`/${router?.query?.Lang?.toLowerCase()}/auth/signup`} onClick={() => setToggle(false)}>
                         {t("menu.signup")}
                       </Link>
                     )}

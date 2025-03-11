@@ -19,14 +19,14 @@ const EnrollProgram = ({ Lang, programId, CoursecArr, CourseByIdArray, expired }
         router.push(`/${Lang}/user/payment/tamara/${programId}`);
       } else {
         sessionStorage.setItem("tamaraId", programId);
-        router.push(`/${Lang}/admin/login`);
+        router.push(`/${Lang}/auth/login`);
       }
     } else {
       if (Cookies.get("UT")) {
         router.push(`/${Lang}/user/payment/${programId}`);
       } else {
         sessionStorage.setItem("courseId", programId);
-        router.push(`/${Lang}/admin/login`);
+        router.push(`/${Lang}/auth/login`);
       }
     }
   };

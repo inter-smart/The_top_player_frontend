@@ -68,7 +68,7 @@ const Navbar = ({ overHeight, state }) => {
       sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
       sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
       sessionStorage.setItem("isFree", "true");
-      router.push(`/${Lang}/admin/login`);
+      router.push(`/${Lang}/auth/login`);
     }
   };
 
@@ -129,11 +129,11 @@ const Navbar = ({ overHeight, state }) => {
       <Toast ref={toast} position={isMobile ? "top-center" : "top-right"} />
       <div
         className={`${styles.navbar} ${
-          router.pathname.includes("/admin/login") ||
-          router.pathname.includes("/admin/signup") ||
-          router.pathname.includes("/admin/forget") ||
+          router.pathname.includes("/auth/login") ||
+          router.pathname.includes("/auth/signup") ||
+          router.pathname.includes("/auth/forget") ||
           router.pathname.includes("/terms") ||
-          router.pathname.includes("/admin/change") ||
+          router.pathname.includes("/auth/change") ||
           router.pathname.includes("/user/forget") ||
           router.pathname.includes("/update-password") ||
           router.pathname.includes("/user/programs") ||
@@ -142,7 +142,7 @@ const Navbar = ({ overHeight, state }) => {
           router.pathname.includes("/user/payment/") ||
           router.pathname.includes("/user/payment-program") ||
           router.pathname.includes("/error-handel") ||
-          router.pathname.includes("/admin/sign-verify")
+          router.pathname.includes("/auth/sign-verify")
             ? "spHeader is-sticky"
             : "commonHeader"
         } header`}
@@ -295,7 +295,7 @@ const Navbar = ({ overHeight, state }) => {
 
               {!Cookies.get("UT") && (
                 <Link
-                  href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`}
+                  href={`/${router?.query?.Lang?.toLowerCase()}/auth/login`}
                   className={`${styles.sign_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}
                   onClick={() => {
                     courseId && sessionStorage.removeItem("courseId");
@@ -318,7 +318,7 @@ const Navbar = ({ overHeight, state }) => {
 
               {!Cookies.get("UT") && (
                 <Link
-                  href={`/${router?.query?.Lang?.toLowerCase()}/admin/signup`}
+                  href={`/${router?.query?.Lang?.toLowerCase()}/auth/signup`}
                   className={`${styles.sign_side}  ${router?.query?.Lang?.toLowerCase() === "en" ? styles.ar_lang : styles.en_lang}`}
                   onClick={() => {
                     courseId && sessionStorage.removeItem("courseId");
@@ -459,9 +459,9 @@ const Navbar = ({ overHeight, state }) => {
                   {!Cookies.get("UT") && (
                     <Link
                       href={
-                        router.pathname.includes("/admin/login")
-                          ? `/${router?.query?.Lang?.toLowerCase()}/admin/signup`
-                          : `/${router?.query?.Lang?.toLowerCase()}/admin/login`
+                        router.pathname.includes("/auth/login")
+                          ? `/${router?.query?.Lang?.toLowerCase()}/auth/signup`
+                          : `/${router?.query?.Lang?.toLowerCase()}/auth/login`
                       }
                       onClick={() => {
                         setToggle(false);
@@ -473,7 +473,7 @@ const Navbar = ({ overHeight, state }) => {
                       className={`${styles.navBtn} hoveranim`}
                       style={{ textDecoration: "none" }}
                     >
-                      {router.pathname.includes("/admin/login") ? <span>{t("menu.signup")}</span> : <span>{t("menu.login")}</span>}
+                      {router.pathname.includes("/auth/login") ? <span>{t("menu.signup")}</span> : <span>{t("menu.login")}</span>}
                     </Link>
                   )}
                 </div>
@@ -498,7 +498,7 @@ const Navbar = ({ overHeight, state }) => {
                       >
                         {!Cookies.get("UT") && (
                           <Link
-                            href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`}
+                            href={`/${router?.query?.Lang?.toLowerCase()}/auth/login`}
                             onClick={() => {
                               setToggle(false);
                               courseId && sessionStorage.removeItem("courseId");
@@ -514,7 +514,7 @@ const Navbar = ({ overHeight, state }) => {
                         {!Cookies.get("UT") && <hr />}
                         {!Cookies.get("UT") && (
                           <Link
-                            href={`/${router?.query?.Lang?.toLowerCase()}/admin/signup`}
+                            href={`/${router?.query?.Lang?.toLowerCase()}/auth/signup`}
                             onClick={() => {
                               setToggle(false);
                               courseId && sessionStorage.removeItem("courseId");

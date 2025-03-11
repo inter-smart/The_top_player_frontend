@@ -87,7 +87,7 @@ const Footer = ({ Lang }) => {
       sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
       sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
       sessionStorage.setItem("isFree", "true");
-      router.push(`/${Lang}/admin/login`);
+      router.push(`/${Lang}/auth/login`);
     }
   };
 
@@ -130,7 +130,7 @@ const Footer = ({ Lang }) => {
                 <Link href={`/${router?.query?.Lang?.toLowerCase()}#faq`} className="customLink">
                   {t("menu.faq")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}/admin/login`} className="customLink">
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}/auth/login`} className="customLink">
                   {t("auth.login")}
                 </Link>
                 <Link href="#" onClick={(e) => handleFreeTrial(e)} className="customLink">

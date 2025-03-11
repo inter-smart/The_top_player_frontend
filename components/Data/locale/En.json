@@ -202,7 +202,7 @@
     "donthave": "you don't have an account ? ",
     "didn't_receive": "didn't receive otp?",
     "check": "Please check your email to verify your account",
-    "wrong": "Something went wrong tray again later",
+    "wrong": "Something went wrong try again later",
     "req_name": "Name is required.",
     "req_email": "Email is required.",
     "invalid_email": "Invalid email",

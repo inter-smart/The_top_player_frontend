@@ -23,7 +23,7 @@ const ChangePassword = ({ token_id, Lang }) => {
   //         Cookies.set("UT", token_id, { secure: true, sameSite: "strict" });
 
   //         setTimeout(() => {
-  //           router.push(`/${Lang}/admin/change`);
+  //           router.push(`/${Lang}/auth/change`);
   //         }, 1000);
   //       })
   //       .catch((err) => {
@@ -31,7 +31,7 @@ const ChangePassword = ({ token_id, Lang }) => {
   //         setSuccess(false);
   //         Cookies.remove("UT");
   //         setTimeout(() => {
-  //           router.push(`/${Lang}/admin/login`);
+  //           router.push(`/${Lang}/auth/login`);
   //         }, 3000);
   //       });
   //   } else {

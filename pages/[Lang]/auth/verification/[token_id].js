@@ -29,7 +29,7 @@ const Verifivation = ({ token_id, Lang }) => {
   //         setSuccess(false);
   //         Cookies.remove("UT");
   //         setTimeout(() => {
-  //           router.push(`/${Lang}/admin/signup`);
+  //           router.push(`/${Lang}/auth/signup`);
   //         }, 3000);
   //       });
   //   } else {

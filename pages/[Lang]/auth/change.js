@@ -251,7 +251,7 @@ const Change = ({ Lang }) => {
               >
                 {t("auth.have_account")}
               </p>
-              <Link href={`/${Lang}/admin/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
+              <Link href={`/${Lang}/auth/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
             </div>
           </form>
         </div>

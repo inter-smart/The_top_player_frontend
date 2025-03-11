@@ -91,7 +91,7 @@ const Login = ({ Lang }) => {
             if (!res.verified) {
               //console.log("here 2");
               router.push({
-                pathname: `/${Lang}/admin/sign-verify`,
+                pathname: `/${Lang}/auth/sign-verify`,
                 query: { email: data.email },
               });
             }
@@ -143,10 +143,10 @@ const Login = ({ Lang }) => {
 
             if (err?.response?.data?.verified === false) {
               // router.push({
-              //   pathname: `/${Lang}/admin/reverification`,
+              //   pathname: `/${Lang}/auth/reverification`,
               // });
               router.push({
-                pathname: `/${Lang}/admin/sign-verify`,
+                pathname: `/${Lang}/auth/sign-verify`,
                 query: { email: data.email },
               });
             }
@@ -268,7 +268,7 @@ const Login = ({ Lang }) => {
                 }}
               >
                 {t("auth.forget")}{" "}
-                <Link href={`/${Lang}/admin/forget`} style={{textDecoration:"none"}}>{t("auth.change")}</Link>
+                <Link href={`/${Lang}/auth/forget`} style={{textDecoration:"none"}}>{t("auth.change")}</Link>
               </p>
             </div>
             <div className={styles.have_account}>
@@ -279,7 +279,7 @@ const Login = ({ Lang }) => {
                 }}
               >
                 {t("auth.donthave")}
-                <Link href={`/${Lang}/admin/signup`} style={{textDecoration:"none"}}>{t("auth.signup")}</Link>
+                <Link href={`/${Lang}/auth/signup`} style={{textDecoration:"none"}}>{t("auth.signup")}</Link>
               </p>
             </div>
           </form>

@@ -30,7 +30,7 @@ const Header = ({ styles, Lang, state }) => {
       sessionStorage.setItem("courseId", process.env.FREE_COURSE_ID);
       sessionStorage.setItem("subId", process.env.FREE_SUB_ID);
       sessionStorage.setItem("isFree", "true");
-      router.push(`/${Lang}/admin/login`);
+      router.push(`/${Lang}/auth/login`);
     }
   };
 
