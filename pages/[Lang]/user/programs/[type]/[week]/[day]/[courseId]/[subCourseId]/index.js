@@ -27,8 +27,8 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
   const { t } = useTranslation();
   const router = useRouter();
 
-  console.log("ERROR",error_Text)
-  console.log("ERROR",error_status)
+  console.log("ERROR", error_Text);
+  console.log("ERROR", error_status);
 
   useEffect(() => {
     if (error_status === 401) {
@@ -56,6 +56,8 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
     dispatch(videos_in_days(data));
   }, [dispatch, day_id, courseId, subCourseId]);
   const { videos } = useSelector((state) => state.CourcesSlice);
+
+  console.log("VIDEOSSSSS", videos);
 
   // //console.log(videos[0]);
   // //console.log(videos[1]);
@@ -86,14 +88,12 @@ const FristVideos = ({ week_id, type, day_id, courseId, subCourseId, Lang, error
       >
         <div className={`${styles.videos} ${Lang === "ar" ? "ar_Video" : "en_Video"}`}>
           <div className={styles.Main_header}>
-            <div
-              className={`breadCramp ${
-                Lang === "ar" ? "Ar_cramp" : "En_cramp"
-              }`}
-            >
-              <Link href={`/${Lang}`} style={{textDecoration:"none"}}>{t("menu.home")}</Link>
+            <div className={`breadCramp ${Lang === "ar" ? "Ar_cramp" : "En_cramp"}`}>
+              <Link href={`/${Lang}`} style={{ textDecoration: "none" }}>
+                {t("menu.home")}
+              </Link>
               <span>{" > "}</span>
-              <Link href={`/${Lang}/user/programs/details/${courseId}`} style={{textDecoration:"none"}}>
+              <Link href={`/${Lang}/user/programs/details/${courseId}`} style={{ textDecoration: "none" }}>
                 {/* {type} */}
                 {parseInt(courseId) === 1 && t("programs_details.fitness.title")}
                 {parseInt(courseId) === 2 && t("programs_details.fitness_fottboll.title")}
@@ -242,7 +242,7 @@ export async function getServerSideProps({ req, params }) {
         },
       })
       .then((res) => res.data);
-      console.log("videos_in_days", result);
+    console.log("videos_in_days", result);
     return {
       props: {
         videos: result,
@@ -274,4 +274,3 @@ export async function getServerSideProps({ req, params }) {
     };
   }
 }
-

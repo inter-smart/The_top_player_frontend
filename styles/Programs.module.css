@@ -29,7 +29,6 @@
   font-size: clamp(20px, 2vw, 25px);
 }
 
-
 .Program .check p {
   margin: 0;
   margin-left: 10px;
@@ -166,11 +165,9 @@
   text-align: center;
   margin: 10px auto;
   border-radius: 6px;
-  background: var(--Linear,
-      linear-gradient(193deg, #b58e69 -30.12%, #8e6c4d 90.67%));
+  background: var(--Linear, linear-gradient(193deg, #b58e69 -30.12%, #8e6c4d 90.67%));
   /* Shadow/sm */
-  box-shadow: 0px 1px 2px 0px rgba(42, 51, 66, 0.03),
-    0px 1px 3px 0px rgba(42, 51, 66, 0.06);
+  box-shadow: 0px 1px 2px 0px rgba(42, 51, 66, 0.03), 0px 1px 3px 0px rgba(42, 51, 66, 0.06);
 }
 
 /* .Dialog a:hover {
@@ -243,7 +240,6 @@
 
 .progress .Program ul li .check span {
   font-weight: 500;
-
 }
 
 .dumbel {
@@ -622,13 +618,13 @@
 }
 
 .progress_info h4 span {
-  color: #D2D2D2;
+  color: #d2d2d2;
 }
 
 .time_line_1 {
-  box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   width: 90%;
   border-radius: 16px;
   -webkit-border-radius: 16px;
@@ -637,9 +633,9 @@
   -o-border-radius: 16px;
 }
 .time_line {
-  box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   width: 90%;
   border-radius: 16px;
   -webkit-border-radius: 16px;
@@ -654,12 +650,11 @@
   pointer-events: none;
 }
 
-.icon_parent{
+.icon_parent {
   position: relative;
-
 }
 
-.lock_icon{
+.lock_icon {
   position: absolute;
   color: #020202;
   top: 18%;
@@ -670,7 +665,7 @@
   font-size: 70px;
 }
 
-.lock_icon_ar{
+.lock_icon_ar {
   position: absolute;
   color: #020202;
   top: 18%;
@@ -697,10 +692,26 @@
   display: block;
 }
 
+.day_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.free_trial_text {
+  font-size: 10px; /* Small font size */
+  line-height: 1;
+  color: #020202;
+  text-align: center;
+  display: block;
+  padding: 2px;
+  /* Adjust these values based on your circle size */
+}
+
 .cup svg {
   width: 40px;
   height: 40px;
-  color: #B0A194;
+  color: #b0a194;
 }
 
 .cup_active svg {
@@ -724,11 +735,9 @@
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   border-radius: 6px;
-  background: var(--Linear,
-      linear-gradient(193deg, #b58e69 -30.12%, #8e6c4d 90.67%));
+  background: var(--Linear, linear-gradient(193deg, #b58e69 -30.12%, #8e6c4d 90.67%));
   /* Shadow/sm */
-  box-shadow: 0px 1px 2px 0px rgba(42, 51, 66, 0.03),
-    0px 1px 3px 0px rgba(42, 51, 66, 0.06);
+  box-shadow: 0px 1px 2px 0px rgba(42, 51, 66, 0.03), 0px 1px 3px 0px rgba(42, 51, 66, 0.06);
   text-transform: capitalize;
 }
 .time_line .start_btn {
@@ -748,11 +757,9 @@
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   border-radius: 6px;
-  background: var(--Linear,
-      linear-gradient(193deg, #b58e69 -30.12%, #8e6c4d 90.67%));
+  background: var(--Linear, linear-gradient(193deg, #b58e69 -30.12%, #8e6c4d 90.67%));
   /* Shadow/sm */
-  box-shadow: 0px 1px 2px 0px rgba(42, 51, 66, 0.03),
-    0px 1px 3px 0px rgba(42, 51, 66, 0.06);
+  box-shadow: 0px 1px 2px 0px rgba(42, 51, 66, 0.03), 0px 1px 3px 0px rgba(42, 51, 66, 0.06);
   text-transform: capitalize;
 }
 
@@ -764,7 +771,7 @@
 
 .sub_course a {
   padding: 10px 15px;
-  color: #716D6D;
+  color: #716d6d;
   display: block;
   margin: 0 10px 10px;
   font-weight: bold;
@@ -778,14 +785,14 @@
 }
 
 .sub_course .active {
-  color: #B58E69;
-  background-color: #FFF1E5;
+  color: #b58e69;
+  background-color: #fff1e5;
 }
 
 .days_number div {
   margin: 0;
-  background-color: #D9D8D7 !important;
-  color: #918D8D !important;
+  background-color: #d9d8d7 !important;
+  color: #918d8d !important;
   width: 40px !important;
   height: 40px !important;
   border-radius: 50% !important;
@@ -809,9 +816,7 @@
   color: white !important;
 }
 
-
 @media (max-width: 767.98px) {
-
   .progress_week_grid {
     grid-template-columns: 1fr;
   }

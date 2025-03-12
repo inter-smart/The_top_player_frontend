@@ -50,7 +50,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
   const weeksFinished = CoursecArr?.subCourses[0]?.finished_weeks?.length * 2;
   const AllDays_finished = daysFinished + weeksFinished;
 
-  const freeCheck = isLoggedIn && CoursecArr;
+  const freeCheck = CoursecArr;
 
   const scrollToDiv = () => {
     if (targetDivRef.current) {
@@ -58,7 +58,19 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
     }
   };
 
+  const handleRedirectToPayment = () => {
+    if (Cookies.get("UT")) {
+      router.push(`/${Lang}/user/payment/${programs_id}`);
+    } else {
+      sessionStorage.setItem("courseId", programs_id);
+      router.push(`/${Lang}/auth/login`);
+    }
+  };
+
   const handleClick = (week, day) => {
+    if (!isLoggedIn && day !== 1) {
+      return handleRedirectToPayment();
+    }
     if (day == 1) {
       const url = `/${Lang}/user/programs/${CoursecArr?.name}/${week}/${day}/${CoursecArr?.id}/${CoursecArr?.subCourses?.[0]?.id}`;
       router.push(url);
@@ -116,7 +128,8 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
         />
       )}
 
-      {!isLoggedIn ? <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} /> : <Personlized2 Lang={Lang} styles={styles} />}
+      {/* {!isLoggedIn ? <Personlized Lang={Lang} videoUrl={CourseByIdArray?.videoUrl} /> : <Personlized2 Lang={Lang} styles={styles} />} */}
+      <Personlized2 Lang={Lang} styles={styles} />
 
       {freeCheck && (
         <div className={styles.enrolled_section}>
@@ -129,7 +142,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
               {CoursecArr && !expired && <h3 className="En_num">{parseInt((AllDays_finished / 28) * 100) || 0}%</h3>}
             </div>
 
-            {isLoggedIn && CoursecArr && (
+            {CoursecArr && (
               <div className={`${styles.progress_week_grid} ${Lang === "ar" ? styles.Ar_rotate : ""}`}>
                 <div className={styles.progress_week} ref={targetDivRef}>
                   <div className={styles.line}>
@@ -151,7 +164,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
                           onClick={() => handleClick(1, 1)}
                           className={` ${CoursecArr?.subCourses[0]?.finished_days.includes(1) ? styles.active : styles.not_active} `}
                         >
-                          1
+                          {isPurchased ? 1 : <span className={styles.free_trial_text}>Free Trial</span>}
                         </div>
                         <span>
                           <MdArrowForwardIos />
@@ -489,6 +502,9 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
 export default Fitness;
 
 export async function getServerSideProps({ req, params }) {
+  const token = req.cookies.UT;
+
+  console.log("token", token);
   const getData = async (url) => {
     try {
       const response = await axios.get(url, {
@@ -501,7 +517,7 @@ export async function getServerSideProps({ req, params }) {
 
       return response?.data;
     } catch (err) {
-      console.log(err);
+      console.log("errorStatus ====>", err);
 
       return null;
     }

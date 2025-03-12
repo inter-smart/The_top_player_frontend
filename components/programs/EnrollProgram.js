@@ -8,6 +8,9 @@ import { useRouter } from "next/router";
 const EnrollProgram = ({ Lang, programId, CoursecArr, CourseByIdArray, expired }) => {
   const { t } = useTranslation();
 
+  console.log("ITEMSINCOURSE",CoursecArr)
+  console.log("ITEMSINCOURSE",CourseByIdArray)
+
   const router = useRouter();
   const currentPath = router.pathname;
   const wordToCheck = "camps";
@@ -40,7 +43,7 @@ const EnrollProgram = ({ Lang, programId, CoursecArr, CourseByIdArray, expired }
               <div className={styles.dElmt}></div>
               <div className={`${styles.mTle} mTle `}>
                 {regex.test(currentPath)
-                  ? t(CoursecArr ? "joined_the_camp" : "join_to_our_camp")
+                  ? t((CoursecArr?.isPurchased) ? "joined_the_camp" : "join_to_our_camp")
                   : t(expired ? "renew_program" : "enroll_to_our_program")}
               </div>
               <div className={styles.txt}>{Lang === "ar" ? CourseByIdArray?.enroll_text_ar : CourseByIdArray?.enroll_text}</div>

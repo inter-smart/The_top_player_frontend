@@ -39,7 +39,7 @@ const Personlized = dynamic(() => import("@/components/programs/Personlized"), {
   loading: () => <></>,
   ssr: false,
 });
-const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
+const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -63,7 +63,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
           {CoursecArr?.subCourses.map((ele) => {
             return (
               <Link
-              style={{textDecoration:"none"}}
+                style={{ textDecoration: "none" }}
                 key={ele.id}
                 className={`${ele.id === CoursecArr?.subCourses[0].id ? styles.active : ""} ${
                   Lang === "ar" ? styles.Ar_subCourses_Link : styles.En_subCourses_Link
@@ -79,7 +79,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
         </div>
       )}
 
-      {(!CoursecArr || expired) && (
+      {(!isPurchased || expired) && (
         <ProgramCard
           programDetails={CourseByIdArray}
           styles={styles}
@@ -615,7 +615,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray }) => {
 
       {/* <Testimonials Lang={Lang} programId={programs_id} /> */}
 
-      {(!CoursecArr || expired || (CoursecArr && !expired)) && (
+      {(!isPurchased || expired) && (
         <EnrollProgram Lang={Lang} programId={programs_id} CoursecArr={CoursecArr} expired={expired} CourseByIdArray={CourseByIdArray} />
       )}
     </LangWrap>
@@ -651,10 +651,15 @@ export async function getServerSideProps({ req, params }) {
       getData(`${process.env.customKey}/courseById/${programId}`),
     ]);
 
+    console.log("props data", result);
+    console.log("props data", result?.isPurchased);
+    console.log("props data", result2);
+
     return {
       props: {
         CoursecArr: result,
         CourseByIdArray: result2?.course || null,
+        isPurchased: result?.isPurchased,
         programs_id: params.programs_id,
         Lang: params.Lang.toLowerCase(),
         error: false,
