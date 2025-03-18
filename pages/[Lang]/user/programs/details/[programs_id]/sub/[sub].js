@@ -56,7 +56,20 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
   const AllDays_finished = daysFinished + weeksFinished;
   // //console.log(AllDays_finished)
 
+  const handleRedirectToPayment = () => {
+    if (Cookies.get("UT")) {
+      router.push(`/${Lang}/user/payment/${programs_id}`);
+    } else {
+      sessionStorage.setItem("courseId", programs_id);
+      router.push(`/${Lang}/auth/login`);
+    }
+  };
+
   const handleClick = (week, day) => {
+    if (!isLoggedIn && day !== 1) {
+      return handleRedirectToPayment();
+    }
+
     if (day == 1) {
       const url = `/${Lang}/user/programs/${CoursecArr?.name}/${week}/${day}/${CoursecArr?.id}/${SubCourseArr?.id}`;
       router.push(url);
