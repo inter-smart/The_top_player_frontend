@@ -56,7 +56,7 @@ const Program = ({ styles, Lang }) => {
     if (item?.isCamp) {
       router.push(`/${Lang}/user/${course?.course_type}/details/${course?.id}`);
     } else {
-      router.push(`/${Lang}/user/programs/details/${course?.id}/${isHaveSubCourses && user_info ? `sub/${course?.sub_courses[0]?.id}` : ""}`);
+      router.push(`/${Lang}/user/programs/details/${course?.id}/${isHaveSubCourses ? `sub/${course?.sub_courses[0]?.id}` : ""}`);
     }
   };
 

@@ -34,10 +34,7 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
   const { t } = useTranslation();
   const targetDivRef = useRef(null);
   useEffect(() => {
-    if (error_status === 401) {
-      Cookies.remove("UT");
-      router.push(`/${Lang}`);
-    } else if (error) {
+    if (error) {
       router.push(`/${Lang}/error-handel/${error_Text}`);
     }
   }, [error, Lang, router, error_status, error_Text]);
@@ -118,7 +115,7 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
       )}
 
       <Personlized Lang={Lang} styles={styles} videoUrl={CourseByIdArray?.videoUrl} />
-      {isLoggedIn && CoursecArr && (
+      {CoursecArr && (
         <div className={styles.enrolled_section}>
           <div className={"container"}>
             <div className={styles.days}>
@@ -129,7 +126,7 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
               </div>
               {CoursecArr && <h3 className="En_num">{parseInt((AllDays_finished / 28) * 100) || 0}%</h3>}
             </div>
-            {isLoggedIn && CoursecArr && (
+            {CoursecArr && (
               <div className={`${styles.progress_week_grid} ${Lang === "ar" ? styles.Ar_rotate : ""}`}>
                 <div className={styles.progress_week} ref={targetDivRef}>
                   <div className={styles.line}>
@@ -149,16 +146,16 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
                       <div className={styles.days_number}>
                         <div
                           onClick={() => handleClick(1, 1)}
-                          className={` ${SubCourseArr.finished_days?.includes(1) ? styles.active : styles.not_active} `}
+                          className={` ${CoursecArr?.subCourses[0]?.finished_days.includes(1) ? styles.active : styles.not_active} `}
                         >
-                          1
+                          {isPurchased ? 1 : <span className={styles.free_trial_text}>{t("programs.free_trial")}</span>}
                         </div>
                         <span>
                           <MdArrowForwardIos />
                         </span>
                         <div
                           onClick={() => handleClick(1, 2)}
-                          className={` ${SubCourseArr.finished_days?.includes(2) ? styles.active : styles.not_active} `}
+                          className={` ${CoursecArr?.subCourses[0]?.finished_days.includes(2) ? styles.active : styles.not_active} `}
                         >
                           {isPurchased ? expired ? <RiLock2Line /> : 2 : <RiLock2Line />}
                         </div>
@@ -167,7 +164,7 @@ const Fitness = ({ programs_id, CourseByIdArray, Lang, sub_id, CoursecArr, SubCo
                         </span>
                         <div
                           onClick={() => handleClick(1, 3)}
-                          className={` ${SubCourseArr.finished_days?.includes(3) ? styles.active : styles.not_active} `}
+                          className={` ${CoursecArr?.subCourses[0]?.finished_days.includes(3) ? styles.active : styles.not_active} `}
                         >
                           {isPurchased ? expired ? <RiLock2Line /> : 3 : <RiLock2Line />}
                         </div>

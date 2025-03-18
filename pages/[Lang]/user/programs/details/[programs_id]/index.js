@@ -164,7 +164,7 @@ const Fitness = ({ programs_id, Lang, CoursecArr, CourseByIdArray, isPurchased }
                           onClick={() => handleClick(1, 1)}
                           className={` ${CoursecArr?.subCourses[0]?.finished_days.includes(1) ? styles.active : styles.not_active} `}
                         >
-                          {isPurchased ? 1 : <span className={styles.free_trial_text}>Free Trial</span>}
+                          {isPurchased ? 1 : <span className={styles.free_trial_text}>{t("programs.free_trial")}</span>}
                         </div>
                         <span>
                           <MdArrowForwardIos />

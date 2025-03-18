@@ -22,15 +22,15 @@ export default function middleware(req) {
       // return NextResponse.redirect(`${process.env.webDomain}/en/auth/signup`);
     }
   }
-  if (url === enRestrictedUrl || url === arRestrictedUrl) {
-    const isAuthenticated = verifytoken;
-    console.log("isAuthenticated", isAuthenticated);
-    console.log;
-    if (url.includes("/ar/user") && isAuthenticated !== undefined) {
-      return NextResponse.redirect(`${process.env.webDomain}/ar`);
-    }
-    if (url.includes("/en/user") && isAuthenticated !== undefined) {
-      return NextResponse.redirect(`${process.env.webDomain}/en`);
-    }
-  }
+  // if (url === enRestrictedUrl || url === arRestrictedUrl) {
+  //   const isAuthenticated = verifytoken;
+  //   console.log("isAuthenticated", isAuthenticated);
+  //   console.log;
+  //   if (url.includes("/ar/user") && isAuthenticated !== undefined) {
+  //     return NextResponse.redirect(`${process.env.webDomain}/ar`);
+  //   }
+  //   if (url.includes("/en/user") && isAuthenticated !== undefined) {
+  //     return NextResponse.redirect(`${process.env.webDomain}/en`);
+  //   }
+  // }
 }
