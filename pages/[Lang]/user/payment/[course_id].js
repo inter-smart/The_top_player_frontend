@@ -169,14 +169,15 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                           <>
                             <p>{t("payment.Total")}</p>
                             <p className="En_num">
-                              {currentcurrency?.currency_code} {Math.ceil(CourseByIdArray?.offerAmount * currentcurrency?.currency_rate - coupon)}
+                              {console.log("CCCC",)}
+                              {currentcurrency?.currency_code} {(Math.ceil(CourseByIdArray?.offerAmount * currentcurrency?.currency_rate) - coupon).toFixed(2)}
                             </p>
                           </>
                         ) : (
                           <>
                             <p>{t("payment.Total")}</p>
                             <p className="En_num">
-                              {currentcurrency?.currency_code} {Math.ceil((CourseByIdArray?.offerAmount * currentcurrency?.currency_rate).toFixed(2))}
+                              {currentcurrency?.currency_code} {Math.ceil((CourseByIdArray?.offerAmount * currentcurrency?.currency_rate)).toFixed(2)}
                             </p>
                           </>
                         )}
