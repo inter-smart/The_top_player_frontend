@@ -15,16 +15,21 @@ export default function Custom404() {
       //   marginTop: `${navHeight + 5}px`,
       // }}
     >
-      <div className="Image_notFound">
-        <Image
-         src={"/images/logo.png"}
-          layout="fill"
-          objectFit="contain"
-          objectPosition={"center"}
-          alt="Not found"
-        />
+      <div className={"inner_section_outer"}>
+        <div className="container">
+          <div className="Image_notFound">
+            <Image
+              src={"/images/logo.png"}
+              layout="fill"
+              objectFit="contain"
+              objectPosition={"center"}
+              alt="Not found"
+              loading="lazy"
+            />
+          </div>
+          <h1> Page Not Found </h1>
+        </div>
       </div>
-      <h1> Page Not Found </h1>
     </div>
   );
 }

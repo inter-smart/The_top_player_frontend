@@ -1,6 +1,10 @@
 .navbar {
   width: 100%;
-  background-color: var(--bg_color);
+  background-color: var(--white_color);
+  padding: 10px 0;
+  height: var(--header-y);
+  display: flex;
+  align-items: center;
 }
 .gulf {
   color: #ffba00;
@@ -53,9 +57,6 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-  }
-  .navbar {
-    background-color: white;
   }
   .NavLinks a {
     background-color: white;
@@ -119,7 +120,7 @@
   font-weight: normal;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .menu .NavLinks {
     flex-direction: column;
     position: absolute;
@@ -140,6 +141,7 @@
     justify-self: center;
     height: 94vh;
     flex-wrap: nowrap;
+    display: none;
   }
 
   .menuActive {
@@ -317,14 +319,12 @@
   -o-transform: translateY(0) rotate(315deg);
 }
 
-
 .image_container {
   position: relative;
-  height: 60px;
-  margin: 10px 0;
+  height: 50px;
+  margin: 6px 0;
   cursor: pointer;
   z-index: 10;
-  
 }
 
 .MobileWhats {
@@ -364,10 +364,9 @@
     display: block;
   }
   .image_container {
-    height: 82px;
+    height: 35px;
     width: 100px;
     margin: 5px auto;
-
   }
 }
 
@@ -386,6 +385,45 @@
   gap: 8px;
   border-radius: 4px;
   background: var(--main_color);
+}
+.Login .log.hoveranim {
+  position: relative;
+  overflow: hidden;
+}
+.Login .log.hoveranim::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: #ad8b69;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transform-origin: right;
+  -ms-transform-origin: right;
+  transform-origin: right;
+}
+.Login .log.hoveranim span {
+  position: relative;
+  z-index: 1;
+}
+.Login .log.hoveranim:hover {
+  color: var(--white_color);
+}
+.Login .log.hoveranim:hover::before {
+  -webkit-transform-origin: left;
+  -ms-transform-origin: left;
+  transform-origin: left;
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 .Login {
   display: flex;
@@ -431,19 +469,16 @@
   height: 100vh;
   background-color: #00000000;
   z-index: 98;
-
 }
 .drop_men a {
   color: #272626;
   text-align: center;
-  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0.18px;
 }
-
 
 .menu_button {
   background-color: transparent;
@@ -475,6 +510,10 @@
   text-transform: capitalize;
 }
 
+.side_menu a:hover {
+  color: var(--main_color);
+}
+
 .Links_side .close_side {
   background-color: transparent;
   border: none;
@@ -496,7 +535,7 @@
 }
 .Links_side .close_side svg {
   color: #26262699 !important;
-font-size: 30px !important;
+  font-size: 30px !important;
 }
 .changeLang {
   background-color: transparent;
@@ -521,7 +560,7 @@ font-size: 30px !important;
   padding: 10px 20px;
 }
 .out_side svg {
- font-size: 20px;
+  font-size: 20px;
 }
 .link {
   color: #26262699;
@@ -565,23 +604,19 @@ font-size: 30px !important;
 .tag_en {
   margin-left: auto;
   direction: rtl;
-  /* font-family: 'Readex Pro', sans-serif !important; */
-  font-family: "GE Dinar One Medium" ,sans-serif !important;
-
-
+}
+.ar_Lang {
+  font-family: "Cairo", sans-serif;
 }
 .en_Lang {
-  /* font-family: 'Readex Pro', sans-serif !important; */
-  font-family: "GE Dinar One Medium" ,sans-serif !important;
-
-  
+  font-family: "Montserrat", sans-serif;
 }
-@media (max-width: 991.98px) {
-  .ar_lang{
+@media (max-width: 1199.98px) {
+  .ar_lang {
     margin-right: 10px;
     padding-left: 5px;
   }
-  .en_Lang{
+  .en_Lang {
     margin-left: 10px;
     padding-right: 5px;
   }

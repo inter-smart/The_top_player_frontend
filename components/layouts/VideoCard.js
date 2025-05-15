@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "@/styles/Profile.module.css";
+import styles from "@/styles/Profile.module.scss";
 import { FaCheck } from "react-icons/fa6";
 import { FaCirclePlay } from "react-icons/fa6";
 // import { useRef, useState } from "react";
@@ -57,11 +57,11 @@ const VideoCard = ({
         cursor: "pointer",
       }}
       onClick={() => {
-        // console.log(videoURl)
+        // //console.log(videoURl)
         const video = videos.filter((ele) => ele.id === id)[0];
         const video_key = videos.indexOf(video);
         setVideoKey(video_key);
-        // console.log(video_key)
+        // //console.log(video_key)
         router.push(router.asPath)
         const data = {
           id,
@@ -87,7 +87,8 @@ const VideoCard = ({
           <FaCirclePlay />
         </span>
         {/* <Image src={"https://backend.thetopplayer.com/images/warm%20up%20both.jpg"} layout="fill" objectFit="cover" alt={name} /> */}
-        <Image src={videoURL} layout="fill" objectFit="cover" alt={name} />
+        <Image src={videoURL} layout="fill" alt={name} />
+        {/* <Image src={`${process.env.customKey}/images/${videoURL}`} layout="fill" objectFit="cover" alt={name} /> */}
 
         {/* <div className={styles.ImageVideo}>
         </div> */}

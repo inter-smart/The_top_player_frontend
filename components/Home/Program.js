@@ -8,9 +8,18 @@ import { allCourses, getsubscribedCourse } from "@/store/CourcesSlice";
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import isExpired from "@/helpers/checkExpired";
 const Program = ({ styles, Lang }) => {
-  // const [fitness]
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { subscribedCourseArr, CoursecArr } = useSelector((state) => state.CourcesSlice);
+  const { currentcurrency, currencyloading } = useSelector((state) => state.CurrencySlice);
+  const { user_info } = useSelector((state) => state.AuthSlice);
+
+  useEffect(() => {
+    dispatch(allCourses());
+    dispatch(getsubscribedCourse());
+  }, [dispatch]);
 
   const pagination = {
     clickable: true,
@@ -18,23 +27,6 @@ const Program = ({ styles, Lang }) => {
       return '<span class="' + className + '">' + "</span>";
     },
   };
-  const dispatch = useDispatch();
-  const { subscribedCourseArr, CoursecArr } = useSelector(
-    (state) => state.CourcesSlice
-  );
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        dispatch(allCourses()).unwrap();
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      }
-    };
-
-    fetchData();
-  }, [dispatch]);
-
   const router = useRouter();
   useEffect(() => {
     if (Cookies.get("UT")) {
@@ -50,558 +42,171 @@ const Program = ({ styles, Lang }) => {
     }
   }, [dispatch, Lang, router]);
   const Fitness = subscribedCourseArr?.find((ele) => ele.courseId === 1);
-  const Fitness_Fottboll = subscribedCourseArr?.find(
-    (ele) => ele.courseId === 2
-  );
-  const Football = subscribedCourseArr?.find((ele) => ele.courseId === 3);
+  // const Fitness_Fottboll = subscribedCourseArr?.find(
+  //   (ele) => ele.courseId === 2
+  // );
+  // const Football = subscribedCourseArr?.find((ele) => ele.courseId === 3);
+
+  const handleRedirect = (item, course) => {
+    const isHaveSubCourses = course?.sub_courses.length > 1;
+
+    if (course?.isFull) {
+      return;
+    }
+    if (item?.isCamp) {
+      router.push(`/${Lang}/user/${course?.course_type}/details/${course?.id}`);
+    } else {
+      router.push(`/${Lang}/user/programs/details/${course?.id}/${isHaveSubCourses ? `sub/${course?.sub_courses[0]?.id}` : ""}`);
+    }
+  };
+
   return (
     <div className={`${styles.program_section}`} id="programs">
       <div className="container">
-        <div className={"tleWrap"}>
+        <div className={"center"}>
           <h2 className={"mTle"}>{t("programs.title")}</h2>
         </div>
-        <div className={styles.itemWrap}>
-          <div className={styles.tleFlx}>
-            <div className={styles.top1_titlle}>
-              {/* <h3 className={styles.small_title}>{t("programs.top")}</h3> */}
-              <h3 className={styles.small_title}>{"Courses"}</h3>
-            </div>
-            <div className={styles.rgtSd}>
-              <div className={styles.cSlideNav}>
-                <button className={styles.prev}>
-                  <Image
-                    src={"/images/icon-rgtArrow.svg"}
-                    alt="rgtArrow"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </button>
-                <button className={styles.next}>
-                  <Image
-                    src={"/images/icon-rgtArrow.svg"}
-                    alt="rgtArrow"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </button>
+        {CoursecArr?.courses?.map((item) => (
+          <div className={styles.itemWrap} key={item?.categoryName}>
+            <div className={styles.tleFlx}>
+              <div className={styles.top1_titlle}>
+                <h3 className={styles.small_title}>{item?.categoryName}</h3>
+              </div>
+              <div className={styles.rgtSd}>
+                <div
+                  className={styles.cSlideNav}
+                  style={{
+                    flexDirection: "row",
+                  }}
+                >
+                  <button className={styles.prev} id={`${item?.categoryName?.replace(/\s/g, "")}_prev`}>
+                    <Image src={"/images/icon-rgtArrow.svg"} alt="rgtArrow" layout="fill" objectFit="contain" loading="lazy" />
+                  </button>
+                  <button className={styles.next} id={`${item?.categoryName?.replace(/\s/g, "")}_next`}>
+                    <Image src={"/images/icon-rgtArrow.svg"} alt="rgtArrow" layout="fill" objectFit="contain" loading="lazy" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className={`${styles.program} ${
-              Lang === "ar" ? styles.ar_slide : styles.en_slide
-            } ${Lang === "ar" ? "Arabic_web_program" : ""}`}
-          >
-            <Swiper
-              spaceBetween={10}
-              slidesPerView={1}
-              modules={[Pagination, Navigation]}
-              pagination={pagination}
-              navigation
-              initialSlide={1}
-              // direction={}
-              breakpoints={{
-                320: {
-                  // direction:"",
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                },
-                480: {
-                  // direction:"",
-
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                640: {
-                  // direction:"",
-
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                },
-                920: {
-                  // direction:"",
-
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-                },
-              }}
-            >
-              {CoursecArr?.courses.map((item) => (
-                <SwiperSlide key={item?.id}>
-                  <Link
-                    style={{
-                      direction: Lang === "ar" ? "rtl" : "ltr",
-                    }}
-                    href={
-                      Fitness
-                        ? `/${Lang}/user/programs/details/1`
-                        : Cookies.get("UT")
-                        ? `/${Lang}/user/payment/1`
-                        : `/${Lang}/admin/signup`
-                    }
-                    className={styles.card}
-                  >
-                    {/* <div className={styles.filnal_price}>
-                  <p>
-                    80 $ - <del>105 $</del>
-                  </p>
-                </div> */}
-                    <div className={styles.filnal_price}>
-                      <p>
-                        25%
-                        <span>{t("programs.off")}</span>
-                      </p>
+            <div className={`${styles.program} ${Lang === "ar" ? styles.ar_slide : styles.en_slide} ${Lang === "ar" ? "Arabic_web_program" : ""}`}>
+              <Swiper
+                style={{ overflow: "visible" }}
+                dir={Lang === "ar" ? "rtl" : "ltr"}
+                key={"courseSwiper"}
+                loop={false}
+                spaceBetween={10}
+                slidesPerView={1}
+                modules={[Pagination, Navigation]}
+                preventClicksPropagation={false}
+                preventClicks={false}
+                pagination={pagination}
+                navigation={{
+                  nextEl: `#${item?.categoryName?.replace(/\s/g, "")}_next`,
+                  prevEl: `#${item?.categoryName?.replace(/\s/g, "")}_prev`,
+                }}
+                initialSlide={1}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                  },
+                  480: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                  },
+                  640: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                  },
+                  992: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                  1551: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                  },
+                }}
+              >
+                {item?.courses?.map((course) => (
+                  <SwiperSlide key={course?.id} className={styles.swiperSlide}>
+                    <div className={styles.tamara_icon}>
+                      <img src="/images/tamara_ribbon.png" alt="fitness" loading="lazy" />
                     </div>
-                    <div className={styles.card_image}>
-                      <Image
-                        src={"/images/1.png"}
-                        alt="fitness"
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </div>
-                    <div className={styles.info_card}>
-                      {/* <h4>{t("programs.fitness.title")}</h4> */}
-                      <h4>{item.name}</h4>
-
-                      <ul
-                        className={`${
-                          Lang === "ar" ? styles.rightText : styles.leftText
-                        }`}
-                      >
-                        <li>
+                    <div
+                      style={{
+                        direction: Lang === "ar" ? "rtl" : "ltr",
+                      }}
+                      className={styles.card}
+                      onClick={() => handleRedirect(item, course)}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      {course?.offerPercentage && (
+                        <div className={styles.filnal_price}>
                           <p>
-                            {t("programs.fitness.line1_1")}{" "}
-                            <span className="En_num">
-                              {t("programs.fitness.line1_2")}
-                            </span>
-                            {t("programs.fitness.line1_3")}
+                            {course?.offerPercentage}%<span>{t("programs.off")}</span>
                           </p>
-                        </li>
-                        <li>
-                          <p>
-                            <span className="En_num">
-                              {t("programs.fitness.line2_1")}
-                            </span>
-                            {t("programs.fitness.line2_2")}
-                            <span className="En_num">
-                              {t("programs.fitness.line2_3")}
-                            </span>
-                            {t("programs.fitness.line2_4")}
-                          </p>
-                        </li>
-                        <li>
-                          <p>
-                            {t("programs.fitness.line3_1")}
-                            <span className="En_num">
-                              {t("programs.fitness.line3_2")}
-                            </span>
-                            {t("programs.fitness.line3_3")}
-                          </p>
-                        </li>
-                        <li>
-                          <p>{t("programs.fitness.line4")}</p>
-                        </li>
-                        <li>
-                          <p>
-                            {t("programs.fitness.line5_1")}
-                            <span className="En_num">
-                              {t("programs.fitness.line5_2")}
-                            </span>
-                            {t("programs.fitness.line5_3")}
-                          </p>
-                        </li>
-                      </ul>
-                      <div
-                        className={`${styles.price_offer} ${
-                          Lang === "ar" ? styles.rightPrice : styles.leftPrice
-                        }`}
-                      >
-                        <h5>{item.amount}</h5>
-                        {/* <h6>
-                          <del>105 </del>
-                        </h6> */}
+                        </div>
+                      )}
+                      <div className={styles.card_image}>
+                        <Image
+                          src={`${process.env.customKey}/courseImages/${course?.imageUrl}`}
+                          alt="fitness"
+                          layout="fill"
+                          objectFit="contain"
+                          loading="lazy"
+                        />
                       </div>
-                      <button>
-                        {Fitness ? t("programs.yalla") : t("programs.join")}
-                      </button>
+                      <div className={styles.info_card}>
+                        <h4>{Lang === "ar" ? course?.name_arabic : course?.name}</h4>
+                        {course?.descriptionHTML && (
+                          <ul
+                            className={`${Lang === "ar" ? styles.rightText : styles.leftText}`}
+                            dangerouslySetInnerHTML={{
+                              __html: Lang === "ar" ? course?.descriptionHTMLAr : course?.descriptionHTML,
+                            }}
+                          ></ul>
+                        )}
+
+                        {currencyloading ? (
+                          <p>Loading</p>
+                        ) : (
+                          <div className={`${styles.price_offer} ${styles.leftPrice} dir-lft`}>
+                            {/* <div className={`${styles.price_offer} ${
+                            Lang === "ar" ? styles.rightPrice : styles.leftPrice
+                          } dir-lft`}
+                        > */}
+                            <h5>
+                              <span className={styles.currency}>{currentcurrency?.currency_code}</span>
+                              {Math.ceil((course?.offerAmount * currentcurrency?.currency_rate).toFixed(2))}
+                            </h5>
+                            {course?.offerPercentage && (
+                              <h6>
+                                <span className={styles.currency}>{currentcurrency?.currency_code}</span>
+                                <del>{Math.ceil((course?.amount * currentcurrency?.currency_rate).toFixed(2))} </del>
+                              </h6>
+                            )}
+                          </div>
+                        )}
+
+                        {course?.isFull && <img src={"/images/soldout.png"} alt="fitness" loading="lazy" />}
+
+                        <button>
+                          {subscribedCourseArr?.some((obj) => obj.courseId == course?.id)
+                            ? t("programs.yalla")
+                            : course?.isFull
+                            ? t("camp_full")
+                            : t("programs.join")}
+                        </button>
+                      </div>
                     </div>
-                  </Link>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-        <div className={styles.itemWrap}>
-          <div className={styles.tleFlx}>
-            <div className={styles.top1_titlle}>
-              <h3 className={styles.small_title}>{t("programs.top")}</h3>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            <div className={styles.rgtSd}>
-              <div className={styles.cSlideNav}>
-                <button className={styles.prev}>
-                  <Image
-                    src={"/images/icon-rgtArrow.svg"}
-                    alt="rgtArrow"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </button>
-                <button className={styles.next}>
-                  <Image
-                    src={"/images/icon-rgtArrow.svg"}
-                    alt="rgtArrow"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </button>
-              </div>
-            </div>
           </div>
-          <div
-            className={`${styles.program} ${
-              Lang === "ar" ? styles.ar_slide : styles.en_slide
-            } ${Lang === "ar" ? "Arabic_web_program" : ""}`}
-          >
-            <Swiper
-              spaceBetween={10}
-              slidesPerView={1}
-              modules={[Pagination, Navigation]}
-              pagination={pagination}
-              navigation
-              initialSlide={1}
-              // direction={}
-              breakpoints={{
-                320: {
-                  // direction:"",
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                },
-                480: {
-                  // direction:"",
-
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                640: {
-                  // direction:"",
-
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                },
-                920: {
-                  // direction:"",
-
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-                },
-              }}
-            >
-              <SwiperSlide>
-                <Link
-                  style={{
-                    direction: Lang === "ar" ? "rtl" : "ltr",
-                  }}
-                  href={
-                    Fitness
-                      ? `/${Lang}/user/programs/details/1`
-                      : Cookies.get("UT")
-                      ? `/${Lang}/user/payment/1`
-                      : `/${Lang}/admin/signup`
-                  }
-                  className={styles.card}
-                >
-                  {/* <div className={styles.filnal_price}>
-                  <p>
-                    80 $ - <del>105 $</del>
-                  </p>
-                </div> */}
-                  <div className={styles.filnal_price}>
-                    <p>
-                      25%
-                      <span>{t("programs.off")}</span>
-                    </p>
-                  </div>
-                  <div className={styles.card_image}>
-                    <Image
-                      src={"/images/1.png"}
-                      alt="fitness"
-                      layout="fill"
-                      objectFit="contain"
-                    />
-                  </div>
-                  <div className={styles.info_card}>
-                    <h4>{t("programs.fitness.title")}</h4>
-
-                    <ul
-                      className={`${
-                        Lang === "ar" ? styles.rightText : styles.leftText
-                      }`}
-                    >
-                      <li>
-                        <p>
-                          {t("programs.fitness.line1_1")}{" "}
-                          <span className="En_num">
-                            {t("programs.fitness.line1_2")}
-                          </span>
-                          {t("programs.fitness.line1_3")}
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <span className="En_num">
-                            {t("programs.fitness.line2_1")}
-                          </span>
-                          {t("programs.fitness.line2_2")}
-                          <span className="En_num">
-                            {t("programs.fitness.line2_3")}
-                          </span>
-                          {t("programs.fitness.line2_4")}
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          {t("programs.fitness.line3_1")}
-                          <span className="En_num">
-                            {t("programs.fitness.line3_2")}
-                          </span>
-                          {t("programs.fitness.line3_3")}
-                        </p>
-                      </li>
-                      <li>
-                        <p>{t("programs.fitness.line4")}</p>
-                      </li>
-                      <li>
-                        <p>
-                          {t("programs.fitness.line5_1")}
-                          <span className="En_num">
-                            {t("programs.fitness.line5_2")}
-                          </span>
-                          {t("programs.fitness.line5_3")}
-                        </p>
-                      </li>
-                    </ul>
-                    <div
-                      className={`${styles.price_offer} ${
-                        Lang === "ar" ? styles.rightPrice : styles.leftPrice
-                      }`}
-                    >
-                      <h5>80</h5>
-                      <h6>
-                        <del>105 </del>
-                      </h6>
-                    </div>
-                    <button>
-                      {Fitness ? t("programs.yalla") : t("programs.join")}
-                    </button>
-                  </div>
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link
-                  style={{
-                    direction: Lang === "ar" ? "rtl" : "ltr",
-                  }}
-                  href={
-                    Fitness_Fottboll
-                      ? `/${Lang}/user/programs/details/2`
-                      : Cookies.get("UT")
-                      ? `/${Lang}/user/payment/2`
-                      : `/${Lang}/admin/signup`
-                  }
-                  className={styles.card}
-                >
-                  <div className={styles.filnal_price}>
-                    <p>
-                      50%
-                      <span>{t("programs.off")}</span>
-                    </p>
-                  </div>
-                  <div className={styles.card_image}>
-                    <Image
-                      src={"/images/2.png"}
-                      alt="fitness + football"
-                      layout="fill"
-                      objectFit="contain"
-                    />
-                  </div>
-                  <div className={styles.info_card}>
-                    <h4>
-                      {t("programs.fitness_fottboll.title1")} <span>+</span>{" "}
-                      {t("programs.fitness_fottboll.title2")}
-                    </h4>
-                    <ul
-                      className={`${
-                        Lang === "ar" ? styles.rightText : styles.leftText
-                      }`}
-                    >
-                      <li>
-                        <p className="fitness_fottboll_line">
-                          {t("programs.fitness_fottboll.line1_1")}
-                          <span className="En_num">
-                            {t("programs.fitness_fottboll.line1_2")}
-                          </span>
-                          {t("programs.fitness_fottboll.line1_3")}
-
-                          <p></p>
-                          <span className="En_num">
-                            {t("programs.fitness_fottboll.line1_1_1")}
-                          </span>
-                          {t("programs.fitness_fottboll.line1_1_2")}
-
-                          <p></p>
-                          <span className="En_num">
-                            {t("programs.fitness_fottboll.line1_1_3")}
-                          </span>
-                          {t("programs.fitness_fottboll.line1_1_4")}
-                        </p>
-                      </li>
-                      <li>
-                        <p>{t("programs.fitness_fottboll.line2")}</p>
-                      </li>
-                      <li>
-                        <p>{t("programs.fitness_fottboll.line3")}</p>
-                      </li>
-                      <li>
-                        <p>
-                          {t("programs.fitness_fottboll.line4_1")}
-                          <span className="En_num">
-                            {t("programs.fitness_fottboll.line4_2")}
-                          </span>
-                        </p>
-                      </li>
-                    </ul>
-                    <div
-                      className={`${styles.price_offer} ${
-                        Lang === "ar" ? styles.rightPrice : styles.leftPrice
-                      }`}
-                    >
-                      <h5>
-                        105
-                        {/* <span>/4mo</span> */}
-                      </h5>
-                      <h6>
-                        <del>210 </del>
-                        {/* <span>/4mo</span> */}
-                      </h6>
-                    </div>
-                    <button>
-                      {" "}
-                      {Fitness_Fottboll
-                        ? t("programs.yalla")
-                        : t("programs.join")}
-                    </button>
-                  </div>
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link
-                  style={{
-                    direction: Lang === "ar" ? "rtl" : "ltr",
-                  }}
-                  href={
-                    Football
-                      ? `/${Lang}/user/programs/details/3`
-                      : Cookies.get("UT")
-                      ? `/${Lang}/user/payment/3`
-                      : `/${Lang}/admin/signup`
-                  }
-                  className={styles.card}
-                >
-                  <div className={styles.filnal_price}>
-                    <p>
-                      25%
-                      <span>{t("programs.off")}</span>
-                    </p>
-                  </div>
-                  <div className={styles.card_image}>
-                    <Image
-                      src={"/images/3.png"}
-                      alt="football"
-                      layout="fill"
-                      objectFit="contain"
-                    />
-                  </div>
-                  <div className={styles.info_card}>
-                    <h4>{t("programs.football.title")}</h4>
-                    {/* <div className={styles.price_offer}>
-                    <h5>
-                      80
-                    </h5>
-                    <h6>
-                      <del>105 </del> 
-                    </h6>
-                  </div> */}
-                    <ul
-                      className={`${
-                        Lang === "ar" ? styles.rightText : styles.leftText
-                      }`}
-                    >
-                      <li>
-                        <p>
-                          {t("programs.football.line1_1")}
-                          <span className="En_num">
-                            {t("programs.football.line1_2")}
-                          </span>
-                          {t("programs.football.line1_3")}
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          <span className="En_num">
-                            {t("programs.football.line2_1")}
-                          </span>
-                          {t("programs.football.line2_2")}
-                          <span className="En_num">
-                            {t("programs.football.line2_3")}
-                          </span>
-                          {t("programs.football.line2_4")}
-                        </p>
-                      </li>
-                      <li>
-                        <p>
-                          {t("programs.football.line3_1")}
-                          <span className="En_num">
-                            {t("programs.football.line3_2")}
-                          </span>
-                          {t("programs.football.line3_3")}
-                        </p>
-                      </li>
-
-                      <li>
-                        <p>{t("programs.football.line4")}</p>
-                      </li>
-                      <li>
-                        <p>
-                          {t("programs.football.line5_1")}
-
-                          <span className="En_num">
-                            {t("programs.football.line5_2")}
-                          </span>
-                          {t("programs.football.line5_3")}
-                        </p>
-                      </li>
-                    </ul>
-                    <div
-                      className={`${styles.price_offer} ${
-                        Lang === "ar" ? styles.rightPrice : styles.leftPrice
-                      }`}
-                    >
-                      <h5>80</h5>
-                      <h6>
-                        <del>105 </del>
-                      </h6>
-                    </div>
-                    <button>
-                      {" "}
-                      {Football ? t("programs.yalla") : t("programs.join")}
-                    </button>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            </Swiper>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

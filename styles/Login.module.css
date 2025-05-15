@@ -1,130 +1,225 @@
 .Login_card {
-    background-color: white ;
-    width: 35%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    /* box-shadow: 1px 1px 20px 20px #eee; */
+  background-color: white;
+  width: 100%;
+  max-width: 468px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  /* box-shadow: 1px 1px 20px 20px #eee; */
 }
+
+@media (max-width: 991.98px) {
+  .Login_card {
+    padding: 30px 20px;
+  }
+}
+
 .Login {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  min-height: calc(70vh - var(--header-y));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  margin-top: var(--header-y);
+  padding: 40px 0;
 }
+
+
+@media (max-width: 991.98px) {
+  .Login {
+    min-height: calc(60vh - var(--header-y));
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .Login {
+    min-height: calc(50vh - var(--header-y));
+  }
+}
+
+.Login .dElmt_1 {
+  width: 768px;
+  height: 768px;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 45%;
+  opacity: 0.3;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 1551.98px) {
+  .Login .dElmt_1 {
+    width: 576px;
+    height: 576px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .Login .dElmt_1 {
+    width: 468px;
+    height: 468px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .Login .dElmt_1 {
+    width: 376px;
+    height: 376px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .Login .dElmt_1 {
+    width: 220px;
+    height: 220px;
+  }
+}
+
 .Image_bottom_left {
-    position: absolute;
-    width: 437px;
-    height: 497px;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
+  position: absolute;
+  width: 437px;
+  height: 497px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
 
-  .Image_top_left {
-    position: absolute;
-    width: 277px;
-    height: 360px;
-    top: 0;
-    /* left: -25px; */
-    left: 0;
-    z-index: -1;
-  }
-  .Image_bottom_right {
-    position: absolute;
-    width: 444px;
-    height: 385px;
-    bottom: 0;
-    /* left: -25px; */
-    right: 0;
-    z-index: -1;
-  }
+.Image_top_left {
+  position: absolute;
+  width: 277px;
+  height: 360px;
+  top: 0;
+  /* left: -25px; */
+  left: 0;
+  z-index: -1;
+}
+
+.Image_bottom_right {
+  position: absolute;
+  width: 444px;
+  height: 385px;
+  bottom: 0;
+  /* left: -25px; */
+  right: 0;
+  z-index: -1;
+}
+
 .Image_Login {
-    position: relative;
-    width: 100%;
-    height: 100px;
+  position: relative;
+  width: 100%;
+  height: 100px;
 }
-.Login_card label {
-    margin-bottom: 5px;
-  }
-  .Login_card h1 {
-    text-transform: capitalize;
-    text-align: center;
-    font-weight: bold;
-    font-size: clamp(20px,2vw,30px);
-  }
-  .Login_card button {
-    margin-top: 10px;
-  }
-  .Login_card form {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .have_account {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-  }
-  .have_account p {
-    margin: 0;
-    margin-right: 10px;
-    text-transform: capitalize;
-    font-size: clamp(14px,2vw,16px);
-  }
-  .have_account a {
-    color: #A27D5B;
-    font-weight: bold;
-    font-size: clamp(13px,2vw,15px);
-  }
-  .have_account button {
-    background-color: transparent;
-    border: none;
-    color: #A27D5B;
-    font-weight: bold;
-    font-size: clamp(13px,2vw,15px);
-    margin: 0;
-    padding: 0;
-  }
 
-  .checkFormik {
-    display: flex;
-    align-items: center;
+.Login_card label {
+  margin-bottom: 5px;
+}
+
+.Login_card h1 {
+  font-size: clamp(20px, 2vw, 30px);
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 15px 0;
+}
+
+.Login_card form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.Login_card form > * {
+  margin: 10px 0;
+}
+
+@media (max-width: 991.98px) {
+  .Login_card form > * {
+    margin: 8px 0;
   }
+}
+
+.have_account {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.have_account p {
+  margin: 0;
+  margin-right: 10px;
+  text-transform: capitalize;
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+.have_account a {
+  color: #a27d5b;
+  font-weight: bold;
+  font-size: clamp(13px, 2vw, 15px);
+}
+
+.have_account button {
+  background-color: transparent;
+  border: none;
+  color: #a27d5b;
+  font-weight: bold;
+  font-size: clamp(13px, 2vw, 15px);
+  margin: 0;
+  padding: 0;
+}
+
+.checkFormik {
+  display: flex;
+}
+
+.checkFormik label {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+@media (max-width: 991.98px) {
+  .checkFormik label {
+    font-size: 14px;
+  }
+}
+
 .checkFormik a {
   color: var(--main_color);
   font-weight: 500;
 }
-  @media (max-width: 767.98px) {
-    .Image_bottom_left {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        bottom: 0;
-        left: -25px;
-        display: none;
-    }
-    .Image_top_left {
-        display: none;
-    }
-    .Image_bottom_right {
-        display: none;
-    }
-   .Login_card {
-    width: 90%;
-    padding: 20px ;
-   }
-   .Login {
-    margin: 20px auto;
-    min-height: 70vh;
-   }
-   .Login_card form {
-    width: 100%;
-   }
+
+@media (max-width: 767.98px) {
+  .Image_bottom_left {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    bottom: 0;
+    left: -25px;
+    display: none;
   }
 
+  .Image_top_left {
+    display: none;
+  }
 
+  .Image_bottom_right {
+    display: none;
+  }
+
+  .Login_card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .Login_card form {
+    width: 100%;
+  }
+}

@@ -1,4 +1,4 @@
-import styles from "@/styles/Profile.module.css";
+import styles from "@/styles/Profile.module.scss";
 import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { useTranslation } from "react-i18next";
@@ -32,42 +32,50 @@ const PaymetProgram = ({ Lang }) => {
   };
 
   const AmountBody = (rowData) => {
-    return <div className="text-center">
-      {rowData.amount}$
-      {/* {rowData.amount / 100}$ */}
-      
-      
-      </div>;
+    return (
+      <div className="text-center">
+        {rowData.amount}${/* {rowData.amount / 100}$ */}
+      </div>
+    );
   };
   return (
     <LangWrap Lang={Lang}>
-      <div className="container-xxl">
-        <div
-          className={`${styles.profile} ${styles.Tabel}`}
-          style={{
-            direction: Lang === "ar" ? "rtl" : "ltr",
-          }}
-        >
-          <h2>{t("payment.title")}</h2>
-          {products && (
-            <DataTable
-              value={products}
-              tableStyle={{ minWidth: "50rem", marginTop: "20px" }}
+      <div className={"inner_section_outer"}>
+        <div className={styles.payment_section}>
+          <div className="container">
+            <div
+              className={`${styles.profile} ${styles.Tabel}`}
+              style={{
+                direction: Lang === "ar" ? "rtl" : "ltr",
+              }}
             >
-              <Column field="userId" header={t("payment.userId")}></Column>
-              <Column
-                field="courseId"
-                header={t("payment.courseId")}
-                body={CouserBody}
-              ></Column>
-              <Column
-                field="amount"
-                header={t("payment.amount")}
-                body={AmountBody}
-              ></Column>
-              <Column field="stripeId" header={t("payment.stripeId")}></Column>
-            </DataTable>
-          )}
+              <div className={"tleWrap"}>
+                <div className="mTle">{t("payment.title")}</div>
+              </div>
+              {products && (
+                <DataTable
+                  value={products}
+                  tableStyle={{ minWidth: "50rem", marginTop: "20px" }}
+                >
+                  <Column field="userId" header={t("payment.userId")}></Column>
+                  <Column
+                    field="courseId"
+                    header={t("payment.courseId")}
+                    body={CouserBody}
+                  ></Column>
+                  <Column
+                    field="amount"
+                    header={t("payment.amount")}
+                    body={AmountBody}
+                  ></Column>
+                  <Column
+                    field="stripeId"
+                    header={t("payment.stripeId")}
+                  ></Column>
+                </DataTable>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </LangWrap>

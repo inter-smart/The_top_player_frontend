@@ -28,24 +28,38 @@ const SocialMedia = ({ to }) => {
       setShow(true);
     }
   }, [router.pathname]);
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className={styles.SocialIcons}>
       {show && (
         <ul>
           <li>
             <span>
-              <Link
+              {/* <Link
                 href={`${to}`}
                 title="scroll to top"
                 className={height ? styles.activeTop : ""}
               >
                 <AiOutlineArrowUp />
-              </Link>
+              </Link> */}
+              <div
+                title="scroll to top"
+                className={height ? `${styles["activeTop"]} ${styles["scrollBtn"]}` : styles.scrollBtn}
+                onClick={goToTop}
+              >
+                <AiOutlineArrowUp />
+              </div>
             </span>
           </li>
           <li>
             <span>
               <a
+                style={{ textDecoration: "none" }}
                 aria-label="our whatsapp number"
                 href={`https://api.whatsapp.com/send/?phone=971501225632&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%2C+%D8%B9%D9%86%D8%AF%D9%8A+%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1+%D8%A8%D8%AE%D8%B5%D9%88%D8%B5&type=phone_number&app_absent=0`}
                 target="_blank"

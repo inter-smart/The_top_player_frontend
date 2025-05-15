@@ -1,27 +1,29 @@
 .share {
-    padding: 10px;
+  padding: 10px;
 }
-.icons  button{
-    margin: 5px;
+.icons button {
+  margin: 5px;
 }
 .SocialIcons {
-    position: fixed;
-    bottom: 50px;
-    right: 2%;
-    z-index: 99;
+  position: fixed;
+  bottom: 50px;
+  right: 2%;
+  z-index: 99;
 }
 .SocialIcons ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
-.SocialIcons ul a {
+.SocialIcons ul a,
+.scrollBtn {
   /* padding: 10px; */
   border-radius: 50%;
   margin-bottom: 10px;
-  background-color:#202020;
+  background-color: #202020;
   /* background-color:#303441; */
   width: 45px;
   height: 45px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +35,8 @@
   -o-transition: 0.3s;
 }
 
-.SocialIcons ul li:nth-of-type(1) a {
+.SocialIcons ul li:nth-of-type(1) a,
+.scrollBtn {
   transform: translateX(100px);
   -webkit-transform: translateX(100px);
   -moz-transform: translateX(100px);
@@ -47,12 +50,12 @@
   -ms-transform: translateX(0) !important;
   -o-transform: translateX(0) !important;
 }
-.SocialIcons ul li:nth-of-type(2) a{
+.SocialIcons ul li:nth-of-type(2) a {
   animation: animate 1.5s linear infinite;
   -webkit-animation: animate 1.5s linear infinite;
 }
 @keyframes animate {
-  0%{
+  0% {
     transform: translateX(0px) translateY(0px);
   }
   50% {
@@ -61,14 +64,48 @@
     -moz-transform: translateY(15px);
     -ms-transform: translateY(15px);
     -o-transform: translateY(15px);
-}
+  }
   100% {
     transform: translateX(0px) translateY(0px);
-
   }
 }
-.SocialIcons ul a svg {
-  font-size:26px;
+.SocialIcons ul a svg,
+.SocialIcons ul .scrollBtn svg {
+  font-size: 26px;
   /* font-size: clamp(22px, 4vw, 30px); */
-  color :white;
+  color: white;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.freeTrial {
+  position: fixed;
+  bottom: 30%;
+  right: 0;
+  z-index: 99;
+  color: var(--white_color);
+  background: var(--main_color);
+
+  animation: pulse 1.5s linear infinite;
+}
+
+.free_trial_text {
+  writing-mode: vertical-lr;
+  font-size: 11px;
+  padding: 15px 5px;
+  font-weight: 400;
+  letter-spacing: 2px;
 }

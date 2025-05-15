@@ -16,7 +16,7 @@ import LangWrap from "@/components/layouts/LangWarp";
 const UpdatePassword = ({ Lang }) => {
   const [disabel, setDisabed] = useState(false);
   // const [disabelResend, setDisabedResend] = useState(false);
-  // console.log(Lang)
+  // //console.log(Lang)
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -56,7 +56,7 @@ const UpdatePassword = ({ Lang }) => {
           })
           .catch((err) => {
             setDisabed(false);
-            // console.log(err.response.data.message)
+            // //console.log(err.response.data.message)
             if (err?.response?.data?.message) {
               EMptyInput(err.response.data.message);
             } else {
@@ -83,26 +83,22 @@ const UpdatePassword = ({ Lang }) => {
       // detail: formik.values.value,
     });
   };
-  const isFormFieldInvalid = (name) =>
-    !!(formik.touched[name] && formik.errors[name]);
+  const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
 
   const getFormErrorMessage = (name) => {
-    return isFormFieldInvalid(name) ? (
-      <small className="p-error">{formik.errors[name]}</small>
-    ) : (
-      <small className="p-error">&nbsp;</small>
-    );
+    return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : "";
   };
 
   return (
     <LangWrap Lang={Lang}>
+      <Toast ref={toast} />
+
       <div
         className={styles.Login}
         style={{
           direction: Lang === "ar" ? "rtl" : "ltr",
         }}
       >
-        <Toast ref={toast} />
         <div className={styles.Login_card}>
           <h1>{t("auth.change_pass")}</h1>
 
@@ -155,7 +151,7 @@ const UpdatePassword = ({ Lang }) => {
             >
               {t("auth.send")}
             </button>
-            
+
             <div className={styles.have_account}>
               <p
                 style={{
@@ -164,8 +160,8 @@ const UpdatePassword = ({ Lang }) => {
                 }}
               >
                 {t("auth.forget")}
+                <Link href={`/${Lang}/user/forget`} style={{textDecoration:"none"}}>{t("auth.change")}</Link>
               </p>
-              <Link href={`/${Lang}/admin/forget`}>{t("auth.change")}</Link>
             </div>
           </form>
         </div>

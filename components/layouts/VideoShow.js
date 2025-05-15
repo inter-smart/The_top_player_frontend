@@ -20,15 +20,32 @@ import {
   TimeDivider,
   VolumeMenuButton,
   FullscreenToggle,
+  BigPlayButton,
 } from "video-react";
 import Image from "next/image";
-const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseId, type, video_key, video_name, next_name, next_id, key, video_image, day_time }) => {
-  // console.log(
-  //   `2 => Lang : ${Lang} - type: ${type} - week : ${week_id} -  day : ${day_id} - courseId: ${courseId} - subCourseId : ${subCourseId} - videId : ${video_id}`
-  // );
-  // console.log(`3 => video_key : ${video_key + 1} - list: ${list} `);
-  // console.log(`3 => cuurent_video : ${video_key} - list: ${next_id} `);
+import { ZIndexUtils } from "primereact/utils";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+const VideoShow = ({
+  video_id,
+  courseId,
+  list,
+  Lang,
+  week_id,
+  day_id,
+  subCourseId,
+  type,
+  video_key,
+  video_name,
+  next_name,
+  next_id,
+  key,
+  video_image,
+  day_time,
+}) => {
+  //console.log(`3 => video_key : ${video_key + 1} - list: ${list} `);
+  //console.log(`3 => cuurent_video : ${video_key} - list: ${next_id} `);
   const dispatch = useDispatch();
+  const handle = useFullScreenHandle();
   // const router = useRouter();
   const { t } = useTranslation();
   // const [nextBtn, setNextBtn] = useState(false);
@@ -48,6 +65,83 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
 
   const videoRef = useRef(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      const { paused } = videoRef.current.getState().player;
+      paused ? videoRef.current.play() : videoRef.current.pause();
+    }
+  };
+
+
+  // NEW FULLSCREEN CHECKING CODE
+  document.addEventListener("fullscreenchange", onFullScreenChange);
+  document.addEventListener("webkitfullscreenchange", onFullScreenChange); // For Safari
+  document.addEventListener("mozfullscreenchange", onFullScreenChange); // For Firefox
+  document.addEventListener("MSFullscreenChange", onFullScreenChange); // For IE/Edge
+
+  function onFullScreenChange() {
+    if (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    ) {
+      document.body.style.overflow = "hidden";
+      // Add your logic here for when the player enters full-screen mode
+    } else {
+      document.body.style.overflow = "unset";
+      // Add your logic here for when the player exits full-screen mode
+    }
+  }
+
+  // Optionally, you can check the initial state
+  function isFullScreen() {
+    return (
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    );
+  }
+
+  if (isFullScreen()) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
+
+  // useEffect(() => {
+  //   const video = videoRef.current;
+  //   const handleFullscreenChange = () => {
+  //     setIsFullscreen(videoRef?.current?.getState()?.player?.isFullscreen);
+  //     if (videoRef?.current?.getState()?.player?.isFullscreen) {
+  //       // //console.log("hidden");
+  //       document.body.style.overflow = "hidden";
+  //       document.body.style.overflow = "hidden";
+  //       handle.enter
+  //       //console.log(handle.active);
+  //     } else {
+  //       //console.log("visible");
+  //       // //console.log("unset");
+  //       document.body.style.overflow = "unset";
+  //       document.body.style.overflow = "unset";
+  //       handle.exit
+  //     }
+  //   };
+
+  //   document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+  //   document.addEventListener("mozfullscreenchange", handleFullscreenChange);
+  //   document.addEventListener("MSFullscreenChange", handleFullscreenChange);
+  //   document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+  //   return () => {
+  //     document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  //     document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
+  //     document.removeEventListener("mozfullscreenchange", handleFullscreenChange);
+  //     document.removeEventListener("MSFullscreenChange", handleFullscreenChange);
+  //   };
+  // }, [videoRef]);
 
   // useEffect(() => {
   //   const video = videoRef.current;
@@ -82,7 +176,7 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
   //     video.removeEventListener('MSFullscreenChange', handleFullscreenChange);
   //   };
   // }, []);
-  // console.log(video_id)
+  // //console.log(video_id)
 
   const { user_info } = useSelector((state) => state.AuthSlice);
 
@@ -92,7 +186,7 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
     }
   }, [user_info, dispatch]);
 
-  // console.log(user_info);
+  // //console.log(user_info);
   // const togglePlay = () => {
   //   if (videoRef.current.paused) {
   //     videoRef.current.play();
@@ -105,7 +199,6 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
 
   // const [videoPlay, setVideoPlay] = useState(false);
   // const playerRef = useRef(null);
-  console.log(day_time);
   const handleVideoEnded = () => {
     if (list === video_key + 1 && parseInt(day_time) === 0) {
       setDialogVisible(true);
@@ -121,6 +214,7 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
               courseId: courseId,
               subCourseId: subCourseId,
               day: day_id,
+              week: week_id,
             };
             dispatch(videos_in_days(all));
           });
@@ -136,54 +230,92 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
             courseId: courseId,
             subCourseId: subCourseId,
             day: day_id,
+            week: week_id,
           };
           dispatch(videos_in_days(all));
         });
     }
   };
+
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      body:has(>* .video-react-fullscreen) {
+        overflow: hidden !important;
+      }
+    `;
+    // Append the style to the head
+    document.head.appendChild(style);
+
+    // Cleanup function to remove the style when the component unmounts
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []); // Empty dependency array to run once on mount
+
+
   return (
-    <div className="video_relative">
-      <Player fluid poster={video_image} playsInline={true} key={key} onEnded={handleVideoEnded}>
-        <source
-          src={`${process.env.customKey}/video/${video_id}/${courseId}/${Cookies.get("UT")}`}
-          // onEnded={() => {
+    // <FullScreen handle={handle}>
+      <div className="video_relative">
+        <Player
+          ref={videoRef}
+          fluid
+          poster={video_image}
+          playsInline={true}
+          key={key}
+          onEnded={handleVideoEnded}
+        >
+          <source
+            src={`${
+              process.env.customKey
+            }/video/${video_id}/${courseId}/${Cookies.get("UT")}`}
+            // onEnded={() => {
 
-          // }}
-        />
-        {/* <source src="http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4" /> */}
+            // }}
+          />
+          {/* <source src="http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4" /> */}
 
-        <ControlBar>
-          {/* <PlayToggle onClick={handlePlayPause} /> */}
-          {/* <SeekBar />  */}
-          <FullscreenToggle className="ToogelFull" />
-          <ReplayControl seconds={10} order={1.1} />
-          <ForwardControl seconds={10} order={1.2} />
-          <CurrentTimeDisplay order={4.1} />
-          <TimeDivider order={4.2} />
-          <PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} order={7.1} />
-          <VolumeMenuButton disabled={false} />
-        </ControlBar>
+          <ControlBar>
+            <BigPlayButton position="center" />
+            <FullscreenToggle />
+            <ReplayControl seconds={10} order={1.1} />
+            <ForwardControl seconds={10} order={1.2} />
+            <CurrentTimeDisplay order={4.1} />
+            <TimeDivider order={4.2} />
+            <PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} order={7.1} />
+            <VolumeMenuButton disabled={false} />
+          </ControlBar>
 
-        {/* <Player onEnded={handleVideoEnded} /> */}
+          {/* <Player onEnded={handleVideoEnded} /> */}
 
-        <div className={`watermark`} style={{ fontSize: "16px" }}>
-          {/* {user_info?.username}
-      <br /> */}
+          {/* <div className={`watermark`} style={{ fontSize: "16px" }}>
           User ID: {user_info?.id}
-        </div>
-
-        <div className={`watermark-logo`} style={{ fontSize: "20px" }}>
-          <Image src={"/ms-icon-70x70.png"} alt="icon" objectFit="contain" width={70} height={70} />
-        </div>
-      </Player>
-      {/* <div
+        </div> */}
+          <div
+            className={`watermark-logo`}
+            style={{ fontSize: "20px", cursor: "pointer" }}
+            onClick={togglePlayPause}
+          >
+            {/* <Image src={"/ms-icon-70x70.png"} alt="icon" objectFit="contain" width={70} height={70} /> */}
+            <Image
+              src={"/images/logo-light.svg"}
+              objectFit={"contain"}
+              alt={"logo"}
+              priority
+              width={150}
+              height={50}
+            />
+            <p>User ID: {user_info?.id}</p>
+          </div>
+        </Player>
+        {/* <div
         className={` text-center ${
           isFullscreen ? "watermark_full" : "watermark"
         }`}
       >
        User ID: {user_info?.id}
       </div> */}
-      {/* <ReactPlayer
+        {/* <ReactPlayer
         className="test_video"
         pip={false}
         key={key}
@@ -243,7 +375,7 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
           }
         }}
       /> */}
-      {/* <video
+        {/* <video
         // onDoubleClick={(e) => {
         //   e.preventDefault();
         //   e.stopPropagation();
@@ -306,7 +438,7 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
           type="video/mp4"
         />
       </video> */}
-      {/* {list !== video_key + 1 && nextBtn && (
+        {/* {list !== video_key + 1 && nextBtn && (
         <Link
           className={"Next_video"}
           href={`/${Lang}/user/programs/${type}/${week_id}/${day_id}/${courseId}/${subCourseId}/${next_id}/${next_name}`}
@@ -314,27 +446,29 @@ const VideoShow = ({ video_id, courseId, list, Lang, week_id, day_id, subCourseI
           {t("vidoe.next")}
         </Link>
       )} */}
-      <Dialog
-        visible={DialogVisable}
-        className="Dialog_content"
-        onHide={() => {
-          setDialogVisible(false);
-        }}
-      >
-        <div className={"cup"}>
-          <GiTrophyCup />
-        </div>
-
-        <h2
-          className="text-center cup_text"
-          style={{
-            direction: Lang === "ar" ? "rtl" : "ltr",
+        <Dialog
+          visible={DialogVisable}
+          className="Dialog_content"
+          onHide={() => {
+            setDialogVisible(false);
           }}
         >
-          {t("vidoe.congrats1")} <span className="En_num2">{week_id}!</span> {t("vidoe.congrats2")}
-        </h2>
-      </Dialog>
-    </div>
+          <div className={"cup"}>
+            <GiTrophyCup />
+          </div>
+
+          <h2
+            className="text-center cup_text"
+            style={{
+              direction: Lang === "ar" ? "rtl" : "ltr",
+            }}
+          >
+            {t("vidoe.congrats1")} <span className="En_num2">{week_id}!</span>{" "}
+            {t("vidoe.congrats2")}
+          </h2>
+        </Dialog>
+      </div>
+    // </FullScreen>
   );
 };
 

@@ -1,4 +1,4 @@
-import styles from "@/styles/Profile.module.css";
+import styles from "@/styles/Profile.module.scss";
 // import Image from "next/legacy/image";
 import { useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
@@ -19,7 +19,7 @@ const Profile = ({ Lang }) => {
       F_name: "",
       phone: "",
       message: "",
-      email:""
+      email: "",
     },
     validate: (data) => {
       let errors = {};
@@ -49,7 +49,7 @@ const Profile = ({ Lang }) => {
             formik.resetForm();
           })
           .catch((err) => {
-            // console.log(err.response.data.message)
+            // //console.log(err.response.data.message)
             if (err?.response?.data?.message) {
               EMptyInput(err.response.data.message);
             } else {
@@ -68,7 +68,7 @@ const Profile = ({ Lang }) => {
     return isFormFieldInvalid(name) ? (
       <small className="p-error">{formik.errors[name]}</small>
     ) : (
-      <small className="p-error">&nbsp;</small>
+      ""
     );
   };
   const router = useRouter();
@@ -108,85 +108,97 @@ const Profile = ({ Lang }) => {
   };
   return (
     <LangWrap Lang={Lang}>
-      <div className="container-xxl ">
-      <Toast ref={toast} />
-      <div
-        className={styles.profile}
-        style={{
-          direction: Lang === "ar" ? "rtl" : "ltr",
-        }}
-      >
-        <h2>{t("auth.basic_information")}</h2>
+      <div className={"inner_section_outer"}>
+        <div className={styles.profile_section}>
+          <div className="container ">
+            <Toast ref={toast} />
+            <div
+              className={styles.profile_box}
+              style={{
+                direction: Lang === "ar" ? "rtl" : "ltr",
+              }}
+            >
+              <div className={"tleWrap"}>
+                <div className="mTle">{t("auth.basic_information")}</div>
+              </div>
+              <form onSubmit={formik.handleSubmit} className={styles.formWrap}>
+                <div className={`${styles.formRow} row`}>
+                  <div className="col-md-4">
+                    <div className="inputFormik">
+                      <label htmlFor="F_name"> {t("auth.name")}</label>
+                      <InputText
+                        name="F_name"
+                        className={classNames({
+                          "p-invalid": isFormFieldInvalid("F_name"),
+                        })}
+                        value={formik.values.F_name}
+                        onChange={(e) => {
+                          formik.setFieldValue("F_name", e.target.value);
+                        }}
+                      />
+                      {getFormErrorMessage("F_name")}
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <div className="inputFormik">
+                      <label htmlFor="Email"> {t("auth.email")}</label>
+                      <InputText
+                        name="email"
+                        value={formik.values.email}
+                        disabled
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <div className="inputFormik">
+                      <label htmlFor="phone">{t("auth.mobile")} </label>
+                      <InputText
+                        name="phone"
+                        className={classNames({
+                          "p-invalid": isFormFieldInvalid("phone"),
+                        })}
+                        value={formik.values.phone}
+                        onChange={(e) => {
+                          formik.setFieldValue("phone", e.target.value);
+                        }}
+                      />
+                      {getFormErrorMessage("phone")}
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="inputFormik">
+                      <label htmlFor="email">{t("auth.about")} </label>
 
-        <form onSubmit={formik.handleSubmit} className="row  contact">
-          
-        <div className="col-md-4">
-            <div className="inputFormik">
-              <label htmlFor="F_name"> {t("auth.name")}</label>
-              <InputText
-                name="F_name"
-                className={classNames({
-                  "p-invalid": isFormFieldInvalid("F_name"),
-                })}
-                value={formik.values.F_name}
-                onChange={(e) => {
-                  formik.setFieldValue("F_name", e.target.value);
-                }}
-              />
-              {getFormErrorMessage("F_name")}
+                      <InputTextarea
+                        name="message"
+                        className={classNames({
+                          "p-invalid": isFormFieldInvalid("message"),
+                        })}
+                        value={formik.values.message}
+                        onChange={(e) => {
+                          formik.setFieldValue("message", e.target.value);
+                        }}
+                        rows={5}
+                        cols={10}
+                      />
+                      {getFormErrorMessage("message")}
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <button
+                      name="login"
+                      type="submit"
+                      className={`${styles.submit_button} submit-button`}
+                    >
+                      {t("auth.send")}
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="inputFormik">
-              <label htmlFor="Email"> {t("auth.email")}</label>
-              <InputText
-                name="email"
-                value={formik.values.email}
-                disabled
-              />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="inputFormik">
-              <label htmlFor="phone">{t("auth.mobile")} </label>
-              <InputText
-                name="phone"
-                className={classNames({
-                  "p-invalid": isFormFieldInvalid("phone"),
-                })}
-                value={formik.values.phone}
-                onChange={(e) => {
-                  formik.setFieldValue("phone", e.target.value);
-                }}
-              />
-              {getFormErrorMessage("phone")}
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="inputFormik">
-              <label htmlFor="email">{t("auth.about")} </label>
-
-              <InputTextarea
-                name="message"
-                className={classNames({
-                  "p-invalid": isFormFieldInvalid("message"),
-                })}
-                value={formik.values.message}
-                onChange={(e) => {
-                  formik.setFieldValue("message", e.target.value);
-                }}
-                rows={5}
-                cols={10}
-              />
-              {getFormErrorMessage("message")}
-            </div>
-          </div>
-          <button name="login" type="submit" className="submit-button">
-            {t("auth.send")}
-          </button>
-        </form>
+        </div>
       </div>
-    </div>
     </LangWrap>
   );
 };

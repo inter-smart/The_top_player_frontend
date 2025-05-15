@@ -1,15 +1,9 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import stylesSass from "@/styles/Home.module.scss";
-// import Header from "@/components/Home/Header";
-// import Who from "@/components/Home/who";
-// import FAQs from "@/components/Home/FAQs";
-// import Program from "@/components/Home/Program";
-// import Suspense from "@/components/Home/Suspense";
-// import Contact from "@/components/Home/contact";
-// import LangChange from "@/components/layouts/LangChange";
 import dynamic from "next/dynamic";
 import LangWrap from "@/components/layouts/LangWarp";
+import axios from "axios";
 const LangChange = dynamic(() => import("@/components/layouts/LangChange"), {
   loading: () => <></>,
   ssr: false,
@@ -42,7 +36,7 @@ const FAQs = dynamic(() => import("@/components/Home/FAQs"), {
   loading: () => <></>,
   ssr: false,
 });
-export default function Home({ Lang }) {
+export default function Home({ Lang, MainBanner }) {
   return (
     <>
       <Head>
@@ -59,11 +53,13 @@ export default function Home({ Lang }) {
         />
         <meta property="og:url" content="https://thetopplayer.com/" />
         <meta property="og:site_name" content="The Top Player" />
+        <meta property="og:image" content="/LogoTP.png" />
+        <meta property="og:image:type" content="image/png" />
       </Head>
       <main>
         <LangWrap Lang={Lang.toLowerCase()}>
           <LangChange Lang={Lang.toLowerCase()}>
-            <Header styles={stylesSass} Lang={Lang.toLowerCase()} />
+            <Header styles={stylesSass} className={"sdkjbhd"} Lang={Lang.toLowerCase()} state={MainBanner[0]} />
             <Who styles={stylesSass} Lang={Lang.toLowerCase()} />
             <News styles={stylesSass} Lang={Lang.toLowerCase()} />
             <Program styles={styles} Lang={Lang.toLowerCase()} />
@@ -78,9 +74,23 @@ export default function Home({ Lang }) {
 }
 
 export async function getServerSideProps({ params }) {
+  const result = await axios
+    .get(`${process.env.customKey}/main_banner`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+    .then((res) => res.data)
+    .catch((err) => {
+      console.log(err);
+      return null;
+    });
+  // return result;
   return {
     props: {
       Lang: params.Lang,
+      MainBanner: result?.data || null,
     },
   };
 }
