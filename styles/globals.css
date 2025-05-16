@@ -312,34 +312,29 @@ body:has(> * .video-react-fullscreen) {
   font-size: 17px;
   line-height: 1;
   font-weight: 500;
-  text-decoration: underline;
+  text-transform: uppercase;
+  text-decoration: underline !important;
   text-underline-offset: 2px;
   color: var(--black_color);
   width: 100%;
   height: auto;
   margin: auto;
   transition: color 0.4s ease;
-  column-gap: 8px;
   display: flex;
   align-items: center;
+  column-gap: 8px;
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 1551.98px) {
   .vAllBtn {
-    font-size: 16px;
+    font-size: 12px;
+    column-gap: 6px;
   }
 }
 
 @media (max-width: 991.98px) {
   .vAllBtn {
-    font-size: 14px;
-    column-gap: 6px;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .vAllBtn {
-    font-size: 12px;
+    font-size: 10px;
     column-gap: 4px;
   }
 }
@@ -366,6 +361,12 @@ body:has(> * .video-react-fullscreen) {
 .vAllBtn .icon {
   width: 20px;
   height: 20px;
+}
+@media (max-width: 1551.98px) {
+  .vAllBtn .icon {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @media (max-width: 991.98px) {
@@ -663,7 +664,7 @@ body:has(> * .video-react-fullscreen) {
 .accordion-button {
   text-align: unset !important;
 }
-.accordion-button h6{
+.accordion-button h6 {
   text-align: unset !important;
 }
 
@@ -1837,7 +1838,10 @@ a {
   color: #f5ffffcc !important;
 }
 
-a, a:hover, a:focus, a:active {
+a,
+a:hover,
+a:focus,
+a:active {
   text-decoration: none;
   color: inherit;
 }

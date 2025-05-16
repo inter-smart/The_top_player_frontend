@@ -12,10 +12,10 @@ const nextConfig = {
     // customKey: "https://backend.thetopplayer.com/staging",
     // customKey: "https://crm.intersmarthosting.in/topplayer",
     // webDomain: "https://interregionall.vercel.app",
-    webDomain: "https://www.thetopplayer.com",
+    // webDomain: "https://www.thetopplayer.com",
     // webDomain: "https://the-top-player-frontend-2.onrender.com",
     // webDomain: "https://the-top-player-frontend-furjqjv5u-vaishnav-vijayan07s-projects.vercel.app/en",
-    // webDomain: "http://localhost:4000",
+    webDomain: "http://localhost:4000",
     tamraPublicKey: "a916b2ef-bb66-4e5b-84d9-5bbae98db825",
     // tamraPublicKey: "7aa51bac-f5b4-4896-991d-36fa7a0a1d66",//test
     // webDomain: "http://www.thetopplayer.com",
