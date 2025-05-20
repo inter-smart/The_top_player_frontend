@@ -59,7 +59,7 @@ export default function Home({ Lang, MainBanner }) {
       <main>
         <LangWrap Lang={Lang.toLowerCase()}>
           <LangChange Lang={Lang.toLowerCase()}>
-            <Header styles={stylesSass} className={"sdkjbhd"} Lang={Lang.toLowerCase()} state={MainBanner[0]} />
+            <Header styles={stylesSass} className={"sdkjbhd"} Lang={Lang.toLowerCase()} state={MainBanner?.[0]} />
             <Who styles={stylesSass} Lang={Lang.toLowerCase()} />
             <Program styles={styles} Lang={Lang.toLowerCase()} />
             <Suspense styles={styles} Lang={Lang.toLowerCase()} />
