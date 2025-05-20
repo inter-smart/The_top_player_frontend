@@ -85,19 +85,19 @@ const News = ({ styles, Lang }) => {
               // autoplay: false,
             },
             480: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               spaceBetween: 10,
             },
             640: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 15,
             },
             992: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 20,
             },
             1551: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 25,
             },
           }}
