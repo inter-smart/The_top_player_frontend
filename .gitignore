@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+.next
+.firebase
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -35,3 +37,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local Netlify folder
+.netlify

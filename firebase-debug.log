@@ -1,0 +1,800 @@
+[debug] [2024-04-18T07:02:40.552Z] ----------------------------------------------------------------------
+[debug] [2024-04-18T07:02:40.556Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-04-18T07:02:40.557Z] CLI Version:   13.7.3
+[debug] [2024-04-18T07:02:40.557Z] Platform:      win32
+[debug] [2024-04-18T07:02:40.558Z] Node Version:  v20.12.0
+[debug] [2024-04-18T07:02:40.558Z] Time:          Thu Apr 18 2024 12:32:40 GMT+0530 (India Standard Time)
+[debug] [2024-04-18T07:02:40.558Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-18T07:02:40.675Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-18T07:02:40.676Z] > authorizing via signed-in user (intersmartmobility@gmail.com)
+[debug] [2024-04-18T07:02:40.676Z] [iam] checking project thetopplayer-a2551 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-04-18T07:02:40.679Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions [none]
+[debug] [2024-04-18T07:02:40.679Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions x-goog-quota-user=projects/thetopplayer-a2551
+[debug] [2024-04-18T07:02:40.679Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T07:02:42.295Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions 200
+[debug] [2024-04-18T07:02:42.296Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T07:02:42.298Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:02:42.869Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 200
+[debug] [2024-04-18T07:02:42.869Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 {"projectId":"thetopplayer-a2551","projectNumber":"291860030504","displayName":"thetopplayer","name":"projects/thetopplayer-a2551","resources":{"hostingSite":"thetopplayer-a2551"},"state":"ACTIVE","etag":"1_6ab19104-5e1b-4f52-add2-1968b971a25a"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-04-18T07:02:58.510Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:02:59.769Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T07:02:59.770Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[info]    Linting and checking validity of types ...
+
+[info]    ▲ Next.js 14.0.4
+
+[info] 
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Collecting page data ...
+
+[info] Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+
+[info] Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
+
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (pages)                                                                                Size     First Load JS
+┌   /_app                                                                                    0 B             144 kB
+├ λ /[Lang]                                                                                  2.19 kB         147 kB
+├   └ css/878fa92690c17e5a.css                                                               4.17 kB
+├ λ /[Lang]/admin/change                                                                     1.59 kB         209 kB
+├ λ /[Lang]/admin/change/[token_id]                                                          691 B           145 kB
+├ λ /[Lang]/admin/confrim                                                                    403 B           145 kB
+├ λ /[Lang]/admin/forget                                                                     1.51 kB         203 kB
+├ λ /[Lang]/admin/login                                                                      1.87 kB         223 kB
+├ λ /[Lang]/admin/sign-verify                                                                1.52 kB         200 kB
+├ λ /[Lang]/admin/signup                                                                     49.1 kB         267 kB
+├ λ /[Lang]/admin/verification/[token_id]                                                    697 B           145 kB
+├ λ /[Lang]/admin/waitchange                                                                 380 B           145 kB
+├ λ /[Lang]/error-handel/[text]                                                              567 B           145 kB
+├ λ /[Lang]/terms                                                                            15.9 kB         160 kB
+├ λ /[Lang]/user/payment-program                                                             72.4 kB         248 kB
+├ λ /[Lang]/user/payment/[course_id]                                                         7.69 kB         194 kB
+├ λ /[Lang]/user/payment/confirm/[course_id]                                                 645 B           145 kB
+├ λ /[Lang]/user/profile                                                                     3.38 kB         202 kB
+├ λ /[Lang]/user/programs                                                                    2 kB            150 kB
+├   └ css/20a18f71bd91695d.css                                                               2.44 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]                       2.3 kB          151 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]  1.72 kB         146 kB
+├ λ /[Lang]/user/programs/details/[programs_id]                                              3.07 kB         153 kB
+├ λ /[Lang]/user/programs/details/[programs_id]/sub/[sub]                                    2.45 kB         152 kB
+├ λ /[Lang]/user/update-password                                                             1.56 kB         208 kB
+├ λ /404                                                                                     446 B           148 kB
+└ λ /500                                                                                     405 B           148 kB
++ First Load JS shared by all                                                                214 kB
+  ├ chunks/framework-92a422f151f77ddb.js                                                     45.2 kB
+  ├ chunks/main-de01019092fb3d4a.js                                                          31.8 kB
+  ├ chunks/pages/_app-5c7ebe4a4781355b.js                                                    64.6 kB
+  ├ chunks/webpack-95f8e8f1a7a53762.js                                                       2.85 kB
+  └ css/1025238149a46641.css                                                                 69.7 kB
+
+ƒ Middleware                                                                                 50.3 kB
+
+[info] 
+λ  (Dynamic)  server-rendered on demand using Node.js
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • middleware
+[info]  • Image Optimization
+[info]  • non-static route /404
+[info]  • non-static route /500
+[info]  • non-static route /[Lang]/admin/confrim
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/waitchange
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/terms
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/change/[token_id]
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/forget
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/sign-verify
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/change
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/verification/[token_id]
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/error-handel/[text]
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/login
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]/admin/signup
+[debug] [2024-04-18T07:04:23.832Z]  • non-static route /[Lang]
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/payment/confirm/[course_id]
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/payment-program
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/profile
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/programs
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/payment/[course_id]
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/update-password
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/programs/details/[programs_id]
+[debug] [2024-04-18T07:04:23.833Z]  • non-static route /[Lang]/user/programs/details/[programs_id]/sub/[sub]
+[info]  • and 21 other reasons, use --debug to see more
+[info] 
+[debug] [2024-04-18T07:04:34.186Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:04:35.270Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T07:04:35.271Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[debug] [2024-04-18T07:04:35.703Z] Error: Source and destination must not be the same.
+    at C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\util\stat.js:49:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-04-18T07:05:03.263Z] ----------------------------------------------------------------------
+[debug] [2024-04-18T07:05:03.267Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug
+[debug] [2024-04-18T07:05:03.268Z] CLI Version:   13.7.3
+[debug] [2024-04-18T07:05:03.268Z] Platform:      win32
+[debug] [2024-04-18T07:05:03.268Z] Node Version:  v20.12.0
+[debug] [2024-04-18T07:05:03.268Z] Time:          Thu Apr 18 2024 12:35:03 GMT+0530 (India Standard Time)
+[debug] [2024-04-18T07:05:03.269Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-18T07:05:03.392Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-18T07:05:03.395Z] > authorizing via signed-in user (intersmartmobility@gmail.com)
+[debug] [2024-04-18T07:05:03.395Z] [iam] checking project thetopplayer-a2551 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-04-18T07:05:03.400Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions [none]
+[debug] [2024-04-18T07:05:03.401Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions x-goog-quota-user=projects/thetopplayer-a2551
+[debug] [2024-04-18T07:05:03.402Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T07:05:03.980Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions 200
+[debug] [2024-04-18T07:05:03.981Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T07:05:03.984Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:05:04.504Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 200
+[debug] [2024-04-18T07:05:04.505Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 {"projectId":"thetopplayer-a2551","projectNumber":"291860030504","displayName":"thetopplayer","name":"projects/thetopplayer-a2551","resources":{"hostingSite":"thetopplayer-a2551"},"state":"ACTIVE","etag":"1_6ab19104-5e1b-4f52-add2-1968b971a25a"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-04-18T07:05:20.347Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:05:21.605Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T07:05:21.606Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[info]    Linting and checking validity of types ...
+
+[info]    ▲ Next.js 14.0.4
+
+[info] 
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Collecting page data ...
+
+[info] Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+
+[info] Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
+
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (pages)                                                                                Size     First Load JS
+┌   /_app                                                                                    0 B             144 kB
+├ λ /[Lang]                                                                                  2.19 kB         147 kB
+├   └ css/878fa92690c17e5a.css                                                               4.17 kB
+├ λ /[Lang]/admin/change                                                                     1.59 kB         209 kB
+├ λ /[Lang]/admin/change/[token_id]                                                          691 B           145 kB
+├ λ /[Lang]/admin/confrim                                                                    403 B           145 kB
+├ λ /[Lang]/admin/forget                                                                     1.51 kB         203 kB
+├ λ /[Lang]/admin/login                                                                      1.87 kB         223 kB
+├ λ /[Lang]/admin/sign-verify                                                                1.52 kB         200 kB
+├ λ /[Lang]/admin/signup                                                                     49.1 kB         267 kB
+├ λ /[Lang]/admin/verification/[token_id]                                                    697 B           145 kB
+├ λ /[Lang]/admin/waitchange                                                                 380 B           145 kB
+├ λ /[Lang]/error-handel/[text]                                                              567 B           145 kB
+├ λ /[Lang]/terms                                                                            15.9 kB         160 kB
+├ λ /[Lang]/user/payment-program                                                             72.4 kB         248 kB
+├ λ /[Lang]/user/payment/[course_id]                                                         7.69 kB         194 kB
+├ λ /[Lang]/user/payment/confirm/[course_id]                                                 645 B           145 kB
+├ λ /[Lang]/user/profile                                                                     3.38 kB         202 kB
+├ λ /[Lang]/user/programs                                                                    2 kB            150 kB
+├   └ css/20a18f71bd91695d.css                                                               2.44 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]                       2.3 kB          151 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]  1.72 kB         146 kB
+├ λ /[Lang]/user/programs/details/[programs_id]                                              3.07 kB         153 kB
+├ λ /[Lang]/user/programs/details/[programs_id]/sub/[sub]                                    2.45 kB         152 kB
+├ λ /[Lang]/user/update-password                                                             1.56 kB         208 kB
+├ λ /404                                                                                     446 B           148 kB
+└ λ /500                                                                                     405 B           148 kB
++ First Load JS shared by all                                                                214 kB
+  ├ chunks/framework-92a422f151f77ddb.js                                                     45.2 kB
+  ├ chunks/main-de01019092fb3d4a.js                                                          31.8 kB
+  ├ chunks/pages/_app-5c7ebe4a4781355b.js                                                    64.6 kB
+  ├ chunks/webpack-95f8e8f1a7a53762.js                                                       2.85 kB
+  └ css/1025238149a46641.css                                                                 69.7 kB
+
+ƒ Middleware                                                                                 50.3 kB
+
+[info] 
+λ  (Dynamic)  server-rendered on demand using Node.js
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • middleware
+[info]  • Image Optimization
+[info]  • non-static route /404
+[info]  • non-static route /500
+[info]  • non-static route /[Lang]/admin/confrim
+[debug] [2024-04-18T07:06:07.998Z]  • non-static route /[Lang]/admin/waitchange
+[debug] [2024-04-18T07:06:07.998Z]  • non-static route /[Lang]/terms
+[debug] [2024-04-18T07:06:07.998Z]  • non-static route /[Lang]/admin/change/[token_id]
+[debug] [2024-04-18T07:06:07.999Z]  • non-static route /[Lang]/admin/forget
+[debug] [2024-04-18T07:06:07.999Z]  • non-static route /[Lang]/admin/change
+[debug] [2024-04-18T07:06:07.999Z]  • non-static route /[Lang]/admin/verification/[token_id]
+[debug] [2024-04-18T07:06:08.000Z]  • non-static route /[Lang]/admin/sign-verify
+[debug] [2024-04-18T07:06:08.000Z]  • non-static route /[Lang]/error-handel/[text]
+[debug] [2024-04-18T07:06:08.000Z]  • non-static route /[Lang]/admin/login
+[debug] [2024-04-18T07:06:08.000Z]  • non-static route /[Lang]
+[debug] [2024-04-18T07:06:08.001Z]  • non-static route /[Lang]/admin/signup
+[debug] [2024-04-18T07:06:08.001Z]  • non-static route /[Lang]/user/payment/confirm/[course_id]
+[debug] [2024-04-18T07:06:08.001Z]  • non-static route /[Lang]/user/payment-program
+[debug] [2024-04-18T07:06:08.001Z]  • non-static route /[Lang]/user/payment/[course_id]
+[debug] [2024-04-18T07:06:08.001Z]  • non-static route /[Lang]/user/profile
+[debug] [2024-04-18T07:06:08.002Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]
+[debug] [2024-04-18T07:06:08.002Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]
+[debug] [2024-04-18T07:06:08.002Z]  • non-static route /[Lang]/user/update-password
+[debug] [2024-04-18T07:06:08.002Z]  • non-static route /[Lang]/user/programs
+[debug] [2024-04-18T07:06:08.003Z]  • non-static route /[Lang]/user/programs/details/[programs_id]
+[debug] [2024-04-18T07:06:08.003Z]  • non-static route /[Lang]/user/programs/details/[programs_id]/sub/[sub]
+[info] 
+[debug] [2024-04-18T07:06:19.670Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:06:20.763Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T07:06:20.763Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[debug] [2024-04-18T07:06:21.245Z] Error: Source and destination must not be the same.
+    at C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\util\stat.js:49:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-04-18T07:28:35.647Z] ----------------------------------------------------------------------
+[debug] [2024-04-18T07:28:35.651Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-04-18T07:28:35.652Z] CLI Version:   13.7.3
+[debug] [2024-04-18T07:28:35.652Z] Platform:      win32
+[debug] [2024-04-18T07:28:35.653Z] Node Version:  v20.12.0
+[debug] [2024-04-18T07:28:35.653Z] Time:          Thu Apr 18 2024 12:58:35 GMT+0530 (India Standard Time)
+[debug] [2024-04-18T07:28:35.653Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-18T07:28:35.775Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-18T07:28:35.776Z] > authorizing via signed-in user (intersmartmobility@gmail.com)
+[debug] [2024-04-18T07:28:35.776Z] [iam] checking project thetopplayer-a2551 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-04-18T07:28:35.779Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions [none]
+[debug] [2024-04-18T07:28:35.779Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions x-goog-quota-user=projects/thetopplayer-a2551
+[debug] [2024-04-18T07:28:35.779Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T07:28:37.390Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions 200
+[debug] [2024-04-18T07:28:37.390Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T07:28:37.391Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:28:38.168Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 200
+[debug] [2024-04-18T07:28:38.168Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 {"projectId":"thetopplayer-a2551","projectNumber":"291860030504","displayName":"thetopplayer","name":"projects/thetopplayer-a2551","resources":{"hostingSite":"thetopplayer-a2551"},"state":"ACTIVE","etag":"1_6ab19104-5e1b-4f52-add2-1968b971a25a"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-04-18T07:28:54.177Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:28:55.324Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T07:28:55.325Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[info]    Linting and checking validity of types ...
+
+[info]    ▲ Next.js 14.0.4
+
+[info] 
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Collecting page data ...
+
+[info] Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+
+[info] Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
+
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (pages)                                                                                Size     First Load JS
+┌   /_app                                                                                    0 B             144 kB
+├ λ /[Lang]                                                                                  2.19 kB         147 kB
+├   └ css/878fa92690c17e5a.css                                                               4.17 kB
+├ λ /[Lang]/admin/change                                                                     1.59 kB         209 kB
+├ λ /[Lang]/admin/change/[token_id]                                                          691 B           145 kB
+├ λ /[Lang]/admin/confrim                                                                    403 B           145 kB
+├ λ /[Lang]/admin/forget                                                                     1.51 kB         203 kB
+├ λ /[Lang]/admin/login                                                                      1.87 kB         223 kB
+├ λ /[Lang]/admin/sign-verify                                                                1.52 kB         200 kB
+├ λ /[Lang]/admin/signup                                                                     49.1 kB         267 kB
+├ λ /[Lang]/admin/verification/[token_id]                                                    697 B           145 kB
+├ λ /[Lang]/admin/waitchange                                                                 380 B           145 kB
+├ λ /[Lang]/error-handel/[text]                                                              567 B           145 kB
+├ λ /[Lang]/terms                                                                            15.9 kB         160 kB
+├ λ /[Lang]/user/payment-program                                                             72.4 kB         248 kB
+├ λ /[Lang]/user/payment/[course_id]                                                         7.69 kB         194 kB
+├ λ /[Lang]/user/payment/confirm/[course_id]                                                 645 B           145 kB
+├ λ /[Lang]/user/profile                                                                     3.38 kB         202 kB
+├ λ /[Lang]/user/programs                                                                    2 kB            150 kB
+├   └ css/20a18f71bd91695d.css                                                               2.44 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]                       2.3 kB          151 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]  1.72 kB         146 kB
+├ λ /[Lang]/user/programs/details/[programs_id]                                              3.07 kB         153 kB
+├ λ /[Lang]/user/programs/details/[programs_id]/sub/[sub]                                    2.45 kB         152 kB
+├ λ /[Lang]/user/update-password                                                             1.56 kB         208 kB
+├ λ /404                                                                                     446 B           148 kB
+└ λ /500                                                                                     405 B           148 kB
++ First Load JS shared by all                                                                214 kB
+  ├ chunks/framework-92a422f151f77ddb.js                                                     45.2 kB
+  ├ chunks/main-de01019092fb3d4a.js                                                          31.8 kB
+  ├ chunks/pages/_app-5c7ebe4a4781355b.js                                                    64.6 kB
+  ├ chunks/webpack-95f8e8f1a7a53762.js                                                       2.85 kB
+  └ css/1025238149a46641.css                                                                 69.7 kB
+
+ƒ Middleware                                                                                 50.3 kB
+
+[info] 
+λ  (Dynamic)  server-rendered on demand using Node.js
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • middleware
+[info]  • Image Optimization
+[info]  • non-static route /404
+[info]  • non-static route /500
+[info]  • non-static route /[Lang]/admin/confrim
+[debug] [2024-04-18T07:29:41.160Z]  • non-static route /[Lang]/admin/waitchange
+[debug] [2024-04-18T07:29:41.160Z]  • non-static route /[Lang]/terms
+[debug] [2024-04-18T07:29:41.160Z]  • non-static route /[Lang]/admin/change/[token_id]
+[debug] [2024-04-18T07:29:41.161Z]  • non-static route /[Lang]/admin/forget
+[debug] [2024-04-18T07:29:41.161Z]  • non-static route /[Lang]/admin/change
+[debug] [2024-04-18T07:29:41.161Z]  • non-static route /[Lang]/admin/sign-verify
+[debug] [2024-04-18T07:29:41.161Z]  • non-static route /[Lang]/admin/login
+[debug] [2024-04-18T07:29:41.161Z]  • non-static route /[Lang]/admin/verification/[token_id]
+[debug] [2024-04-18T07:29:41.161Z]  • non-static route /[Lang]/error-handel/[text]
+[debug] [2024-04-18T07:29:41.162Z]  • non-static route /[Lang]/user/payment-program
+[debug] [2024-04-18T07:29:41.162Z]  • non-static route /[Lang]/user/payment/confirm/[course_id]
+[debug] [2024-04-18T07:29:41.162Z]  • non-static route /[Lang]
+[debug] [2024-04-18T07:29:41.162Z]  • non-static route /[Lang]/user/profile
+[debug] [2024-04-18T07:29:41.162Z]  • non-static route /[Lang]/admin/signup
+[debug] [2024-04-18T07:29:41.163Z]  • non-static route /[Lang]/user/payment/[course_id]
+[debug] [2024-04-18T07:29:41.163Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]
+[debug] [2024-04-18T07:29:41.164Z]  • non-static route /[Lang]/user/programs
+[debug] [2024-04-18T07:29:41.164Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]
+[debug] [2024-04-18T07:29:41.164Z]  • non-static route /[Lang]/user/update-password
+[debug] [2024-04-18T07:29:41.164Z]  • non-static route /[Lang]/user/programs/details/[programs_id]/sub/[sub]
+[debug] [2024-04-18T07:29:41.165Z]  • non-static route /[Lang]/user/programs/details/[programs_id]
+[info]  • and 21 other reasons, use --debug to see more
+[info] 
+[debug] [2024-04-18T07:29:50.756Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T07:29:51.970Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T07:29:51.970Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[debug] [2024-04-18T07:29:52.386Z] Error: Source and destination must not be the same.
+    at C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\util\stat.js:49:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+../public/fonts/mont/Mont-SemiBold.woff'[debug] [2024-04-18T08:10:02.112Z] ----------------------------------------------------------------------
+[debug] [2024-04-18T08:10:02.116Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-04-18T08:10:02.116Z] CLI Version:   13.7.3
+[debug] [2024-04-18T08:10:02.117Z] Platform:      win32
+[debug] [2024-04-18T08:10:02.117Z] Node Version:  v20.12.0
+[debug] [2024-04-18T08:10:02.117Z] Time:          Thu Apr 18 2024 13:40:02 GMT+0530 (India Standard Time)
+[debug] [2024-04-18T08:10:02.117Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-18T08:10:02.227Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-18T08:10:02.228Z] > authorizing via signed-in user (intersmartmobility@gmail.com)
+[debug] [2024-04-18T08:10:02.228Z] [iam] checking project thetopplayer-a2551 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-04-18T08:10:02.230Z] > refreshing access token with scopes: []
+[debug] [2024-04-18T08:10:02.232Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-04-18T08:10:02.233Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-04-18T08:10:02.607Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-04-18T08:10:02.607Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-04-18T08:10:02.622Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions [none]
+[debug] [2024-04-18T08:10:02.623Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions x-goog-quota-user=projects/thetopplayer-a2551
+[debug] [2024-04-18T08:10:02.623Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T08:10:04.196Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions 200
+[debug] [2024-04-18T08:10:04.196Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T08:10:04.198Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 [none]
+[debug] [2024-04-18T08:10:04.766Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 200
+[debug] [2024-04-18T08:10:04.766Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 {"projectId":"thetopplayer-a2551","projectNumber":"291860030504","displayName":"thetopplayer","name":"projects/thetopplayer-a2551","resources":{"hostingSite":"thetopplayer-a2551"},"state":"ACTIVE","etag":"1_6ab19104-5e1b-4f52-add2-1968b971a25a"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-04-18T08:10:20.671Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T08:10:21.806Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T08:10:21.806Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[info]    Linting and checking validity of types ...
+
+[info]    ▲ Next.js 14.0.4
+
+[info] 
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Collecting page data ...
+
+[info] Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+
+[info] Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
+
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (pages)                                                                                Size     First Load JS
+┌   /_app                                                                                    0 B             144 kB
+├ λ /[Lang]                                                                                  2.19 kB         147 kB
+├   └ css/878fa92690c17e5a.css                                                               4.17 kB
+├ λ /[Lang]/admin/change                                                                     1.59 kB         209 kB
+├ λ /[Lang]/admin/change/[token_id]                                                          691 B           145 kB
+├ λ /[Lang]/admin/confrim                                                                    403 B           145 kB
+├ λ /[Lang]/admin/forget                                                                     1.51 kB         203 kB
+├ λ /[Lang]/admin/login                                                                      1.87 kB         223 kB
+├ λ /[Lang]/admin/sign-verify                                                                1.52 kB         200 kB
+├ λ /[Lang]/admin/signup                                                                     49.1 kB         267 kB
+├ λ /[Lang]/admin/verification/[token_id]                                                    697 B           145 kB
+├ λ /[Lang]/admin/waitchange                                                                 380 B           145 kB
+├ λ /[Lang]/error-handel/[text]                                                              567 B           145 kB
+├ λ /[Lang]/terms                                                                            15.9 kB         160 kB
+├ λ /[Lang]/user/payment-program                                                             72.4 kB         248 kB
+├ λ /[Lang]/user/payment/[course_id]                                                         7.69 kB         194 kB
+├ λ /[Lang]/user/payment/confirm/[course_id]                                                 645 B           145 kB
+├ λ /[Lang]/user/profile                                                                     3.38 kB         202 kB
+├ λ /[Lang]/user/programs                                                                    2 kB            150 kB
+├   └ css/20a18f71bd91695d.css                                                               2.44 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]                       2.3 kB          151 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]  1.72 kB         146 kB
+├ λ /[Lang]/user/programs/details/[programs_id]                                              3.07 kB         153 kB
+├ λ /[Lang]/user/programs/details/[programs_id]/sub/[sub]                                    2.45 kB         152 kB
+├ λ /[Lang]/user/update-password                                                             1.56 kB         208 kB
+├ λ /404                                                                                     446 B           148 kB
+└ λ /500                                                                                     405 B           148 kB
++ First Load JS shared by all                                                                214 kB
+  ├ chunks/framework-92a422f151f77ddb.js                                                     45.2 kB
+  ├ chunks/main-de01019092fb3d4a.js                                                          31.8 kB
+  ├ chunks/pages/_app-5c7ebe4a4781355b.js                                                    64.6 kB
+  ├ chunks/webpack-95f8e8f1a7a53762.js                                                       2.85 kB
+  └ css/1025238149a46641.css                                                                 69.7 kB
+
+ƒ Middleware                                                                                 50.3 kB
+
+
+[info] λ  (Dynamic)  server-rendered on demand using Node.js
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • middleware
+[info]  • Image Optimization
+[info]  • non-static route /404
+[info]  • non-static route /500
+[info]  • non-static route /[Lang]/admin/confrim
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/admin/waitchange
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/terms
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/admin/change/[token_id]
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/admin/change
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/admin/forget
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/admin/sign-verify
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/error-handel/[text]
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/admin/verification/[token_id]
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/admin/signup
+[debug] [2024-04-18T08:10:54.219Z]  • non-static route /[Lang]/user/payment-program
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/admin/login
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/payment/confirm/[course_id]
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/payment/[course_id]
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/profile
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/programs
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/update-password
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/programs/details/[programs_id]/sub/[sub]
+[debug] [2024-04-18T08:10:54.220Z]  • non-static route /[Lang]/user/programs/details/[programs_id]
+[info]  • and 21 other reasons, use --debug to see more
+[info] 
+[debug] [2024-04-18T08:11:04.293Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T08:11:05.624Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T08:11:05.625Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[debug] [2024-04-18T08:11:06.116Z] Error: Source and destination must not be the same.
+    at C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\util\stat.js:49:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-04-18T08:11:30.134Z] ----------------------------------------------------------------------
+[debug] [2024-04-18T08:11:30.138Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-04-18T08:11:30.139Z] CLI Version:   13.7.3
+[debug] [2024-04-18T08:11:30.139Z] Platform:      win32
+[debug] [2024-04-18T08:11:30.139Z] Node Version:  v20.12.0
+[debug] [2024-04-18T08:11:30.140Z] Time:          Thu Apr 18 2024 13:41:30 GMT+0530 (India Standard Time)
+[debug] [2024-04-18T08:11:30.140Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-18T08:11:30.294Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-18T08:11:30.294Z] > authorizing via signed-in user (intersmartmobility@gmail.com)
+[debug] [2024-04-18T08:11:30.295Z] [iam] checking project thetopplayer-a2551 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-04-18T08:11:30.298Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions [none]
+[debug] [2024-04-18T08:11:30.298Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions x-goog-quota-user=projects/thetopplayer-a2551
+[debug] [2024-04-18T08:11:30.299Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T08:11:31.909Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions 200
+[debug] [2024-04-18T08:11:31.910Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T08:11:31.911Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 [none]
+[debug] [2024-04-18T08:11:33.587Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 200
+[debug] [2024-04-18T08:11:33.587Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 {"projectId":"thetopplayer-a2551","projectNumber":"291860030504","displayName":"thetopplayer","name":"projects/thetopplayer-a2551","resources":{"hostingSite":"thetopplayer-a2551"},"state":"ACTIVE","etag":"1_6ab19104-5e1b-4f52-add2-1968b971a25a"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-04-18T08:11:52.629Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T08:11:53.869Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T08:11:53.870Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[info]    Linting and checking validity of types ...
+
+[info]    ▲ Next.js 14.0.4
+
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Collecting page data ...
+
+[info] Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+
+[info] Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
+
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (pages)                                                                                Size     First Load JS
+┌   /_app                                                                                    0 B             144 kB
+├ λ /[Lang]                                                                                  2.19 kB         147 kB
+├   └ css/878fa92690c17e5a.css                                                               4.17 kB
+├ λ /[Lang]/admin/change                                                                     1.59 kB         209 kB
+├ λ /[Lang]/admin/change/[token_id]                                                          691 B           145 kB
+├ λ /[Lang]/admin/confrim                                                                    403 B           145 kB
+├ λ /[Lang]/admin/forget                                                                     1.51 kB         203 kB
+├ λ /[Lang]/admin/login                                                                      1.87 kB         223 kB
+├ λ /[Lang]/admin/sign-verify                                                                1.52 kB         200 kB
+├ λ /[Lang]/admin/signup                                                                     49.1 kB         267 kB
+├ λ /[Lang]/admin/verification/[token_id]                                                    697 B           145 kB
+├ λ /[Lang]/admin/waitchange                                                                 380 B           145 kB
+├ λ /[Lang]/error-handel/[text]                                                              567 B           145 kB
+├ λ /[Lang]/terms                                                                            15.9 kB         160 kB
+├ λ /[Lang]/user/payment-program                                                             72.4 kB         248 kB
+├ λ /[Lang]/user/payment/[course_id]                                                         7.69 kB         194 kB
+├ λ /[Lang]/user/payment/confirm/[course_id]                                                 645 B           145 kB
+├ λ /[Lang]/user/profile                                                                     3.38 kB         202 kB
+├ λ /[Lang]/user/programs                                                                    2 kB            150 kB
+├   └ css/20a18f71bd91695d.css                                                               2.44 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]                       2.3 kB          151 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]  1.72 kB         146 kB
+├ λ /[Lang]/user/programs/details/[programs_id]                                              3.07 kB         153 kB
+├ λ /[Lang]/user/programs/details/[programs_id]/sub/[sub]                                    2.45 kB         152 kB
+├ λ /[Lang]/user/update-password                                                             1.56 kB         208 kB
+├ λ /404                                                                                     446 B           148 kB
+└ λ /500                                                                                     405 B           148 kB
++ First Load JS shared by all                                                                214 kB
+  ├ chunks/framework-92a422f151f77ddb.js                                                     45.2 kB
+  ├ chunks/main-de01019092fb3d4a.js                                                          31.8 kB
+  ├ chunks/pages/_app-5c7ebe4a4781355b.js                                                    64.6 kB
+  ├ chunks/webpack-95f8e8f1a7a53762.js                                                       2.85 kB
+  └ css/1025238149a46641.css                                                                 69.7 kB
+
+ƒ Middleware                                                                                 50.3 kB
+
+
+[info] λ  (Dynamic)  server-rendered on demand using Node.js
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • middleware
+[info]  • Image Optimization
+[info]  • non-static route /404
+[info]  • non-static route /500
+[info]  • non-static route /[Lang]/admin/confrim
+[debug] [2024-04-18T08:12:26.585Z]  • non-static route /[Lang]/admin/waitchange
+[debug] [2024-04-18T08:12:26.585Z]  • non-static route /[Lang]/terms
+[debug] [2024-04-18T08:12:26.585Z]  • non-static route /[Lang]/admin/change/[token_id]
+[debug] [2024-04-18T08:12:26.585Z]  • non-static route /[Lang]/admin/forget
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/admin/change
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/admin/login
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/admin/sign-verify
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/error-handel/[text]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/admin/signup
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/admin/verification/[token_id]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/payment/confirm/[course_id]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/payment-program
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/payment/[course_id]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/profile
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/programs
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/update-password
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/programs/details/[programs_id]/sub/[sub]
+[debug] [2024-04-18T08:12:26.586Z]  • non-static route /[Lang]/user/programs/details/[programs_id]
+[info]  • and 21 other reasons, use --debug to see more
+[info] 
+[debug] [2024-04-18T08:12:36.979Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T08:12:38.108Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T08:12:38.109Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[debug] [2024-04-18T08:12:38.495Z] Error: Source and destination must not be the same.
+    at C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\util\stat.js:49:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-04-18T10:29:35.216Z] ----------------------------------------------------------------------
+[debug] [2024-04-18T10:29:35.220Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-04-18T10:29:35.221Z] CLI Version:   13.7.3
+[debug] [2024-04-18T10:29:35.222Z] Platform:      win32
+[debug] [2024-04-18T10:29:35.222Z] Node Version:  v20.12.0
+[debug] [2024-04-18T10:29:35.222Z] Time:          Thu Apr 18 2024 15:59:35 GMT+0530 (India Standard Time)
+[debug] [2024-04-18T10:29:35.222Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-18T10:29:35.353Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-18T10:29:35.354Z] > authorizing via signed-in user (intersmartmobility@gmail.com)
+[debug] [2024-04-18T10:29:35.354Z] [iam] checking project thetopplayer-a2551 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-04-18T10:29:35.356Z] > refreshing access token with scopes: []
+[debug] [2024-04-18T10:29:35.358Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-04-18T10:29:35.358Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-04-18T10:29:35.715Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-04-18T10:29:35.716Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-04-18T10:29:35.731Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions [none]
+[debug] [2024-04-18T10:29:35.731Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions x-goog-quota-user=projects/thetopplayer-a2551
+[debug] [2024-04-18T10:29:35.731Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T10:29:37.310Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions 200
+[debug] [2024-04-18T10:29:37.310Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/thetopplayer-a2551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-04-18T10:29:37.312Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 [none]
+[debug] [2024-04-18T10:29:37.817Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 200
+[debug] [2024-04-18T10:29:37.817Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/thetopplayer-a2551 {"projectId":"thetopplayer-a2551","projectNumber":"291860030504","displayName":"thetopplayer","name":"projects/thetopplayer-a2551","resources":{"hostingSite":"thetopplayer-a2551"},"state":"ACTIVE","etag":"1_6ab19104-5e1b-4f52-add2-1968b971a25a"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-04-18T10:29:53.897Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T10:29:55.238Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T10:29:55.239Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[info]    Linting and checking validity of types ...
+
+[info]    ▲ Next.js 14.0.4
+
+[info] 
+   Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Collecting page data ...
+
+[info] Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+
+[info] Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
+
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (pages)                                                                                Size     First Load JS
+┌   /_app                                                                                    0 B             144 kB
+├ λ /[Lang]                                                                                  2.19 kB         147 kB
+├   └ css/878fa92690c17e5a.css                                                               4.17 kB
+├ λ /[Lang]/admin/change                                                                     1.59 kB         209 kB
+├ λ /[Lang]/admin/change/[token_id]                                                          691 B           145 kB
+├ λ /[Lang]/admin/confrim                                                                    403 B           145 kB
+├ λ /[Lang]/admin/forget                                                                     1.51 kB         203 kB
+├ λ /[Lang]/admin/login                                                                      1.87 kB         223 kB
+├ λ /[Lang]/admin/sign-verify                                                                1.52 kB         200 kB
+├ λ /[Lang]/admin/signup                                                                     49.1 kB         267 kB
+├ λ /[Lang]/admin/verification/[token_id]                                                    697 B           145 kB
+├ λ /[Lang]/admin/waitchange                                                                 380 B           145 kB
+├ λ /[Lang]/error-handel/[text]                                                              567 B           145 kB
+├ λ /[Lang]/terms                                                                            15.9 kB         160 kB
+├ λ /[Lang]/user/payment-program                                                             72.4 kB         248 kB
+├ λ /[Lang]/user/payment/[course_id]                                                         7.69 kB         194 kB
+├ λ /[Lang]/user/payment/confirm/[course_id]                                                 645 B           145 kB
+├ λ /[Lang]/user/profile                                                                     3.38 kB         202 kB
+├ λ /[Lang]/user/programs                                                                    2 kB            150 kB
+├   └ css/20a18f71bd91695d.css                                                               2.44 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]                       2.3 kB          151 kB
+├ λ /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]  1.72 kB         146 kB
+├ λ /[Lang]/user/programs/details/[programs_id]                                              3.07 kB         153 kB
+├ λ /[Lang]/user/programs/details/[programs_id]/sub/[sub]                                    2.45 kB         152 kB
+├ λ /[Lang]/user/update-password                                                             1.56 kB         208 kB
+├ λ /404                                                                                     446 B           148 kB
+└ λ /500                                                                                     405 B           148 kB
++ First Load JS shared by all                                                                214 kB
+  ├ chunks/framework-92a422f151f77ddb.js                                                     45.2 kB
+  ├ chunks/main-de01019092fb3d4a.js                                                          31.8 kB
+  ├ chunks/pages/_app-5c7ebe4a4781355b.js                                                    64.6 kB
+  ├ chunks/webpack-a03ddd7b37998484.js                                                       2.85 kB
+  └ css/3acf1671a82fcef2.css                                                                 69.5 kB
+
+ƒ Middleware                                                                                 50.3 kB
+
+
+[info] λ  (Dynamic)  server-rendered on demand using Node.js
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  • middleware
+[info]  • Image Optimization
+[info]  • non-static route /404
+[info]  • non-static route /500
+[info]  • non-static route /[Lang]/admin/confrim
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/waitchange
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/terms
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/change/[token_id]
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/change
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/sign-verify
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/forget
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/verification/[token_id]
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/login
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/error-handel/[text]
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/admin/signup
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/user/payment/confirm/[course_id]
+[debug] [2024-04-18T10:30:26.432Z]  • non-static route /[Lang]/user/payment-program
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/profile
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/programs
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]/[video]/[video_name]
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/programs/[type]/[week]/[day]/[courseId]/[subCourseId]
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/payment/[course_id]
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/update-password
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/programs/details/[programs_id]
+[debug] [2024-04-18T10:30:26.433Z]  • non-static route /[Lang]/user/programs/details/[programs_id]/sub/[sub]
+[info]  • and 21 other reasons, use --debug to see more
+[info] 
+[debug] [2024-04-18T10:30:36.817Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 [none]
+[debug] [2024-04-18T10:30:38.136Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 200
+[debug] [2024-04-18T10:30:38.137Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/thetopplayer-a2551/sites/thetopplayer-a2551 {"name":"projects/thetopplayer-a2551/sites/thetopplayer-a2551","defaultUrl":"https://thetopplayer-a2551.web.app","appId":"1:291860030504:web:b23c976b3c899c56dcc11d","type":"DEFAULT_SITE"}
+[debug] [2024-04-18T10:30:38.525Z] Error: Source and destination must not be the same.
+    at C:\Users\Vaishnav\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\util\stat.js:49:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.

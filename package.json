@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -38,6 +39,7 @@
     "react-responsive": "^10.0.0",
     "react-simple-star-rating": "^5.1.7",
     "react-typed": "^2.0.12",
+    "saas": "^1.0.0",
     "sass": "^1.75.0",
     "sharp": "^0.33.2",
     "swiper": "^11.1.3",

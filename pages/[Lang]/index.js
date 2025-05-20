@@ -61,9 +61,9 @@ export default function Home({ Lang, MainBanner }) {
           <LangChange Lang={Lang.toLowerCase()}>
             <Header styles={stylesSass} className={"sdkjbhd"} Lang={Lang.toLowerCase()} state={MainBanner?.[0]} />
             <Who styles={stylesSass} Lang={Lang.toLowerCase()} />
-            <News styles={stylesSass} Lang={Lang.toLowerCase()} />
             <Program styles={styles} Lang={Lang.toLowerCase()} />
             <Suspense styles={styles} Lang={Lang.toLowerCase()} />
+            <News styles={stylesSass} Lang={Lang.toLowerCase()} />
             <FAQs styles={styles} Lang={Lang.toLowerCase()} />
             <Contact styles={styles} Lang={Lang.toLowerCase()} />
           </LangChange>
@@ -72,6 +72,7 @@ export default function Home({ Lang, MainBanner }) {
     </>
   );
 }
+
 export async function getServerSideProps({ params }) {
   const result = await axios
     .get(`${process.env.customKey}/main_banner`, {

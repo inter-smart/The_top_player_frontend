@@ -324,6 +324,73 @@ const CourcesSlice = createSlice({
         state.myPrograms = null;
       });
   },
+  //   //allCourses
+
+  //   [allCourses.pending]: (state, action) => {
+  //     console.log("Pending");
+  //     state.isCourcesLoading = true;
+  //     state.CoursecArr = null;
+  //   },
+
+  //   [allCourses.fulfilled]: (state, action) => {
+  //     console.log("fullfiiled");
+  //     state.isCourcesLoading = false;
+  //     state.CoursecArr = action.payload;
+  //   },
+  //   [allCourses.rejected]: (state, action) => {
+  //     console.log("rejected");
+  //     state.isCourcesLoading = false;
+  //     state.CoursecArr = null;
+  //   },
+  //   // getSubCources
+  //   [getSubCources.pending]: (state, action) => {
+  //     state.isCourcesLoading = true;
+  //     state.SubCourse = null;
+  //   },
+  //   [getSubCources.fulfilled]: (state, action) => {
+  //     state.isCourcesLoading = false;
+  //     state.SubCourse = action.payload;
+  //   },
+  //   [getSubCources.rejected]: (state, action) => {
+  //     state.isCourcesLoading = false;
+  //     state.SubCourse = null;
+  //   },
+  //   [getsubscribedCourse.pending]: (state, action) => {
+  //     state.isCourcesLoading = true;
+  //   },
+  //   [getsubscribedCourse.fulfilled]: (state, action) => {
+  //     state.isCourcesLoading = false;
+  //     state.subscribedCourseArr = action.payload;
+  //   },
+  //   [getsubscribedCourse.rejected]: (state, action) => {},
+  //   // videos_in_days
+
+  //   [videos_in_days.pending]: (state, action) => {
+  //     state.allVideoLoading = true;
+  //     state.videos = null;
+  //   },
+  //   [videos_in_days.fulfilled]: (state, action) => {
+  //     state.allVideoLoading = false;
+  //     state.videos = action.payload;
+  //   },
+  //   [videos_in_days.rejected]: (state, action) => {
+  //     state.videos = null;
+  //     state.allVideoLoading = false;
+  //   },
+
+  //   // getVideo
+  //   [getVideo.pending]: (state, action) => {
+  //     state.isCourcesLoading = true;
+  //     state.Curreent_video = null;
+  //   },
+  //   [getVideo.fulfilled]: (state, action) => {
+  //     state.isCourcesLoading = false;
+  //     state.Curreent_video = action.payload;
+  //   },
+  //   [getVideo.rejected]: (state, action) => {
+  //     state.Curreent_video = null;
+  //   },
+  // },
 });
 export const { ClearToken } = CourcesSlice.actions;
 
