@@ -179,12 +179,12 @@ const Program = ({ styles, Lang }) => {
                         > */}
                             <h5>
                               <span className={styles.currency}>{currentcurrency?.currency_code}</span>
-                              {Math.ceil((course?.offerAmount * currentcurrency?.currency_rate).toFixed(2))}
+                              {(course?.offerAmount * currentcurrency?.currency_rate).toFixed(2)}
                             </h5>
                             {course?.offerPercentage && (
                               <h6>
                                 <span className={styles.currency}>{currentcurrency?.currency_code}</span>
-                                <del>{Math.ceil((course?.amount * currentcurrency?.currency_rate).toFixed(2))} </del>
+                                <del>{(course?.amount * currentcurrency?.currency_rate).toFixed(2)} </del>
                               </h6>
                             )}
                           </div>

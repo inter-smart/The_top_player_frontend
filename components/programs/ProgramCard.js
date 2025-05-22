@@ -179,12 +179,12 @@ const ProgramCard = ({ Lang, programDetails, programsId, expired, isLoggedIn, on
                 <span>
                   {" "}
                   <sup>{currentcurrency && currentcurrency?.currency_code}</sup>
-                  {Math.ceil((programDetails?.offerAmount * currentcurrency?.currency_rate).toFixed(2))}
+                  {(programDetails?.offerAmount * currentcurrency?.currency_rate).toFixed(2)}
                 </span>
                 {programDetails?.offerPercentage && (
                   <span className={styles.old_price}>
                     <sup>{currentcurrency && currentcurrency?.currency_code}</sup>
-                    <span>{Math.ceil((programDetails?.amount * currentcurrency?.currency_rate).toFixed(2))}</span>
+                    <span>{(programDetails?.amount * currentcurrency?.currency_rate).toFixed(2)}</span>
                   </span>
                 )}
               </div>

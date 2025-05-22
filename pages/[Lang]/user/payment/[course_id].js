@@ -121,7 +121,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                           <h4>{CourseByIdArray?.name}</h4>
                         </div>
                         <p className="En_num">
-                          {currentcurrency?.currency_code} {Math.ceil((CourseByIdArray?.offerAmount * currentcurrency?.currency_rate).toFixed(2))}
+                          {currentcurrency?.currency_code} {(CourseByIdArray?.offerAmount * currentcurrency?.currency_rate).toFixed(2)}
                         </p>
                       </div>
 
@@ -133,7 +133,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                         <p>{t("payment.Subtotal")}</p>
                         <p className="En_num">
                           <s style={{ textDecoration: "none" }} className="text-muted">
-                            {currentcurrency?.currency_code} {Math.ceil((CourseByIdArray?.amount * currentcurrency?.currency_rate).toFixed(2))}
+                            {currentcurrency?.currency_code} {(CourseByIdArray?.amount * currentcurrency?.currency_rate).toFixed(2)}
                           </s>
                         </p>
                       </div>
@@ -143,7 +143,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                           <p>{t("payment.OfferAmount")}</p>
                           <p className="En_num">
                             <s style={{ textDecoration: "none" }} className="text-muted">
-                              {currentcurrency?.currency_code} {Math.ceil((CourseByIdArray?.offerAmount * currentcurrency?.currency_rate).toFixed(2))}
+                              {currentcurrency?.currency_code} {(CourseByIdArray?.offerAmount * currentcurrency?.currency_rate).toFixed(2)}
                             </s>
                           </p>
                         </div>
@@ -153,7 +153,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                           <>
                             <p>{t("payment.Discount")}</p>
                             <p className="En_num">
-                              {currentcurrency?.currency_code} {coupon}
+                              {currentcurrency?.currency_code} {coupon.toFixed(2)}
                             </p>
                           </>
                         ) : (
@@ -169,15 +169,16 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                           <>
                             <p>{t("payment.Total")}</p>
                             <p className="En_num">
-                              {console.log("CCCC",)}
-                              {currentcurrency?.currency_code} {(Math.ceil(CourseByIdArray?.offerAmount * currentcurrency?.currency_rate) - coupon).toFixed(2)}
+                              {console.log("CCCC")}
+                              {currentcurrency?.currency_code}{" "}
+                              {(CourseByIdArray?.offerAmount * currentcurrency?.currency_rate - coupon).toFixed(2)}
                             </p>
                           </>
                         ) : (
                           <>
                             <p>{t("payment.Total")}</p>
                             <p className="En_num">
-                              {currentcurrency?.currency_code} {Math.ceil((CourseByIdArray?.offerAmount * currentcurrency?.currency_rate)).toFixed(2)}
+                              {currentcurrency?.currency_code} {(CourseByIdArray?.offerAmount * currentcurrency?.currency_rate).toFixed(2)}
                             </p>
                           </>
                         )}
@@ -188,7 +189,11 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                 <div className="col-12 text-center">
                   {stripePromise && clientSecret && (
                     <Elements stripe={stripePromise} options={options} allow="payment">
-                      <CheckoutForm course_id={course_id} Lang={Lang}  type={CourseByIdArray?.course_type ? CourseByIdArray?.course_type : "programs"} />
+                      <CheckoutForm
+                        course_id={course_id}
+                        Lang={Lang}
+                        type={CourseByIdArray?.course_type ? CourseByIdArray?.course_type : "programs"}
+                      />
                     </Elements>
                   )}
                   {tamaraSupportCurrencies.includes(currentcurrency?.currency_flag) ? (
