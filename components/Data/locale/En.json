@@ -61,6 +61,8 @@
     "yalla": "Yalla !",
     "congratulations": "Congratulations!",
     "fitness_name": "Fitness",
+    "loading": "Loading",
+    "no_programs_message": "There are no programs available at the moment.",
     "one": 1,
     "two": 2,
     "three": 3,
@@ -231,7 +233,8 @@
     "code_title": "Please enter the code sent to your email",
     "send_again": "Send Again",
     "not_recived": "You did not receive the message",
-    "password_reset": "Password reset successful"
+    "password_reset": "Password reset successful",
+    "submitting": "Submitting..."
   },
   "programs_details": {
     "contain": "The program contains",

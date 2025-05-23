@@ -56,6 +56,8 @@
     "title": "برامجنا",
     "my_programs": "برامجي",
     "no_programs": "لم يتم العثور على برامج",
+    "no_programs_message": "لا توجد برامج متاحة في الوقت الحالي.",
+    "loading": "جار التحميل",
     "yalla": "يلا !",
     "congratulations": "مبروك",
     "top": "توب 1",
@@ -222,7 +224,8 @@
     "send_again": "ارسال مرة اخري",
     "not_recived": "لم تستقبل الرسالة",
     "didn't_receive": "لم تتلق كلمة مرور لمرة واحدة؟",
-    "password_reset": "تمت إعادة تعيين كلمة المرور بنجاح"
+    "password_reset": "تمت إعادة تعيين كلمة المرور بنجاح",
+    "submitting": "التقديم..."
   },
   "programs_details": {
     "contain": "يحتوى البرنامج على",
