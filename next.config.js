@@ -4,11 +4,16 @@ const nextConfig = {
     FREE_COURSE_ID: "2",
     FREE_SUB_ID: "2",
     customKey: "https://backend.thetopplayer.com",
-    webDomain: process.env.NODE_ENV === "production" ? "https://www.thetopplayer.com" : "http://localhost:4000", // Dynamic domain
+    webDomain: "https://www.thetopplayer.com",
+    // webDomain: "http://localhost:4000",
     tamraPublicKey: "a916b2ef-bb66-4e5b-84d9-5bbae98db825",
     googleAnalytics: "G-F4F4H6800X",
-    STRIPE_PROMISE: "pk_live_51O7Z2SBIK7a01kKz9y6brLLX1SQBrs7OMn4RFfb6GRQuE8Hv7SMSURDJLuJazosoWyLPJv8i4xrVNjwhP89nuDOb00ZDiIGV5U",
-    tamaraPrivateKey: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...", // Truncated for brevity
+    tamraPublicKey: process.env.TAMARA_PUB_KEY,
+    // tamraPublicKey: "7aa51bac-f5b4-4896-991d-36fa7a0a1d66",//test
+    googleAnalytics: "G-F4F4H6800X",
+    // STRIPE_PROMISE: "pk_test_51O7Z2SBIK7a01kKzeBhiuYUF4wDVbSRIQSaaNoXDH6EesdBEDX4q68oABlFwYwmVheThQKBGENfalCW39yNhHh6f00Ge8Zrzhq", //test
+    STRIPE_PROMISE: process.env.STRIPE_KEY, //live
+    tamaraPrivateKey: process.env.TAMARA_KEY,
   },
   swcMinify: true,
   output: "standalone", // Smaller production builds

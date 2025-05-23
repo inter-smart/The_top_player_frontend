@@ -10,6 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
 const Header = ({ styles, Lang, state }) => {
+
+  console.log("state?.videoUrl =======>", state?.videoUrl);
+  
   const { t } = useTranslation();
   const router = useRouter();
 

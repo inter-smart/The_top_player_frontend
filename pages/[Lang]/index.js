@@ -6,43 +6,89 @@ import dynamic from "next/dynamic";
 import LangWrap from "@/components/layouts/LangWarp";
 import axios from "axios";
 
-// Create reusable axios instance
+// Lightweight sanitization function
+const sanitizeString = (str) =>
+  str?.replace(/[&<>"'\/]/g, (char) =>
+    ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+      "/": "&#x2F;"
+    }[char])
+  ) || "";
 
-// Dynamic imports with consistent loading placeholders
+// Dynamic imports with specific chunk names and minimal SSR
 const LangChange = dynamic(() => import("@/components/layouts/LangChange"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/langChange.[id].js";
+    return config;
+  },
 });
 const Header = dynamic(() => import("@/components/Home/Header"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/header.[id].js";
+    return config;
+  },
 });
 const Who = dynamic(() => import("@/components/Home/who"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/who.[id].js";
+    return config;
+  },
 });
 const Program = dynamic(() => import("@/components/Home/Program"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/program.[id].js";
+    return config;
+  },
 });
 const Suspense = dynamic(() => import("@/components/Home/Suspense"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/suspense.[id].js";
+    return config;
+  },
 });
 const News = dynamic(() => import("@/components/Home/News"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/news.[id].js";
+    return config;
+  },
 });
 const FAQs = dynamic(() => import("@/components/Home/FAQs"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/faqs.[id].js";
+    return config;
+  },
 });
 const Contact = dynamic(() => import("@/components/Home/contact"), {
   loading: () => <div aria-hidden="true" />,
   ssr: false,
+  webpack: (config) => {
+    config.output.chunkFilename = "static/chunks/contact.[id].js";
+    return config;
+  },
 });
 
-export default function Home({ lang, mainBanner }) {
+export default function Home({ Lang, MainBanner }) {
+  // Validate and sanitize props
+  const safeLang = typeof Lang === "string" && Lang.length <= 5 ? Lang.toLowerCase() : "en";
+
   return (
     <>
       <Head>
@@ -54,7 +100,7 @@ export default function Home({ lang, mainBanner }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preload" href="/favicon.ico" as="image" />
-        <meta property="og:locale" content={lang || "en_US"} />
+        <meta property="og:locale" content={safeLang} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Home - The Top Player" />
         <meta
@@ -76,16 +122,16 @@ export default function Home({ lang, mainBanner }) {
         <meta name="twitter:image" content="/LogoTP.png" />
       </Head>
       <main>
-        <LangWrap Lang={lang}>
-          <LangChange Lang={lang}>
+        <LangWrap Lang={safeLang}>
+          <LangChange Lang={safeLang}>
             <ReactSuspense fallback={<div aria-hidden="true" />}>
-              <Header styles={stylesSass} Lang={lang} state={mainBanner?.[0] || null} />
-              <Who styles={stylesSass} Lang={lang} />
-              <Program styles={styles} Lang={lang} />
-              <Suspense styles={styles} Lang={lang} />
-              <News styles={stylesSass} Lang={lang} />
-              <FAQs styles={styles} Lang={lang} />
-              <Contact styles={styles} Lang={lang} />
+              <Header styles={stylesSass} Lang={safeLang} state={MainBanner[0]} />
+              <Who styles={stylesSass} Lang={safeLang} />
+              <Program styles={styles} Lang={safeLang} />
+              <Suspense styles={styles} Lang={safeLang} />
+              <News styles={stylesSass} Lang={safeLang} />
+              <FAQs styles={styles} Lang={safeLang} />
+              <Contact styles={styles} Lang={safeLang} />
             </ReactSuspense>
           </LangChange>
         </LangWrap>
@@ -95,32 +141,27 @@ export default function Home({ lang, mainBanner }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const defaultLang = "en"; // Fallback language
-  const lang = (params?.Lang || defaultLang).toLowerCase();
-
-  try {
-    const response = await axios.get(`${process.env.customKey}/main_banner`, {
+  const result = await axios
+    .get(`${process.env.customKey}/main_banner`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
+    })
+    .then((res) => res.data)
+    .catch((err) => {
+      console.error("Error fetching main banner:", { endpoint: "/main_banner", message: err.message });
+      return null;
     });
-    return {
-      props: {
-        lang,
-        mainBanner: Array.isArray(response.data?.data) ? response.data.data : null,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching main banner:", error.message);
-    return {
-      props: {
-        lang,
-        mainBanner: null,
-      },
-    };
-  }
+
+  return {
+    props: {
+      Lang: params.Lang,
+      MainBanner: result?.data || null,
+    },
+  };
 }
+
 
 // export async function getServerSideProps({ params }) {
 //   const result = await axios
