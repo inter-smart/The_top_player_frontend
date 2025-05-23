@@ -819,6 +819,10 @@ body:has(> * .video-react-fullscreen) {
   margin: revert-layer;
 }
 
+.p-password{
+  display: inline-block;
+}
+
 .padding_all {
   padding-top: 50px;
   padding-bottom: 50px;

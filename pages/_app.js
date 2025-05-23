@@ -16,7 +16,6 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 import "video-react/dist/video-react.css"; // import css
 
-import "@/styles/globals.css";
 import Loading from "@/components/layouts/Loading";
 import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/ErrorBoundary/eb";
@@ -29,6 +28,7 @@ const Footer = dynamic(() => import("@/components/layouts/Footer"), {
   loading: () => <></>,
   ssr: false,
 });
+import "@/styles/globals.css";
 
 function App({ Component, pageProps, canonical, Path }) {
   const handleKeyPress = (event) => {

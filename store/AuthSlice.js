@@ -2,300 +2,263 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const SignUp = createAsyncThunk(
-  "Auth/SignUp",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/signup`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+export const SignUp = createAsyncThunk("Auth/SignUp", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/admin/signup`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const LoginReducer = createAsyncThunk(
-  "Auth/LoginReducer",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/login`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
+});
+export const LoginReducer = createAsyncThunk("Auth/LoginReducer", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`https://backend.thetopplayer.com/admin/login`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    // Handle 401 specifically
+    if (err.response && err.response.status === 401) {
+      return rejectWithValue("Invalid username or password.");
     }
-  }
-);
 
-export const LogOutReducer = createAsyncThunk(
-  "Auth/LogOutReducer",
-  async (_, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .get(`${process.env.customKey}/admin/logout`, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Access-Token": Cookies.get("UT"),
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+    return rejectWithValue(err);
   }
-);
+});
+
+export const LogOutReducer = createAsyncThunk("Auth/LogOutReducer", async (_, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .get(`${process.env.customKey}/admin/logout`, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Access-Token": Cookies.get("UT"),
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
+  }
+});
 // VerifyEmail
-export const VerifyEmail = createAsyncThunk(
-  "Auth/VerifyEmail",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/forgot_password`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+export const VerifyEmail = createAsyncThunk("Auth/VerifyEmail", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/admin/forgot_password`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const changePassword = createAsyncThunk(
-  "Auth/changePassword",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/reset_password_email`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const changePassword = createAsyncThunk("Auth/changePassword", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/admin/reset_password_email`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const updatePassword = createAsyncThunk(
-  "Auth/updatePassword",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/update_password`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Access-Token": Cookies.get("UT"),
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const updatePassword = createAsyncThunk("Auth/updatePassword", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/admin/update_password`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Access-Token": Cookies.get("UT"),
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const VerifySignup = createAsyncThunk(
-  "Auth/VerifySignup",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/auth/verify`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const VerifySignup = createAsyncThunk("Auth/VerifySignup", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/admin/auth/verify`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const ReVerifySignup = createAsyncThunk(
-  "Auth/ReVerifySignup",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/auth/resendverify`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const ReVerifySignup = createAsyncThunk("Auth/ReVerifySignup", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/admin/auth/resendverify`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const getUserInfo = createAsyncThunk(
-  "Auth/getUserInfo",
-  async (_, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .get(`${process.env.customKey}/admin/user`, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Access-Token": Cookies.get("UT"),
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const getUserInfo = createAsyncThunk("Auth/getUserInfo", async (_, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .get(`${process.env.customKey}/admin/user`, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Access-Token": Cookies.get("UT"),
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const updateUserInfo = createAsyncThunk(
-  "Auth/updateUserInfo",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/admin/user`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Access-Token": Cookies.get("UT"),
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const updateUserInfo = createAsyncThunk("Auth/updateUserInfo", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/admin/user`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Access-Token": Cookies.get("UT"),
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const ContactReducer = createAsyncThunk(
-  "Auth/ContactReducer",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/contact`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const ContactReducer = createAsyncThunk("Auth/ContactReducer", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/contact`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const subscribeReducer = createAsyncThunk(
-  "Auth/subscribeReducer",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(`${process.env.customKey}/subscribe`, data, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+});
+export const subscribeReducer = createAsyncThunk("Auth/subscribeReducer", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(`${process.env.customKey}/subscribe`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const PayReducer = createAsyncThunk(
-  "Auth/PayReducer",
-  async (params, thunkAPI) => {
-    const { course_id, coupon_details: coupon_code } = params;
-    const { currency_code, currency_rate } = params.currentcurrency;
+});
+export const PayReducer = createAsyncThunk("Auth/PayReducer", async (params, thunkAPI) => {
+  const { course_id, coupon_details: coupon_code } = params;
+  const { currency_code, currency_rate } = params.currentcurrency;
 
-    console.log("HEREEE");
+  console.log("HEREEE");
 
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(
-          `${process.env.customKey}/create-payment-intent`,
-          {
-            courseId: course_id,
-            currency_code,
-            currency_rate,
-            coupon_code,
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(
+        `${process.env.customKey}/create-payment-intent`,
+        {
+          courseId: course_id,
+          currency_code,
+          currency_rate,
+          coupon_code,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "X-Access-Token": Cookies.get("UT"),
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              "X-Access-Token": Cookies.get("UT"),
-            },
-          }
-        )
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+        }
+      )
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
-export const ConfirmPayCourse = createAsyncThunk(
-  "Auth/ConfirmPayCourse",
-  async (id, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const result = await axios
-        .post(
-          `${process.env.customKey}/course`,
-          {
-            courseId: id,
+});
+export const ConfirmPayCourse = createAsyncThunk("Auth/ConfirmPayCourse", async (id, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const result = await axios
+      .post(
+        `${process.env.customKey}/course`,
+        {
+          courseId: id,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "X-Access-Token": Cookies.get("UT"),
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              "X-Access-Token": Cookies.get("UT"),
-            },
-          }
-        )
-        .then((res) => res.data);
-      return result;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
+        }
+      )
+      .then((res) => res.data);
+    return result;
+  } catch (err) {
+    return rejectWithValue(err);
   }
-);
+});
 const AuthSlice = createSlice({
   name: "Auth",
   initialState: {
