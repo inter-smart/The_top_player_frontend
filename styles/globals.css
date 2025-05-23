@@ -673,10 +673,10 @@ body:has(> * .video-react-fullscreen) {
 }
 
 .accordion-button::after {
-  width: 40px;
-  height: 40px;
+  width: 40px !important;
+  height: 40px !important;
   background-image: url("data:image/svg+xml,%3Csvg width='41' height='41' viewBox='0 0 41 41' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 0.109375C9.25652 0.109375 0.109375 9.25652 0.109375 20.5C0.109375 31.7435 9.25652 40.8906 20.5 40.8906C31.7435 40.8906 40.8906 31.7435 40.8906 20.5C40.8906 9.25652 31.7435 0.109375 20.5 0.109375ZM26.8281 21.9062H21.9062V26.8281C21.9062 27.6047 21.2766 28.2344 20.5 28.2344C19.7234 28.2344 19.0938 27.6047 19.0938 26.8281V21.9062H14.1719C13.3953 21.9062 12.7656 21.2766 12.7656 20.5C12.7656 19.7234 13.3953 19.0938 14.1719 19.0938H19.0938V14.1719C19.0938 13.3953 19.7234 12.7656 20.5 12.7656C21.2766 12.7656 21.9062 13.3953 21.9062 14.1719V19.0938H26.8281C27.6047 19.0938 28.2344 19.7234 28.2344 20.5C28.2344 21.2766 27.6047 21.9062 26.8281 21.9062Z' fill='%23C7A27D'/%3E%3C/svg%3E%0A") !important;
-  background-size: contain;
+  background-size: contain !important;
 }
 .accordion-button[aria-expanded="true"]::after {
   background-image: url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='22' cy='22' r='22' fill='%23C7A27D'/%3E%3Cpath d='M14 22.5C14 21.6716 14.6716 21 15.5 21H29.5C30.3284 21 31 21.6716 31 22.5V22.5C31 23.3284 30.3284 24 29.5 24H15.5C14.6716 24 14 23.3284 14 22.5V22.5Z' fill='white'/%3E%3C/svg%3E%0A") !important;
