@@ -713,6 +713,9 @@
   @media (max-width: 991.98px) {
     width: 140px;
   }
+  &>hr {
+    opacity: 0;
+  }
   a {
     font-size: 15px;
     line-height: 1;
