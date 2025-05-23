@@ -8,12 +8,13 @@ const nextConfig = {
     // webDomain: "http://localhost:4000",
     tamraPublicKey: "a916b2ef-bb66-4e5b-84d9-5bbae98db825",
     googleAnalytics: "G-F4F4H6800X",
-    tamraPublicKey: process.env.TAMARA_PUB_KEY,
+    tamraPublicKey: "a916b2ef-bb66-4e5b-84d9-5bbae98db825",
     // tamraPublicKey: "7aa51bac-f5b4-4896-991d-36fa7a0a1d66",//test
     googleAnalytics: "G-F4F4H6800X",
     // STRIPE_PROMISE: "pk_test_51O7Z2SBIK7a01kKzeBhiuYUF4wDVbSRIQSaaNoXDH6EesdBEDX4q68oABlFwYwmVheThQKBGENfalCW39yNhHh6f00Ge8Zrzhq", //test
-    STRIPE_PROMISE: process.env.STRIPE_KEY, //live
-    tamaraPrivateKey: process.env.TAMARA_KEY,
+    STRIPE_PROMISE: "pk_live_51O7Z2SBIK7a01kKz9y6brLLX1SQBrs7OMn4RFfb6GRQuE8Hv7SMSURDJLuJazosoWyLPJv8i4xrVNjwhP89nuDOb00ZDiIGV5U", //live
+    tamaraPrivateKey:
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50SWQiOiI0ZmUxNDU1MC1jZTUzLTRhNmYtYWIyMi05MDkxOThkNmUxNmEiLCJ0eXBlIjoibWVyY2hhbnQiLCJzYWx0IjoiODcxZjY3OGM0MjAwYzg4YWQxZTM0YTIxMTExN2IyYjYiLCJyb2xlcyI6WyJST0xFX01FUkNIQU5UIl0sImlhdCI6MTcxNzY1OTc3NCwiaXNzIjoiVGFtYXJhIn0.xDxkOqZsPt65OGuy0rDfrrjKL6hWLP2EL4ynnxQynK5lr6kMQn2dUlvLACIZc1Bx4wo5vlCcqn5L4h1zQWkFTZXDkVjaiuRh6lyLZmVkGi6KfCdZLjMmve6n3tQhuJT6c4BYcS_7Y1BS4HMCOPpwPu5ZiaYNlGYVmrhM2rdtIq9gd3yWD_8oAFO9qoF0CmdA48LNHVoAXutxR-kNlVk62MQfOD4rf2yxNuzvSj9xywiaXGrleoayEJxF9uw3ANYNVE1fGBjR_uL_dR5EJI6p16oa5NBdZtX29Tn05bx4dsjH_13xSq58hGVpEHIRjZF8NLcwSxvdBeK1zuu7DDU1CA",
   },
   swcMinify: true,
   output: "standalone", // Smaller production builds

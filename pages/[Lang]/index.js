@@ -125,7 +125,7 @@ export default function Home({ Lang, MainBanner }) {
         <LangWrap Lang={safeLang}>
           <LangChange Lang={safeLang}>
             <ReactSuspense fallback={<div aria-hidden="true" />}>
-              <Header styles={stylesSass} Lang={safeLang} state={MainBanner[0]} />
+              <Header styles={stylesSass} Lang={safeLang} state={MainBanner} />
               <Who styles={stylesSass} Lang={safeLang} />
               <Program styles={styles} Lang={safeLang} />
               <Suspense styles={styles} Lang={safeLang} />
@@ -157,7 +157,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       Lang: params.Lang,
-      MainBanner: result?.data || null,
+      MainBanner: result?.data[0] || null,
     },
   };
 }
