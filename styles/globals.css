@@ -632,13 +632,13 @@ body:has(> * .video-react-fullscreen) {
 }
 
 .accordion-item:not(:first-of-type) {
-  border: 1px solid #eee;
+  border: 1px solid #eee !important;
 }
 
 .accordion-button:not(.collapsed) {
-  background-color: transparent;
-  box-shadow: none;
-  color: #000;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #000 !important;
 }
 
 .accordion-button h6 {
@@ -669,7 +669,7 @@ body:has(> * .video-react-fullscreen) {
 }
 
 .accordion-button:focus {
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .accordion-button::after {
