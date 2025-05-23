@@ -7,13 +7,6 @@ import LangWrap from "@/components/layouts/LangWarp";
 import axios from "axios";
 
 // Create reusable axios instance
-const apiClient = axios.create({
-  baseURL: process.env.customKey,
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-});
 
 // Dynamic imports with consistent loading placeholders
 const LangChange = dynamic(() => import("@/components/layouts/LangChange"), {
@@ -106,7 +99,12 @@ export async function getServerSideProps({ params }) {
   const lang = (params?.Lang || defaultLang).toLowerCase();
 
   try {
-    const response = await apiClient.get("/main_banner");
+    const response = await axios.get(`${process.env.customKey}/main_banner`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     return {
       props: {
         lang,
@@ -123,6 +121,28 @@ export async function getServerSideProps({ params }) {
     };
   }
 }
+
+// export async function getServerSideProps({ params }) {
+//   const result = await axios
+//     .get(`${process.env.customKey}/main_banner`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//     })
+//     .then((res) => res.data)
+//     .catch((err) => {
+//       console.log(err);
+//       return null;
+//     });
+//   // return result;
+//   return {
+//     props: {
+//       Lang: params.Lang,
+//       MainBanner: result?.data || null,
+//     },
+//   };
+// }
 
 // import Head from "next/head";
 // import styles from "@/styles/Home.module.css";
