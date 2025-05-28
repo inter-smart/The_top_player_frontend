@@ -87,19 +87,21 @@ const nextConfig = {
           // Restrict feature access (modify as needed)
           {
             key: "Permissions-Policy",
-            value: "geolocation=(self), microphone=(), camera=(), fullscreen=(), payment=()",
+            value:
+              "geolocation=(self), microphone=(), camera=(), fullscreen=(), payment=(self https://js.stripe.com https://checkout.tamara.co)",
           },
           // Basic CSP (customize for your needs)
           {
             key: "Content-Security-Policy",
             value: `
                   default-src 'self';
-                  script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com;
+                  script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://cdn.tamara.co;
                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                   font-src 'self' https://fonts.gstatic.com data:;
                   img-src 'self' data: https://backend.thetopplayer.com;
-                  connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com https://ipapi.co;
+                  connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com https://ipapi.co https://api.tamara.co;
                   media-src 'self' https://backend.thetopplayer.com;
+                  frame-src https://js.stripe.com https://checkout.tamara.co;
                   frame-ancestors 'none';
                   object-src 'none';
                   base-uri 'self';
