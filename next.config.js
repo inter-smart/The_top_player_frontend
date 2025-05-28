@@ -57,20 +57,51 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/_next/data/:path*",
+        source: "/:path*",
         headers: [
+          // Prevent MIME sniffing
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          // Prevent iframe embedding
+          { key: "X-Frame-Options", value: "DENY" },
+          // XSS filter in older browsers (optional for modern)
+          { key: "X-XSS-Protection", value: "1; mode=block" },
+          // Force HTTPS
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          // Control referrer info
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          // Enable DNS prefetching for better performance
+          { key: "X-DNS-Prefetch-Control", value: "on" },
+          // Restrict feature access (modify as needed)
           {
-            key: "Cache-Control",
-            value: "public, max-age=300, stale-while-revalidate=600", // Cache data for 5min, revalidate for 10min
+            key: "Permissions-Policy",
+            value: "geolocation=(self), microphone=(), camera=(), fullscreen=(), payment=()",
+          },
+          // Basic CSP (customize for your needs)
+          {
+            key: "Content-Security-Policy",
+            value: `
+            default-src 'self';
+            script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
+            style-src 'self' 'unsafe-inline';
+            img-src 'self' data: https://backend.thetopplayer.com;
+            connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com;
+            font-src 'self' https:;
+            frame-ancestors 'none';
+            object-src 'none';
+            base-uri 'self';
+          `
+              .replace(/\s{2,}/g, " ")
+              .trim(),
           },
         ],
       },
       {
-        source: "/:path*",
+        source: "/_next/data/:path*",
         headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "X-XSS-Protection", value: "1; mode=block" },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=300, stale-while-revalidate=600",
+          },
         ],
       },
       {
@@ -79,6 +110,7 @@ const nextConfig = {
       },
     ];
   },
+
   // Enable compression for faster responses
   compress: true,
 };
