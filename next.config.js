@@ -93,17 +93,17 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value: `
-            default-src 'self';
-            script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
-            style-src 'self' 'unsafe-inline';
-            img-src 'self' data: https://backend.thetopplayer.com;
-            connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com;
-            media-src 'self' https://backend.thetopplayer.com;
-            font-src 'self' https:;
-            frame-ancestors 'none';
-            object-src 'none';
-            base-uri 'self';
-          `
+                  default-src 'self';
+                  script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
+                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                  font-src 'self' https://fonts.gstatic.com data:;
+                  img-src 'self' data: https://backend.thetopplayer.com;
+                  connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com https://ipapi.co;
+                  media-src 'self' https://backend.thetopplayer.com;
+                  frame-ancestors 'none';
+                  object-src 'none';
+                  base-uri 'self';
+                `
               .replace(/\s{2,}/g, " ")
               .trim(),
           },
