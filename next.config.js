@@ -67,45 +67,97 @@ const nextConfig = {
     ];
   },
   reactStrictMode: false,
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/:path*",
+  //       headers: [
+  //         // Prevent MIME sniffing
+  //         { key: "X-Content-Type-Options", value: "nosniff" },
+  //         // Prevent iframe embedding
+  //         { key: "X-Frame-Options", value: "DENY" },
+  //         // XSS filter in older browsers (optional for modern)
+  //         { key: "X-XSS-Protection", value: "1; mode=block" },
+  //         // Force HTTPS
+  //         { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  //         // Control referrer info
+  //         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  //         // Enable DNS prefetching for better performance
+  //         { key: "X-DNS-Prefetch-Control", value: "on" },
+  //         // Restrict feature access (modify as needed)
+  //         {
+  //           key: "Permissions-Policy",
+  //           value: "geolocation=(self), microphone=(), camera=(), fullscreen=(self), payment=(self https://js.stripe.com https://checkout.tamara.co)",
+  //         },
+
+  //         // Basic CSP (customize for your needs)
+  //         {
+  //           key: "Content-Security-Policy",
+  //           value: `
+  //                 default-src 'self';
+  //                 script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://cdn.tamara.co;
+  //                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  //                 font-src 'self' https://fonts.gstatic.com data:;
+  //                 img-src 'self' data: https://backend.thetopplayer.com;
+  //                 connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com https://ipapi.co https://api.tamara.co;
+  //                 media-src 'self' https://backend.thetopplayer.com;
+  //                 frame-src https://js.stripe.com https://checkout.tamara.co;
+  //                 frame-ancestors 'none';
+  //                 object-src 'none';
+  //                 base-uri 'self';
+  //               `
+  //             .replace(/\s{2,}/g, " ")
+  //             .trim(),
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       source: "/_next/data/:path*",
+  //       headers: [
+  //         {
+  //           key: "Cache-Control",
+  //           value: "public, max-age=300, stale-while-revalidate=600",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       source: "/.well-known/apple-developer-merchantid-domain-association",
+  //       headers: [{ key: "content-type", value: "application/json" }],
+  //     },
+  //   ];
+  // },
+
   async headers() {
     return [
       {
         source: "/:path*",
         headers: [
-          // Prevent MIME sniffing
           { key: "X-Content-Type-Options", value: "nosniff" },
-          // Prevent iframe embedding
           { key: "X-Frame-Options", value: "DENY" },
-          // XSS filter in older browsers (optional for modern)
           { key: "X-XSS-Protection", value: "1; mode=block" },
-          // Force HTTPS
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
-          // Control referrer info
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          // Enable DNS prefetching for better performance
           { key: "X-DNS-Prefetch-Control", value: "on" },
-          // Restrict feature access (modify as needed)
           {
             key: "Permissions-Policy",
-            value: "geolocation=(self), microphone=(), camera=(), fullscreen=(self), payment=(self)",
+            value:
+              "geolocation=(self), microphone=(), camera=(), fullscreen=(self), payment=(self https://js.stripe.com https://checkout.tamara.co)",
           },
-
-          // Basic CSP (customize for your needs)
           {
             key: "Content-Security-Policy",
             value: `
-                  default-src 'self';
-                  script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://cdn.tamara.co;
-                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-                  font-src 'self' https://fonts.gstatic.com data:;
-                  img-src 'self' data: https://backend.thetopplayer.com;
-                  connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com https://ipapi.co https://api.tamara.co;
-                  media-src 'self' https://backend.thetopplayer.com;
-                  frame-src https://js.stripe.com https://checkout.tamara.co;
-                  frame-ancestors 'none';
-                  object-src 'none';
-                  base-uri 'self';
-                `
+            default-src 'self';
+            script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://cdn.tamara.co;
+            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+            font-src 'self' https://fonts.gstatic.com data:;
+            img-src 'self' data: https://backend.thetopplayer.com;
+            connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com https://ipapi.co https://api.tamara.co;
+            media-src 'self' https://backend.thetopplayer.com;
+            frame-src https://js.stripe.com https://checkout.tamara.co;
+            frame-ancestors 'none';
+            object-src 'none';
+            base-uri 'self';
+          `
               .replace(/\s{2,}/g, " ")
               .trim(),
           },
