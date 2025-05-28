@@ -30,8 +30,7 @@ const nextConfig = {
   images: {
     minimumCacheTTL: 60,
     deviceSizes: [
-      256, 320, 492, 512, 640, 768, 896, 1024, 1152, 1280, 1408, 1536, 1664, 1792, 1920, 2048, 2176, 2304, 2432, 2560,
-      2688, 2944,
+      256, 320, 492, 512, 640, 768, 896, 1024, 1152, 1280, 1408, 1536, 1664, 1792, 1920, 2048, 2176, 2304, 2432, 2560, 2688, 2944,
     ],
     imageSizes: [32, 64, 96, 112, 128, 144, 160, 176, 192, 240],
     // formats: ["image/webp"],
@@ -69,13 +68,61 @@ const nextConfig = {
   },
   reactStrictMode: false,
   async headers() {
-  return [
-    {
-      source: "/.well-known/apple-developer-merchantid-domain-association",
-      headers: [{ key: "content-type", value: "application/json" }]
-    }
-  ];
-}
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          // Prevent MIME sniffing
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          // Prevent iframe embedding
+          { key: "X-Frame-Options", value: "DENY" },
+          // XSS filter in older browsers (optional for modern)
+          { key: "X-XSS-Protection", value: "1; mode=block" },
+          // Force HTTPS
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          // Control referrer info
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          // Enable DNS prefetching for better performance
+          { key: "X-DNS-Prefetch-Control", value: "on" },
+          // Restrict feature access (modify as needed)
+          {
+            key: "Permissions-Policy",
+            value: "geolocation=(self), microphone=(), camera=(), fullscreen=(), payment=()",
+          },
+          // Basic CSP (customize for your needs)
+          {
+            key: "Content-Security-Policy",
+            value: `
+            default-src 'self';
+            script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
+            style-src 'self' 'unsafe-inline';
+            img-src 'self' data: https://backend.thetopplayer.com;
+            connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com;
+            font-src 'self' https:;
+            frame-ancestors 'none';
+            object-src 'none';
+            base-uri 'self';
+          `
+              .replace(/\s{2,}/g, " ")
+              .trim(),
+          },
+        ],
+      },
+      {
+        source: "/_next/data/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=300, stale-while-revalidate=600",
+          },
+        ],
+      },
+      {
+        source: "/.well-known/apple-developer-merchantid-domain-association",
+        headers: [{ key: "content-type", value: "application/json" }],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
