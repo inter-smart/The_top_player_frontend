@@ -98,6 +98,7 @@ const nextConfig = {
             style-src 'self' 'unsafe-inline';
             img-src 'self' data: https://backend.thetopplayer.com;
             connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com;
+            media-src 'self' https://backend.thetopplayer.com;
             font-src 'self' https:;
             frame-ancestors 'none';
             object-src 'none';
