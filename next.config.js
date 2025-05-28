@@ -87,9 +87,9 @@ const nextConfig = {
           // Restrict feature access (modify as needed)
           {
             key: "Permissions-Policy",
-            value:
-              "geolocation=(self), microphone=(), camera=(), fullscreen=(), payment=(self https://js.stripe.com https://checkout.tamara.co)",
+            value: "geolocation=(self), microphone=(), camera=(), fullscreen=(self), payment=(self)",
           },
+
           // Basic CSP (customize for your needs)
           {
             key: "Content-Security-Policy",
