@@ -40,10 +40,7 @@ export const LoginReducer = createAsyncThunk(
       const errMessage = err?.response?.data?.message || "Something went wrong";
       return rejectWithValue(errMessage);
     }
-
-    return rejectWithValue(err);
-  }
-});
+  });
 
 export const LogOutReducer = createAsyncThunk("Auth/LogOutReducer", async (_, thunkAPI) => {
   const { rejectWithValue } = thunkAPI;
@@ -251,33 +248,33 @@ export const PayReducer = createAsyncThunk(
     const { course_id, coupon_details: coupon_code } = params;
     const { currency_code, currency_rate } = params.currentcurrency;
 
-  console.log("HEREEE");
+    console.log("HEREEE");
 
-  const { rejectWithValue } = thunkAPI;
-  try {
-    const result = await axios
-      .post(
-        `${process.env.customKey}/create-payment-intent`,
-        {
-          courseId: course_id,
-          currency_code,
-          currency_rate,
-          coupon_code,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Access-Token": Cookies.get("UT"),
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const result = await axios
+        .post(
+          `${process.env.customKey}/create-payment-intent`,
+          {
+            courseId: course_id,
+            currency_code,
+            currency_rate,
+            coupon_code,
           },
-        }
-      )
-      .then((res) => res.data);
-    return result;
-  } catch (err) {
-    return rejectWithValue(err);
-  }
-});
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "X-Access-Token": Cookies.get("UT"),
+            },
+          }
+        )
+        .then((res) => res.data);
+      return result;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  });
 export const ConfirmPayCourse = createAsyncThunk("Auth/ConfirmPayCourse", async (id, thunkAPI) => {
   const { rejectWithValue } = thunkAPI;
   try {
