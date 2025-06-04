@@ -59,11 +59,12 @@ const Signup = ({ Lang }) => {
           .catch((err) => {
             //console.log(err);
             setDisabed(false);
-            if (err?.response?.data?.message) {
-              EMptyInput(err.response.data.message);
-            } else {
-              EMptyInput(t("auth.wrong"));
-            }
+            // if (err?.response?.data?.message) {
+            //   EMptyInput(err.response.data.message);
+            // } else {
+            //   EMptyInput(t("auth.wrong"));
+            // }
+            EMptyInput(err);
           });
       }
     },

@@ -57,12 +57,12 @@ const UpdatePassword = ({ Lang }) => {
           .catch((err) => {
             setDisabed(false);
             // //console.log(err.response.data.message)
-            if (err?.response?.data?.message) {
-              EMptyInput(err.response.data.message);
-            } else {
-              EMptyInput(t("auth.wrong"));
-            }
-            // EMptyInput()
+            // if (err?.response?.data?.message) {
+            //   EMptyInput(err.response.data.message);
+            // } else {
+            //   EMptyInput(t("auth.wrong"));
+            // }
+            EMptyInput(err)
           });
       }
     },

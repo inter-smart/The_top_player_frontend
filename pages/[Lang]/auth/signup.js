@@ -91,11 +91,11 @@ const Signup = ({ Lang }) => {
           })
           .catch((err) => {
             setDisabed(false);
-            if (err?.response?.data?.message) {
-              EMptyInput(err.response.data.message);
-            } else {
-              EMptyInput(t("auth.wrong"));
-            }
+            // if (err?.response?.data?.message) {
+            //   EMptyInput(err.response.data.message);
+            // } else {
+            // }
+            EMptyInput(err);
           });
       }
     },
@@ -263,7 +263,7 @@ const Signup = ({ Lang }) => {
                 >
                   <span>{t("auth.condition")} &nbsp;</span>
 
-                  <Link href={`/${Lang}/terms`} target="_blank" style={{textDecoration:"none"}}>
+                  <Link href={`/${Lang}/terms`} target="_blank" style={{ textDecoration: "none" }}>
                     {t("auth.terms")}
                   </Link>
                 </label>
@@ -287,7 +287,7 @@ const Signup = ({ Lang }) => {
               >
                 {" "}
                 {t("auth.have_account")}{" "}
-                <Link href={`/${Lang}/auth/login`} style={{textDecoration:"none"}}>{t("auth.login")}</Link>
+                <Link href={`/${Lang}/auth/login`} style={{ textDecoration: "none" }}>{t("auth.login")}</Link>
               </p>
             </div>
           </form>

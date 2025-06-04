@@ -17,7 +17,8 @@ export const SignUp = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -36,7 +37,8 @@ export const LoginReducer = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -77,7 +79,8 @@ export const VerifyEmail = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -96,7 +99,8 @@ export const changePassword = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -116,7 +120,8 @@ export const updatePassword = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMesssage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMesssage);
     }
   }
 );
@@ -135,7 +140,8 @@ export const VerifySignup = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -154,7 +160,8 @@ export const ReVerifySignup = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -194,7 +201,8 @@ export const updateUserInfo = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -213,7 +221,8 @@ export const ContactReducer = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );
@@ -232,7 +241,8 @@ export const subscribeReducer = createAsyncThunk(
         .then((res) => res.data);
       return result;
     } catch (err) {
-      return rejectWithValue(err);
+      const errMessage = err?.response?.data?.message || "Something went wrong";
+      return rejectWithValue(errMessage);
     }
   }
 );

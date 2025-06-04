@@ -127,18 +127,19 @@ const Login = ({ Lang }) => {
               })
               .catch((err) => {
                 setDisabed(false);
-
-                if (err?.response?.data?.message) {
-                  EMptyInput(err.response.data.message);
-                } else {
-                  EMptyInput(t("auth.wrong"));
-                }
-                // EMptyInput()
+                
+                // if (err?.response?.data?.message) {
+                //   EMptyInput(err.response.data.message);
+                // } else {
+                //   EMptyInput(t("auth.wrong"));
+                // }
+                EMptyInput(err)
               });
           })
 
           .catch((err) => {
             setDisabed(false);
+            console.log(err);
             // //console.log(err.response.data.verified)
 
             if (err?.response?.data?.verified === false) {
@@ -150,12 +151,12 @@ const Login = ({ Lang }) => {
                 query: { email: data.email },
               });
             }
-            if (err?.response?.data?.message) {
-              EMptyInput(err.response.data.message);
-            } else {
-              EMptyInput(t("auth.wrong"));
-            }
-            // EMptyInput()
+            // if (err?.response?.data?.message) {
+            //   EMptyInput(err.response.data.message);
+            // } else {
+            //   EMptyInput(t("auth.wrong"));
+            // }
+            EMptyInput(err)
           });
       }
     },

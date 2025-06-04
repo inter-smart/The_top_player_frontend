@@ -48,7 +48,7 @@ const Contact = ({ styles, Lang }) => {
             formik.resetForm();
           })
           .catch((err) => {
-            EMptyInput(err.response.data.message);
+            EMptyInput(err);
           });
       }
     },

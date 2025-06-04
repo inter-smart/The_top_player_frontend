@@ -28,7 +28,8 @@ const WhoSlice = createSlice({
     initialloading: false,
     counts: [],
     unit: null,
-    count:null,
+    count: null,
+    totalUsers: null,
     error: null,
   },
   reducers: {},
@@ -37,9 +38,11 @@ const WhoSlice = createSlice({
       state.initialloading = true;
     });
     builder.addCase(getCounts.fulfilled, (state, action) => {
+      console.log("counts", action.payload);
       state.counts = action.payload.data;
       state.count = action.payload.counts;
       state.unit = action.payload.units;
+      state.totalUsers = action.payload.totalUsers;
       state.initialloading = false;
     });
     builder.addCase(getCounts.rejected, (state, action) => {

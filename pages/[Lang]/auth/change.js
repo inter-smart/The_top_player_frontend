@@ -109,12 +109,12 @@ const Change = ({ Lang }) => {
             //console.log(err);
             setDisabed(false);
             // //console.log(err.response.data.message)
-            if (err?.response?.data?.message) {
-              EMptyInput(err.response.data.message);
-            } else {
-              EMptyInput(t("auth.wrong"));
-            }
-            // EMptyInput()
+            // if (err?.response?.data?.message) {
+            //   EMptyInput(err.response.data.message);
+            // } else {
+            //   EMptyInput(t("auth.wrong"));
+            // }
+            EMptyInput(err)
           });
       }
     },
@@ -163,11 +163,12 @@ const Change = ({ Lang }) => {
         // show(t("Please check your mail"));
       })
       .catch((err) => {
-        if (err?.response?.data?.message) {
-          EMptyInput(err.response.data.message);
-        } else {
-          EMptyInput(t("auth.wrong"));
-        }
+        // if (err?.response?.data?.message) {
+        //   EMptyInput(err.response.data.message);
+        // } else {
+        //   EMptyInput(t("auth.wrong"));
+        // }
+        EMptyInput(err);
       });
   };
 

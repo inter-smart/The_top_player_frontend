@@ -51,12 +51,12 @@ const Footer = ({ Lang }) => {
             formik.resetForm();
           })
           .catch((err) => {
-            if (err?.response?.data?.message) {
-              EMptyInput(err.response.data.message);
-            } else {
-              EMptyInput(t("auth.wrong"));
-            }
-            // EMptyInput()
+            // if (err?.response?.data?.message) {
+            //   EMptyInput(err.response.data.message);
+            // } else {
+            //   EMptyInput(t("auth.wrong"));
+            // }
+            EMptyInput(err)
           });
       }
     },

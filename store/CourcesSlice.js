@@ -69,7 +69,8 @@ export const getsubscribedCourse = createAsyncThunk("Cources/getsubscribedCourse
       });
     return result;
   } catch (err) {
-    return rejectWithValue(err?.response?.data?.message);
+    const errMessage = err?.response?.data?.message || "Something went wrong";
+    return rejectWithValue(errMessage);
   }
 });
 export const getMyPrograms = createAsyncThunk("Cources/getMyPrograms", async (token, thunkAPI) => {
