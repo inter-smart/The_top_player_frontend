@@ -16,7 +16,6 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 import "video-react/dist/video-react.css"; // import css
 
-import "@/styles/globals.css";
 import Loading from "@/components/layouts/Loading";
 import dynamic from "next/dynamic";
 import ErrorBoundary from "@/components/ErrorBoundary/eb";
@@ -29,6 +28,7 @@ const Footer = dynamic(() => import("@/components/layouts/Footer"), {
   loading: () => <></>,
   ssr: false,
 });
+import "@/styles/globals.css";
 
 function App({ Component, pageProps, canonical, Path }) {
   const handleKeyPress = (event) => {
@@ -127,6 +127,9 @@ function App({ Component, pageProps, canonical, Path }) {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
       </Head>
 
       {/* <ErrorBoundary> */}
