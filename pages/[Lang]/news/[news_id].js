@@ -45,17 +45,17 @@ const NewsDetail = () => {
             </div>
             <div className={styles.d_flx}>
               <div className={styles.lft_sd}>
-                {news?.mobile?.map((item) => (
-                  <div key={item?.id} className={styles.img_wrap}>
+                {/* {news?.mobile?.map((item) => ( */}
+                  <div key={news?.id} className={styles.img_wrap}>
                     <Image
-                      src={`${process.env.customKey}/newsMobileImages/${item?.imageUrl}`}
+                      src={`${process.env.customKey}/newsCoverImages/${news?.coverimage}`}
                       alt="news"
                       fill
                       sizes="420px"
                       objectFit="cover"
                     />
                   </div>
-                ))}
+                {/* ))} */}
               </div>
               <div className={styles.rgt_sd}>
                 <div className={styles.cnt_wrap}>
