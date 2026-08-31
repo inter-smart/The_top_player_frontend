@@ -5,17 +5,10 @@ const nextConfig = {
     FREE_SUB_ID: "2",
     // FREE_COURSE_ID: 17,
     // FREE_SUB_ID: 11,
-    // customKey: "https://crm.intersmarthosting.in/topplayer",
-    // customKey: "http://192.168.29.154:7700",
-    customKey: "http://localhost:7700",
-    // customKey: "https://backend.thetopplayer.com",
-    // customKey: "https://backend.thetopplayer.com/staging",
-    // customKey: "https://crm.intersmarthosting.in/topplayer",
-    // webDomain: "https://interregionall.vercel.app",
-    // webDomain: "https://www.thetopplayer.com",
-    // webDomain: "https://the-top-player-frontend-2.onrender.com",
-    // webDomain: "https://the-top-player-frontend-furjqjv5u-vaishnav-vijayan07s-projects.vercel.app/en",
-    webDomain: "http://localhost:4000",
+    // customKey: "http://localhost:7700",
+    customKey: "https://crm.intersmarthosting.in/topplayer",
+    // webDomain: "http://localhost:4000",
+    webDomain: "https://topplayer-beta.netlify.app",
     // tamraPublicKey: "a916b2ef-bb66-4e5b-84d9-5bbae98db825",
     tamraPublicKey: "7aa51bac-f5b4-4896-991d-36fa7a0a1d66", //test
     // webDomain: "http://www.thetopplayer.com",
@@ -28,6 +21,7 @@ const nextConfig = {
   swcMinify: true,
 
   images: {
+    unoptimized: true,
     minimumCacheTTL: 60,
     deviceSizes: [256, 320, 492, 512, 640, 768, 896, 1024, 1152, 1280, 1408, 1536, 1664, 1792, 1920, 2048, 2176, 2304, 2432, 2560, 2688, 2944],
     imageSizes: [32, 64, 96, 112, 128, 144, 160, 176, 192, 240],
@@ -96,8 +90,8 @@ const nextConfig = {
                   script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://cdn.tamara.co;
                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                   font-src 'self' https://fonts.gstatic.com data:;
-                  img-src 'self' data: https://backend.thetopplayer.com;
-                  connect-src 'self' https://backend.thetopplayer.com https://www.google-analytics.com https://ipapi.co https://api.tamara.co;
+                  img-src 'self' data: https://backend.thetopplayer.com https://crm.intersmarthosting.in http://localhost:7700 http://192.168.29.154:7700;
+                  connect-src 'self' https://backend.thetopplayer.com https://crm.intersmarthosting.in http://localhost:7700 http://192.168.29.154:7700 https://www.google-analytics.com https://ipapi.co https://api.tamara.co;
                   media-src 'self' https://backend.thetopplayer.com;
                   frame-src https://js.stripe.com https://checkout.tamara.co;
                   frame-ancestors 'none';

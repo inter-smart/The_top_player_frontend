@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import styles from "/styles/InnerBanner.module.scss";
+import styles from "@/styles/InnerBanner.module.scss";
 
 const InnerBanner = ({ imageUrl, title, title_ar, Lang }) => {
   return (

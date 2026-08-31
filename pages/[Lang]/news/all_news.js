@@ -1,6 +1,6 @@
 import NewsBox from "@/components/layouts/NewsBox";
-import InnerBanner from "/components/layouts/InnerBanner";
-import styles from "/styles/News.module.scss";
+import InnerBanner from "@/components/layouts/InnerBanner";
+import styles from "@/styles/News.module.scss";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";

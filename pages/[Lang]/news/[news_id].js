@@ -1,5 +1,5 @@
 import NewsBox from "@/components/layouts/NewsBox";
-import styles from "/styles/News.module.scss";
+import styles from "@/styles/News.module.scss";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";

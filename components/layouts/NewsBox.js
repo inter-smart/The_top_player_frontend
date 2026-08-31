@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import styles from "/styles/NewsBox.module.scss";
+import styles from "@/styles/NewsBox.module.scss";
 import Link from "next/link";
 import { t } from "i18next";
 import { format } from "date-fns";
