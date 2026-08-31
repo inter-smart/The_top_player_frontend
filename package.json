@@ -12,8 +12,8 @@
   "dependencies": {
     "@next/third-parties": "^16.3.3",
     "@reduxjs/toolkit": "^1.9.5",
-    "@stripe/react-stripe-js": "^2.7.1",
-    "@stripe/stripe-js": "^3.4.0",
+    "@stripe/react-stripe-js": "^6.8.2",
+    "@stripe/stripe-js": "^9.14.0",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
