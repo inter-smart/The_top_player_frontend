@@ -37,7 +37,7 @@ const TempNewsDetail = ({ banner }) => {
     }
   }, [dispatch, news_id]);
 
-  console.log("NEWS",news?.createdAt >= max_createdAt)
+  
 
   return (
     <LangWrap Lang={Lang.toLowerCase()}>
@@ -244,7 +244,7 @@ export async function getServerSideProps({ req, params }) {
       },
     };
   } catch (err) {
-    //console.log(err);
+    //
     return {
       props: {
         Lang: params.Lang.toLowerCase(),

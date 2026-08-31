@@ -74,7 +74,7 @@ const CurrencySlice = createSlice({
       })
       .addCase(initializeCurrencyCode.fulfilled, (state, action) => {
         let currentLocation = action.payload;
-        // let currentLocation = "AE";
+        // let currentLocation = "KW";
         let allCountries = state.currencies;
 
         const matchingCountry = allCountries.find(
