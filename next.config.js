@@ -92,7 +92,7 @@ const nextConfig = {
                   font-src 'self' https://fonts.gstatic.com data:;
                   img-src 'self' data: https://backend.thetopplayer.com https://crm.intersmarthosting.in http://localhost:7700 http://192.168.29.154:7700;
                   connect-src 'self' https://backend.thetopplayer.com https://crm.intersmarthosting.in http://localhost:7700 http://192.168.29.154:7700 https://www.google-analytics.com https://ipapi.co https://api.tamara.co;
-                  media-src 'self' https://backend.thetopplayer.com;
+                  media-src 'self' https://backend.thetopplayer.com https://crm.intersmarthosting.in http://localhost:7700 http://192.168.29.154:7700;
                   frame-src https://js.stripe.com https://checkout.tamara.co;
                   frame-ancestors 'none';
                   object-src 'none';
