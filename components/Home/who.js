@@ -25,7 +25,7 @@ const Who = ({ styles, Lang }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { counts, count, unit, totalUsers } = useSelector((state) => state.WhoSlice);
+  const { counts, count, unit, totalUsers:users } = useSelector((state) => state.WhoSlice);
 
   console.log(counts, count, unit)
 
