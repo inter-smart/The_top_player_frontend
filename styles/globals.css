@@ -203,7 +203,8 @@ body:has(> * .video-react-fullscreen) {
   border-radius: 10px;
   background: var(--main_color);
   display: flex;
-  display: -ms-flexbox;
+  /* display: -ms-flexbox; */
+  display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   align-items: center;
