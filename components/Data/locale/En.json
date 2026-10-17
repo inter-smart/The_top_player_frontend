@@ -181,7 +181,8 @@
     "payment": "Payment",
     "copy_1": "Copyright© ",
     "copy_2": "2023 ",
-    "copy_3": " – The Top Player all rights reserved"
+    "copy_3": " – The Top Player all rights reserved",
+    "terms": "Terms & Conditions"
   },
   "auth": {
     "signup_title": "sign up in the top player",

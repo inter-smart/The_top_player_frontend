@@ -136,6 +136,9 @@ const Footer = ({ Lang }) => {
                 <Link href="#" onClick={(e) => handleFreeTrial(e)} className="customLink">
                   {t("programs.free_trial")}
                 </Link>
+                <Link href={`/${router?.query?.Lang?.toLowerCase()}/terms`} onClick={(e) => handleFreeTrial(e)} className="customLink">
+                  {t("footer.terms")}
+                </Link>
               </div>
             </div>
             <div className={`col-6 col-md-2 ${styles.column}`}>
