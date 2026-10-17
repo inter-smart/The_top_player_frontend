@@ -121,9 +121,9 @@ const Footer = ({ Lang }) => {
                 <Link href={`/${router?.query?.Lang?.toLowerCase()}#about`} className="customLink">
                   {t("menu.about")}
                 </Link>
-                <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`} className="customLink">
+                {/* <Link href={`/${router?.query?.Lang?.toLowerCase()}#news`} className="customLink">
                   {t("menu.our_news")}
-                </Link>
+                </Link> */}
                 <Link href={`/${router?.query?.Lang?.toLowerCase()}#programs`} className="customLink">
                   {t("menu.our_programs")}
                 </Link>

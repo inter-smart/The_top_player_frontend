@@ -1,39 +1,20 @@
-import htmlParser from "@/helpers/parse";
 import axios from "axios";
 
-const Terms = ({ data }) => {
+const Terms = ({ data, Lang }) => {
   if (!data || data.length === 0) {
     return <div>No data available</div>;
   }
 
-  // const parsedDataEng = htmlParser(data[0].content);
-  // const parsedDataAr = htmlParser(data[0].content_ar);
   return (
     <div className="Terms padding_all">
       <div className="container">
         <div
-          className="En_terms"
-          dangerouslySetInnerHTML={{ __html: data[0].content }}
+          className={Lang === "ar" ? "Ar_terms" : "En_terms"}
+          dir={Lang === "ar" ? "rtl" : "ltr"}
+          dangerouslySetInnerHTML={{
+            __html: Lang === "en" ? data[0].content : data[0].content_ar,
+          }}
         />
-
-        <hr />
-        <div className="Ar_terms">
-          <div
-            className="En_terms"
-            dangerouslySetInnerHTML={{ __html: data[0].content_ar }}
-          />
-
-          {/* {parsedDataAr.map((items) => (
-            <>
-              <h2 className="title">{items.title}</h2>
-              <ol>
-                {items?.values.map((points) => (
-                  <li key={items.title}>{points}</li>
-                ))}
-              </ol>
-            </>
-          ))} */}
-        </div>
       </div>
     </div>
   );
@@ -47,6 +28,7 @@ export async function getServerSideProps({ req, params }) {
     return {
       props: {
         data,
+        Lang: params.Lang,
       },
     };
   } catch (error) {
