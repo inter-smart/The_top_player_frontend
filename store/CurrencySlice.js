@@ -73,8 +73,8 @@ const CurrencySlice = createSlice({
         // Default to 'US' if initialization fails
       })
       .addCase(initializeCurrencyCode.fulfilled, (state, action) => {
-        let currentLocation = action.payload;
-        // let currentLocation = "KW";
+        // let currentLocation = action.payload;
+        let currentLocation = "KW";
         let allCountries = state.currencies;
 
         const matchingCountry = allCountries.find(
