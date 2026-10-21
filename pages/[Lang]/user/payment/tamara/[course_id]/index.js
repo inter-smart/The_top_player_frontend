@@ -3,8 +3,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import styles from "@/styles/Profile.module.scss";
 import Image from "next/legacy/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
+import { Toast } from "primereact/toast";
 
 const stripePromise = loadStripe(
   process.env.STRIPE_PROMISE
@@ -17,7 +18,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import LangWrap from "@/components/layouts/LangWarp";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import TamaraWidget from "@/components/Payment/Tamara/widget";
 import Coupon from "@/components/layouts/Coupon";
 
@@ -33,6 +34,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
   const tamaraSupportCurrencies = ["AE", "KW", "SA"];
 
   const [isLoading, setIsLoading] = useState(false);
+  const toast = useRef(null);
   useEffect(() => {
     if (course_id && currentcurrency) {
       dispatch(PayReducer(course_id, currentcurrency, coupon_details))
@@ -80,11 +82,19 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
         setIsLoading(false);
         if (res?.data?.data?.checkoutUrl) {
           window.location.href = res?.data?.data?.checkoutUrl;
+        } else {
+          toast.current?.show({
+            severity: "error",
+            summary: "Unable to start Tamara checkout. Please try again.",
+          });
         }
       })
       .catch((err) => {
         setIsLoading(false);
-        //console.log(err);
+        toast.current?.show({
+          severity: "error",
+          summary: err?.response?.data?.message || "Something went wrong, please try again.",
+        });
       });
   };
 
@@ -240,6 +250,7 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                       <CheckoutForm course_id={course_id} Lang={Lang} />
                     </Elements>
                   )}
+                  <Toast ref={toast} />
                   {tamaraSupportCurrencies.includes(
                     currentcurrency?.currency_flag
                   ) ? (
@@ -249,10 +260,18 @@ const Payment = ({ course_id, Lang, CourseByIdArray }) => {
                       </div>
                       <Button
                         variant="success"
+                        className="tamara-pay-btn"
                         onClick={initiateTamaraPayment}
                         disabled={isLoading}
                       >
-                        Pay With Tamara
+                        {isLoading ? (
+                          <Spinner animation="border" size="sm" />
+                        ) : (
+                          <>
+                            <span>Pay with</span>
+                            <Image src="/images/tamara_logo.png" alt="Tamara" width={70} height={18} />
+                          </>
+                        )}
                       </Button>
                     </div>
                   ) : (

@@ -17,7 +17,7 @@ export const getAllTestimonials = createAsyncThunk("Testimonial/alltestimonials"
       .then((res) => res.data);
     return result;
   } catch (err) {
-    return rejectWithValue(err);
+    return rejectWithValue(err.response?.data || err.message);
   }
 });
 
@@ -36,7 +36,7 @@ export const getTestimonialById = createAsyncThunk("Testimonial/testimonialById"
       .then((res) => res.data.testimonials);
     return result;
   } catch (err) {
-    return rejectWithValue(err);
+    return rejectWithValue(err.response?.data || err.message);
   }
 });
 
