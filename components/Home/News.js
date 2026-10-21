@@ -23,6 +23,10 @@ const News = ({ styles, Lang }) => {
     dispatch(getAllNews(1));
   }, [dispatch]);
 
+  if (!allNews?.news?.length) {
+    return null;
+  }
+
   return (
     <div className={styles.news_section} id={"news"}>
       <div className="container">
