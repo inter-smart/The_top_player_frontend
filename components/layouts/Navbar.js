@@ -182,7 +182,7 @@ const Navbar = ({ overHeight, state }) => {
               >
                 {t("menu.about")}
               </Link>
-              <Link
+              {/* <Link
                 onClick={() => setVisible(false)}
                 href={`/${router?.query?.Lang?.toLowerCase()}#news`}
                 className={router.asPath.includes(`/${router?.query?.Lang?.toLowerCase()}#news`) ? styles.active : styles.link}
@@ -208,7 +208,7 @@ const Navbar = ({ overHeight, state }) => {
                     </g>
                   </svg>
                 </span>
-              </Link>
+              </Link> */}
 
               <Link
                 onClick={() => setVisible(false)}
