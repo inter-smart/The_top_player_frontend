@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    FREE_COURSE_ID: "2",
-    FREE_SUB_ID: "2",
-    // FREE_COURSE_ID: 17,
-    // FREE_SUB_ID: 11,
+    // FREE_COURSE_ID: "2",
+    // FREE_SUB_ID: "2",
+    FREE_COURSE_ID: 17,
+    FREE_SUB_ID: 11,
     // customKey: "http://localhost:7700",
     customKey: "https://backend.thetopplayer.com",
     // webDomain: "http://localhost:4000",
